@@ -1,0 +1,97 @@
+.orderHistory-section h2 {
+    margin-top: 38px;
+  }
+  .order {
+    /* border: 3px solid #0396a6; */
+    padding: 20px;
+    padding-bottom: 40px;
+    width: 1030px;
+    border-radius: 15px;
+    margin-top: 50px;
+    background-color: rgb(233, 234, 235);
+  }
+  .order:active{
+      border: 3px solid #0396a6;
+  }
+  .order:active .circle-order{
+      background-color: #0396a6;
+  }
+  .order .first-col {
+    background-color: white;
+    padding: 20px 0px 20px 35px;
+    border-radius: 12px;
+    margin-left: 5px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .orderHistory-section .circle-order {
+    border-radius: 50%;
+    /* background-color: #0396a6; */
+    background-color: rgb(185, 184, 184);
+    width: 26px;
+    float: left;
+    margin-right: 17px;
+  }
+  .order .dispatch {
+    font-size: 20px;
+    color: rgb(73, 73, 73);
+    margin-top: -3px;
+  }
+  .order img {
+    height: 80px;
+    width: 60px;
+  }
+  .order-p {
+    font-size: 14px;
+    color: rgb(108, 107, 107);
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-weight: 500;
+  }
+  .order h5 {
+    font-size: 16px;
+    line-height: 2em;
+    font-family: Arial;
+    color: rgb(70, 70, 70);
+    letter-spacing: 0.5px;
+  }
+  .orderHistory-section .order-btn {
+    margin-left: 60px;
+    /* margin-top: 25px; */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .orderHistory-section .order-btn button {
+    border: 2px solid #0b69bb;
+    width: 180px;
+    color: #0b69bb;
+    background-color: white;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    font-family: Arial;
+    font-size: 15px;
+  }
+  .orderHistory-section .order-btn button:hover {
+    background-color: #0b69bb;
+    color: white;
+  }
+  @media (max-width: 1199px) {
+    .orderHistory-section .order-btn {
+      margin-left: 50px;
+    }
+  }
+  @media (max-width: 991px) {
+    .orderHistory-section .order-btn {
+      margin-left: 0px;
+  
+      margin-top: 20px;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
+    .orderHistory-section .order-btn button {
+      margin: auto 8px;
+    }
+  }

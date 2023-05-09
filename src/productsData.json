@@ -1,0 +1,138 @@
+[
+    {
+        "ID": "#1",
+        "Image": "./images/soalar.png",
+        "Name" :"Solar Panal",
+        "Catogry" : "Accessories",
+        "Price" : "300$",
+        "Sales" : "33",
+        "Stock" : 50
+    },
+    {
+        "ID": "#2",
+        "Image": "./images/product.png",
+        "Name" :"SmartSips",
+        "Catogry" : "Device",
+        "Price" : "1200$",
+        "Sales" : "100",
+        "Stock" :0
+    },
+    {
+        "ID": "#3",
+        "Image": "./images/screen.png",
+        "Name" :"LCD Screen",
+        "Catogry" : "Accessories",
+        "Price" : "40$",
+        "Sales" : "50",
+        "Stock" : 300
+    },
+    {
+        "ID": "#4",
+        "Image": "./images/soalar.png",
+        "Name" :"Solar Panal",
+        "Catogry" : "Accessories",
+        "Price" : "300$",
+        "Sales" : "33",
+        "Stock" : 50
+    },
+    {
+        "ID": "#2",
+        "Image": "./images/product.png",
+        "Name" :"SmartSips",
+        "Catogry" : "Device",
+        "Price" : "1200$",
+        "Sales" : "100",
+        "Stock" :0
+    },
+    {
+        "ID": "#5",
+        "Image": "./images/screen.png",
+        "Name" :"LCD Screen",
+        "Catogry" : "Accessories",
+        "Price" : "40$",
+        "Sales" : "50",
+        "Stock" : 300
+    },
+    {
+        "ID": "#6",
+        "Image": "./images/soalar.png",
+        "Name" :"Solar Panal",
+        "Catogry" : "Accessories",
+        "Price" : "300$",
+        "Sales" : "33",
+        "Stock" : 50
+    },
+    {
+        "ID": "#7",
+        "Image": "./images/product.png",
+        "Name" :"SmartSips",
+        "Catogry" : "Device",
+        "Price" : "1200$",
+        "Sales" : "100",
+        "Stock" :0
+    },
+    {
+        "ID": "#8",
+        "Image": "./images/screen.png",
+        "Name" :"LCD Screen",
+        "Catogry" : "Accessories",
+        "Price" : "40$",
+        "Sales" : "50",
+        "Stock" : 300
+    },
+    {
+        "ID": "#9",
+        "Image": "./images/soalar.png",
+        "Name" :"Solar Panal",
+        "Catogry" : "Accessories",
+        "Price" : "300$",
+        "Sales" : "33",
+        "Stock" : 50
+    },
+    {
+        "ID": "#10",
+        "Image": "./images/product.png",
+        "Name" :"SmartSips",
+        "Catogry" : "Device",
+        "Price" : "1200$",
+        "Sales" : "100",
+        "Stock" :0
+    },
+    {
+        "ID": "#11",
+        "Image": "./images/screen.png",
+        "Name" :"LCD Screen",
+        "Catogry" : "Accessories",
+        "Price" : "40$",
+        "Sales" : "50",
+        "Stock" : 300
+    },
+    {
+        "ID": "#12",
+        "Image": "./images/soalar.png",
+        "Name" :"Solar Panal",
+        "Catogry" : "Accessories",
+        "Price" : "300$",
+        "Sales" : "33",
+        "Stock" : 50
+    },
+    {
+        "ID": "#13",
+        "Image": "./images/product.png",
+        "Name" :"SmartSips",
+        "Catogry" : "Device",
+        "Price" : "1200$",
+        "Sales" : "100",
+        "Stock" :0
+    },
+    {
+        "ID": "#14",
+        "Image": "./images/screen.png",
+        "Name" :"LCD Screen",
+        "Catogry" : "Accessories",
+        "Price" : "40$",
+        "Sales" : "50",
+        "Stock" : 300
+    }
+
+]

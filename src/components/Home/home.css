@@ -1,0 +1,602 @@
+/* --------------------------------header style------------------------ */
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Times New Roman','Arial';
+    font-weight: bold;
+}
+
+.heading1{
+    color: #0B69BB;
+    word-spacing: 2px;
+    margin-bottom: 30px;
+}
+.header_p{
+    margin-top: 20px;
+}
+.header_button{
+    background-color: #0B69BB;
+    width: 100px;
+    height: 36px;
+    color: white;
+    font-weight: 600;
+    box-shadow: 2px 2px 5px  rgb(185, 181, 181);
+}
+.header_button a{
+    text-decoration: none;
+    color: white;
+}
+.header_button:hover{
+    background-color: #0396A6;
+}
+.header_rightSide{
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    margin-left: 100px;
+}
+.fristImg{
+    background-color: #0396A6;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    bottom: -100px;
+    left: -20px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 10px;
+    
+}
+.fristImg img{
+    width: 200px;
+    height: 200px;
+    z-index: 3;
+    position: absolute;
+    bottom: 30px;
+    left: 27px;
+    border-radius: 5px;
+}
+.secondImg{
+    background-color: #0396A6;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top:10px;
+    right: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    
+}
+.secondImg img{
+    width: 210px;
+    height: 290px;
+    z-index: 1;
+    position: absolute;
+    top:40px;
+    right:60px;
+    border-radius: 5px;
+    
+}
+@media(min-width:992px){
+    .fristImg{
+        position: absolute;
+        bottom: -60px;
+        left: 80px;
+        
+    }
+    .header_leftSide{
+       margin-right:50px;
+    }
+}
+ @media(max-width:769px){
+    .fristImg{
+        position: absolute;
+        top:20px;
+        left: 20px;
+    }
+     .header_rightSide{
+       margin: 90px auto;
+    } 
+}
+
+/* -------------------------------Best Advantages section------------------------- */
+.best_Advantages{
+  margin-top: 290px;
+  background-color: #ECEEF0;
+  padding-bottom: 80px;
+}
+.Adv_heading{
+  text-align: center;
+  padding-top: 28px;
+}
+.Adv_heading h3{
+  font-weight: bold;
+  word-spacing: 10px;
+  font-size: 30px;
+}
+.Adv_heading p{
+  font-weight: 500;
+  font-size: 13px;
+}
+.Adv_content{
+  background-color: white;
+  height: 250px;
+  width: 220px;
+  margin-top: 40px;
+  border-radius: 20px;
+  padding-top:29px;
+  text-align: center;
+  transition-duration:0.5s ;
+}
+.Adv_content:hover{
+  box-shadow: 3px 3px 20px rgb(172, 165, 165);
+  transform: translate(-30px,0);
+}
+.Adv_icon{
+  background-color: #ECEEF0;
+  width: 70px;
+  height: 70px;
+  margin-bottom: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius:20px ;
+  position: relative;
+  left: 30px;
+}
+.Adv_icon img{
+  width: 80px;
+  height: 70px;
+  position: absolute;
+  left: 29px;
+}
+.Adv_p{
+  text-align: justify;
+}
+
+/* ------------------------------- EASY And Fast Section -------------------------- */
+.Easy_Fast{
+    margin-top: 150px;
+    height: 100vh;
+}
+.left_step{
+    width: 40px;
+    height: 40px;
+    background-color: #7DA9AF;
+    border-radius: 50%;
+    color: white;
+}
+.left_step h6{
+    font-weight: bold;
+}
+.left_step .circle_number{
+margin: 7px auto;
+font-weight: bold;
+}
+.line_vertical{
+    border-left: 1.8px solid black ;
+    height: 70px;
+    margin-left: 8px;
+    margin-top: 17px;
+}
+.right_step{
+    margin-top: 14px;
+    margin-left: 6px;
+    color: gray;
+}
+@media(max-width:768px){
+    .Easy_Fast_LeftSide,.Easy_Fast_RightSide{
+     padding-left: 40px;
+    }
+}
+/* ---------------EASY And Fast Section right part slider ---------- */
+.swiper-slide{
+    background-position:center;
+    background-size: cover;
+    width: 200px;
+    height: 100px;
+}
+.mySwiper{
+  margin-top: 100px;
+  height: 400px;
+}
+@media(max-width:768px){
+    .swiper-slide{
+        width:150px;
+        height:auto;
+    }
+}
+.swiper-slide img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.Slider_container{
+    position: relative;
+    width: 80%;
+    height: 67vh;
+    display: block;
+    margin-top: 40px;
+}
+.Slider_container .swiper-container{
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    bottom: -16vw;
+    transform: translateX(-50%);
+    z-index:5;
+    padding-bottom:3vw;
+}
+@media(max-width:768px) {
+    .Slider_container .swiper-container{
+        bottom:-58vw;
+        padding-bottom:8vw;
+    }}
+
+    /***************************complite home**************************************/
+    .download-section{
+        margin: 70px auto;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .download-explain{
+        width: 74%;
+    }
+    .download-section h5{
+        color: gray;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: .6px;
+        font-family: Arial;
+        margin-bottom: 20px;
+    }
+    .download-section h5 span{
+       font-size: 17.4px; 
+    }
+    /* .download-section .download-explain{
+       width: 450px;
+    } */
+    .download-section h1{
+        font-family: Times New Roman;
+        font-weight: bold;
+        margin-bottom: 45px;
+    }
+    .download-section h1 span{
+        color: #0B69BB;
+    }
+    .download-section .p-explain {
+        color: gray;
+        font-size: 17px;
+        font-family: Arial;
+        font-weight: 500;
+        width: 362px;
+        margin-bottom: 50px;
+        line-height: 115%;
+    }
+    .download-section button{
+        width: 155px;
+        height: 50px;
+        border-radius: 10px;
+        border: none;
+        background-color: white;
+        box-shadow: 0 1px 8px #aaaaaa;
+        margin: 10px 15px;
+        position: relative;
+        margin-bottom: 100px;
+    }
+    .download-section button:hover{
+      background-color: #0b69bb;
+      color: white;
+      box-shadow: 2px 2px 5px  rgb(185, 181, 181);
+    }
+    .download-section button:hover p{
+      
+      color: white;
+    }
+    .download-section i  {
+        position: absolute;
+        left: 10px;
+        top: -2px;
+        font-size: 30px;
+    }
+    .download-section button p{
+       position: absolute;
+       top: 15px;
+       right: 25px;
+       font-size: 13px;
+       font-weight: bold;
+       color: #525252;
+    }
+    .download-image{
+       position: relative;
+    }
+    .download-image img{
+       width: 350px;
+       height: 390px;
+    }
+    @media (min-width:992px) {
+        .download-image img{
+            position: absolute;
+            right: 20px;
+        }
+    }
+    /* End of download section ****************************************************************/
+    
+    .comments-section{
+        margin-bottom: 250px;
+    }
+    .comments-section h5{
+        color: gray;
+        font-size: 14px;
+        font-weight: bolder;
+        letter-spacing: .6px;
+        font-family: Arial;
+        margin-bottom: 20px;
+    }
+    .testimonials-title{
+        width: 74.2%;
+    }
+    .comments-section h1{
+        font-family: Times New Roman;
+        font-weight: bold;
+        margin-bottom: 45px;
+    }
+    .comments-section p{
+        font-family: Arial;
+        color: gray;
+        font-size: 17px;
+    }
+    .people-comment{
+        position: relative;
+    }
+    .people-comment .mike ,.crise{
+        /* box-shadow: 0 1px 10px #aaaaaa; */
+        border-radius: 20px;
+        height: 207px;
+        width: 490px;
+        padding: 25px;
+        font-size: 18px;
+        color: gray;
+    }
+    .people-comment div .name-comment{
+        color: #525252;
+        font-weight: bold;
+        font-size: 17px;
+        margin-top: -25px;
+        margin-bottom: -3px;
+    }
+    .people-comment div .country-comment{
+        font-size: 15px;
+    }
+    .mike{
+        position: absolute;
+        top: 2%;
+        left: -2%;
+        box-shadow: 0 1px 10px #aaaaaa;
+        z-index: 2;
+        background-color: white;
+    }
+    .crise{ 
+        position: absolute;
+        top: 39%;
+        left: 4%;
+        opacity: .8; 
+        border: 1px solid rgb(226, 224, 224);
+        z-index: 1;
+        background-color: white;
+    }
+    .comments-section button{
+        font-size: 20px;
+        margin: 20px;
+        border: none;
+        display: inline-block;
+        outline-style: none;
+       
+    }
+    .comments-section .commentUp{
+        position: absolute;
+        right: -2%;
+        top: 20%;
+    }
+    .comments-section .commentDown{
+        position: absolute;
+        right: -2%;
+        top: 50%;
+    } 
+    .commentUp:hover.mike{
+        background: #525252;
+        z-index: 1;
+      }
+    .commentDown:active .crise {
+        background-color: #542626;
+      }
+      /** End of comments-section ****************************************************************/
+    
+      .subscribe-section {
+        align-items: center;
+        justify-content: center;
+        background-image: url(./../../../public/images/Rectangle\ 27.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 300px;
+        width: auto;
+        margin-bottom: 70px;
+        position: relative;
+      }
+      .subscribe-section .sub-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        justify-content: center;
+        justify-items: center;
+        text-align: center;
+      }
+      .subscribe-section p {
+        /* font-size: 20px; */
+        font-weight: bold;
+        font-family: Arial;
+        font-size: 24px;
+        clear: both;
+        color: rgb(47, 42, 42);
+      }
+      .subscribe-section input[type="email"] {
+        height: 52px;
+        width: 305px;
+        outline: none;
+        border: none;
+        border-radius: 13px;
+        text-align: center;
+        /* float: left; */
+        box-shadow: 0 1px 8px #aaaaaa;
+      }
+      .subscribe-section input::-moz-placeholder {
+ font-family: FontAwesome ;
+      }
+      .subscribe-section .iconWithEmail {
+        position: relative;
+      }
+      .subscribe-section .emailIcon {
+        position: absolute;
+        left: 30%;
+        top: 12%;
+        font-size: 23px;
+        opacity: 0.5;
+      }
+      ::placeholder {
+        color: rgb(158, 158, 158);
+      }
+      .subscribe-section button {
+        height: 52px;
+        outline: none;
+        border: none;
+        border-radius: 13px;
+        text-align: center;
+        width: 122px;
+        background-color: #0b69bb;
+        color: white;
+        font-size: 18px;
+        box-shadow: 0 1px 8px #aaaaaa;
+      }
+      .subscribe-section button:hover {
+        color: #0b69bb;
+        background-color: white;
+      }
+      .sub-details {
+        padding-top: 22px;
+      }
+      .sendIcon {
+        position: absolute;
+        top: -4%;
+        right: 10%;
+        background-color: #7da9af;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        font-size: 16px;
+        padding-top: 3px;
+        cursor: pointer;
+      }
+      .sendIcon:hover{
+        background-color: #0b69bb;
+        color: white;
+      }
+      @media (max-width: 1199px) {
+        .sub-details {
+          padding-top: 0px;
+        }
+        .sendIcon {
+          position: absolute;
+          top: -4%;
+          right: 2%;
+        }
+      }
+      @media (max-width: 1600px) {
+        .sendIcon {
+          position: absolute;
+          top: -3%;
+          right: 15%;
+        }
+      }
+      @media (max-width: 1400px) {
+        .sendIcon {
+          position: absolute;
+          top: -3%;
+          right: 10%;
+        }
+      }
+      @media (max-width: 1200px) {
+        .sendIcon {
+          position: absolute;
+          top: -3%;
+          right: 3%;
+        }
+      }
+      
+      @media (max-width: 992px) {
+        .subscribe-section p {
+          font-size: 19px;
+        }
+        .subscribe-section button {
+          margin: auto;
+          margin-top: 10px;
+        }
+        .sendIcon {
+          position: absolute;
+          top: -3%;
+          right: 3%;
+        }
+      }
+      @media (max-width: 989px) {
+        .sendIcon {
+          position: absolute;
+          top: 5%;
+          right: -2%;
+        }
+      }
+      @media (max-width: 767px) {
+        .subscribe-section p {
+          font-size: 14px;
+          margin-top: 15px;
+          margin-bottom: 5px;
+        }
+        .subscribe-section button {
+          height: 30px;
+          margin-bottom: 20px;
+          font-size: 15px;
+        }
+        .subscribe-section input[type="email"] {
+          height: 40px;
+          width: 200px;
+          font-size: 13px;
+        }
+        .subscribe-section .emailIcon {
+          font-size: 18px;
+        }
+        .subscribe-section {
+          padding: 15px 3px;
+        }
+        .sendIcon {
+          position: absolute;
+          top: 12%;
+          right: -3%;
+        }
+      }
+      
+      @media (max-width: 597px) {
+        .sendIcon {
+          position: absolute;
+          top: 19%;
+          right: 0%;
+          background-color: #24808c9d;
+          opacity: 1;
+        }
+      }
+      @media (max-width: 530px) {
+        .sendIcon {
+          position: absolute;
+          top: 23%;
+          right: 0%;
+          background-color: #24808c9d;
+          opacity: 1;
+        }
+      }

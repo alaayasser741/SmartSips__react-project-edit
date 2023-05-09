@@ -1,0 +1,20 @@
+.status {
+    font-weight: bold;
+  
+    &.Completed {
+      color: rgb(12, 84, 12);
+    }
+    &.Cancelled {
+      color: red;
+    }
+    &.Pending {
+      color: rgb(208, 227, 64);
+    }
+  }
+  .order-search{
+    width: 300px;
+  }
+  .order-download{
+    margin-left: -10px;
+    margin-top: 3px;
+  }

@@ -1,0 +1,243 @@
+import React, { useState, useEffect } from 'react';
+import axiosInstance from '../../axios';
+import { useHistory } from 'react-router-dom';
+import "./Sign.css";
+import jwt_decode from 'jwt-decode'
+import { Link } from "react-router-dom";
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  FaFacebook,
+  FaRegUser,
+  FaLock,
+  FaRegEyeSlash,
+  FaRegEye,
+  FaGoogle,
+} from "react-icons/fa";
+import { toast } from "react-toastify";
+
+export default function SignIn() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [idToken, setIdToken] = useState('');
+  const history = useHistory();
+  const initialFormData = Object.freeze({
+    email: '',
+    password: '',
+    // username:''
+  });
+
+  // Hide or show the password
+  const handleTogglePassword = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+  const [formData, updateFormData] = useState(initialFormData);
+
+  const handleChange = (e) => {
+    updateFormData({
+      ...formData,
+      [e.target.name]: e.target.value.trim(),
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axiosInstance
+      .post(`/user_api/auth/login/`, {
+        email: formData.email,
+        password: formData.password,
+      })
+      .then((res) => {
+        localStorage.setItem('token', res.data.access_token);
+        toast.success('logged in successfully')
+        
+      }).catch(err => {
+        if (err.response.data) {
+          const errors = err.response.data;
+          let pass = errors.password;
+          let email = errors.email;
+          let nonField = errors.non_field_errors;
+
+          pass && pass.forEach(i => {
+            toast.error(i)
+          })
+          email && email.forEach(i => {
+            toast.error(i)
+          })
+          nonField && nonField.forEach(i => {
+            toast.error(i)
+          })
+        }
+
+      })
+    const email = formData.email;
+
+    // Check if the email exists in the admin table
+    axiosInstance
+      .get('/user_api/adminprofile/list')
+      .then((res) => {
+        const adminEmails = res.data.map(admin => admin.email);
+        if (adminEmails.includes(email)) {
+          // Redirect to the dashboard
+          history.push("/dashboard");
+        } else {
+          // Redirect to the home page
+          history.push("/");
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        toast.error('Failed to check admin email');
+      });
+  };
+
+  // Google Login
+  useEffect(() => {
+    // Define the global functions for handling Google Sign-In
+    window.handleCallbackResponse = handleCallbackResponse;
+    window.handleGoogleSignIn = handleGoogleSignIn;
+  }, []);
+
+  const handleCallbackResponse = (response) => {
+    // Handle Google sign-in response here
+    console.log(response);
+    setIdToken(response.credential);
+    var userObject = jwt_decode(response.credential);
+    console.log(userObject)
+    // if (response.credential) {
+
+    //   window.location.href = "/";
+    // }
+  };
+  useEffect(() => {
+    console.log(idToken)
+    if (idToken) {
+      axiosInstance
+        .post(`/google/connect/`, {
+          access_token: "string",
+          code: "string",
+          id_token: idToken.toString()
+        })
+        .then((res) => {
+          toast.success('logged in successfully');
+          console.log("Doneeeeeeeeeeeeeeeeeeee:", res);
+        })
+        .catch(err => {
+          console.log(err);
+          toast.error("login failed");
+        });
+    }
+  }, [idToken]);
+  const handleGoogleSignIn = () => {
+    /*global google */
+    const clientId = "413583069200-o26le90g9p1828u7ha1hsqefua6rg4vi.apps.googleusercontent.com";
+
+
+    google.accounts.id.initialize({
+      client_id: clientId,
+      callback: handleCallbackResponse,
+      ux_mode: 'redirect',
+      redirect_uri: 'https://smartsips-production.up.railway.app/accounts/google/login/callback/'
+    });
+
+    google.accounts.id.prompt();
+  };
+
+
+  return (
+    <>
+      <div className="Split-Screen">
+        <div className="left-screen">
+          <section className="parag">
+            <h1 className="headh12">Welcome Back !</h1>
+            <img
+              className="backimg"
+              src="./images/sign in.png "
+              alt="Sign Up"
+            />
+          </section>
+        </div>
+        <div className="right-screen">
+          <form>
+            <section className="parag">
+              <h2 className="headh2">Sign In</h2>
+            </section>
+            {/* <div className="input-container name">
+              <i>
+                <FaRegUser />
+              </i>
+
+              <input
+                id="username"
+                name="username"
+                type="text"
+                placeholder="&#xf007; &nbsp;&nbsp; User Name"
+                className="icon-plac"
+                onChange={handleChange}
+              />
+            </div> */}
+            <div className="input-container name">
+              {/* <i>
+                <FaRegUser />
+              </i> */}
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="&#xf007; &nbsp;&nbsp; email"
+                className="icon-plac"
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className="input-container pass">
+              {/* <i>
+                {" "}
+                <FaLock />
+              </i> */}
+              <input
+                id="password"
+                name="password"
+                type={showPassword ? 'text' : 'password'}
+                placeholder="&#xf023; &nbsp;&nbsp; Password"
+                className="icon-plac"
+                onChange={handleChange}
+              />
+              <i className="RegEyeSlash" onClick={handleTogglePassword}>
+                {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+              </i>
+            </div>
+            <p className="haveacc">
+              <Link to="/restpass">Forget Your Password?</Link>
+            </p>
+            <button className="sinbttn" type="submit" onClick={handleSubmit}>
+              SIGN IN
+            </button>
+            <p className="haveacc">Or social media</p>
+
+            <div className="social-icons">
+              {/* <i ><FaGoogle/></i> */}
+              <i >
+                <img onClick={handleGoogleSignIn} src="./icons/search1.png" alt="search" style={{ cursor: "pointer" }} />
+              </i>
+              <i style={{ cursor: "pointer" }}>
+                <img src="./icons/facebook1.png" alt="facebook" />
+              </i>
+              {/* <i> <FaFacebook/> </i> */}
+            </div>
+            <div className="login">
+              <p className="haveacc">
+                Don't have an account?
+                <a href="#">
+                  <strong>
+                    <Link to="/signup">SIGN UP</Link>
+                  </strong>
+                </a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </>
+  );
+};
+// export default SignIn;

@@ -1,0 +1,35 @@
+.butadd .butAdd{
+    width: 160px;
+    background-color: #0396A6;
+    border-radius: 2px;
+    padding: 3px;
+}
+.butadd .butAdd:hover{
+   
+    background-color:  #7DA9AF;
+}
+.pgray{
+    color: gray;
+}
+.cart-eliminatee{
+    border-radius: 50%;
+    text-align: center;
+     border: none;
+     color: white;
+     background-color: #0396A6;
+     margin-top: 16px;
+     padding:3px 8px;
+     
+     
+}
+.wishdel:hover{
+    background-color:  #7DA9AF;
+}
+@media (max-width: 990px) {
+   
+    .cart-eliminatee{
+     margin-right: -40px;
+     
+    }
+
+}

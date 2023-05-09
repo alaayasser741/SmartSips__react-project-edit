@@ -1,0 +1,126 @@
+.payment_method{
+    margin-top: 85px;
+    margin-bottom: 80px;
+}
+.payment_method .payment_h1{
+    margin-bottom: 30px;
+}
+.payment_method>p{
+    color: gray;
+    font-weight: bolder;
+    margin-bottom: 60px;
+}
+.payment_method .pay_With_Credit,.pay_With_PayPal{
+    height: 170px;
+    width: 250px;
+    border: 2px solid #ececec;
+    border-radius: 20px;
+    position: relative;
+    text-align: center;
+    padding-top: 26px;
+    margin-right: 60px;
+}
+
+.payment_method .pay_With_Credit .choosed_method,.pay_With_PayPal .choosed_method{
+    border-radius: 50%;
+    border: 1px solid #ececec;
+    width: 20%;
+    height: 27%;
+    background-color: white;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+}
+.payment_method .credit_icon{
+    margin: 11px 13px;
+    font-size: 20px;
+    color: #0B69BB;
+}
+.pay_With_Credit img{
+    width: 40%;
+}
+.pay_With_PayPal img{
+    width: 37%;
+    margin-bottom: 7px;
+}
+.billing_info_one{
+    border: 3px solid #0396A6;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding-top: 5px;
+    color: #0B69BB;
+    font-weight: bold;
+}
+.billing_info_title{
+   margin: auto 2px;
+   color: gray;
+   font-weight: bold;
+   font-size: 19px;
+}
+.Billing_info,.Credit_Card_info label{
+    color: gray;
+    font-weight: 500;
+}
+.Billing_info input{
+    height: 40px !important;
+}
+.Credit_Card_info input{
+    height: 40px !important;
+}
+.Billing_AddressInput{
+    position: relative;
+}
+.Billing_AddressInput img{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 7px;
+    top:36px;
+}
+.Billing_Back_button{
+    width: 160px;
+    color: #0B69BB;
+    font-weight: 500;
+}
+.Billing_Back_button:hover{
+    background-color: #0B69BB;
+    color: white;
+}
+.Billing_Back_button:hover a{
+    color: white;
+}
+.divider_Billing{
+    border-left: 1px solid #0396A6;
+    margin-right: 70px;
+}
+.Billing_Continue_button{
+    width: 160px;
+    background-color: #0B69BB;
+    font-weight: 500;
+    position: absolute;
+    right: 0;
+    top: 28px;
+}
+.Billing_Continue_button a{
+    color: white;
+}
+.Billing_Continue_button:hover a{
+    color: #0B69BB;
+}
+.Continue_Button_Container{
+    position: relative;
+}
+@media(max-width:768px){
+    .Credit_Card_info{
+ margin: 30px auto;
+}
+}
+@media(max-width:786px){
+    .payment_method{
+        text-align: center;
+    }
+    .pay_With_Credit,.pay_With_PayPal{
+        margin: 15px 120px;
+    }
+}

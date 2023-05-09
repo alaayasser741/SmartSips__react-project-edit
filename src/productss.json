@@ -1,0 +1,81 @@
+[
+    {
+       "id":7,
+       "title":"Three Stage Whole House Water Filtration System with Sediment",
+       "description":"High Quality!Three Stage Whole House Water Filtration System with Sediment, GAC, Carbon Block ,3/4\" brass insert -Transparent\r\n\r\n\r\nStage one: 10\"x2-1/2\" Five-micron sediment filter remove particles ,dirt, sand, silt, sediment, and rust from water   that can clog the following filters.\r\n\r\nStage two:10\"x2-1/2\" Granular activated carbon filter removeremove herbicides ,chlorine,bad tast,odors& other harmful media\r\n\r\nStage three: 10\"x2-1/2\" Five-micron Carbon Block filter remove residual chlorine, bad taste, Odors ,Volatile Organic Chemicals (VOC) like pesticides, herbicides, and industrial chemicals",
+       "published":"2023-02-01T21:09:00Z",
+       "price":200,
+       "status":"published",
+       "image":"./images/2.webp",
+       "category":2
+    },
+    {
+       "id":8,
+       "title":"Wheelton Household Kitchen Under Sink Ultrafiltration Large Flow Water Purifier",
+       "description":"1. Material: Stainless steel shell, more resistant to corrosion than plastic.\r\n2. Filtered Water: Drinkable, physical filtering, retain minerals that are beneficial to the human body.\r\n3. Five Stages Filtration: PP--UDF--CTO--UF--T33\r\n4. Energy Saving: No electricity needed, no wastewater produced.\r\n5. Large Flow: 90 liters per hour, enough for families.\r\n6. Multiple Installation: Three installation  options, Wall-mounted, desktop/countertop and undersink/under-mounted. Depending on the actual installation scenario, you can choose one of the appropriate installation method.\r\n\r\nNote:\r\nThis product is a physical filter and its filtered water retains beneficial minerals in water. TDS is not suitable for testing this product\r\n\r\nStage one: 10\"x2-1/2\" Five-micron sediment filter remove particles ,dirt, sand, silt, sediment, and rust from water   that can clog the following filters.\r\n\r\nStage two:10\"x2-1/2\" Granular activated carbon filter removeremove herbicides ,chlorine,bad tast,odors& other harmful media\r\n\r\nStage three: 10\"x2-1/2\" Five-micron Carbon Block filter remove residual chlorine, bad taste, Odors ,Volatile Organic Chemicals (VOC) like pesticides, herbicides, and industrial chemicals",
+       "published":"2023-02-01T21:09:00Z",
+       "price":280,
+       "status":"published",
+       "image":"./images/3.webp",
+       "category":2
+    },
+    {
+       "id":6,
+       "title":"WECO MINI-150ALK Compact Undersink Reverse Osmosis Water Filtration System",
+       "description":"The WECO MINI compact reverse osmosis filtration system is the ideal water purification filter for home, office, health clubs, juice bars, coffee shops or anywhere safe, fresh-tasting water is needed. The WECO reverse osmosis system uses separate individual stages of water filtration to create pure, refreshing drinking water. The process starts by pre-filtering the water through a 30-micron Pentek R30-478 Pleated Polyester Sediment filter. Prefiltration removes tiny particles that can get into the water supply. These include iron oxide (rust), silt, sand grains and insect parts. This filtering stage protects your family from drinking sediment and prevents the filtration system from clogging. The sediment pre-filter is contained in a clear, see-through filter housing, making it easy for you to see when the filter needs to be replaced. No need to guess! For the 2nd stage, a 20-micron Pentek GAC-5 granular activated carbon filter cartridge filters chlorine taste and odor. Next, water flows through a 5-micron Pentek C2-activated carbon block cartridge.",
+       "published":"2023-02-01T21:07:00Z",
+       "price":480,
+       "status":"published",
+       "image":"./images/1.jpg",
+       "category":2
+    },
+    {
+       "id":5,
+       "title":"MPX4 Multiparameter Sonde",
+       "description":"The MPX4 is a cost effective multiprobe that integrates with plant control systems for long term installation using a local controller, direct connection, or wireless telemetry. The probe can also be used for spot-checking utilizing Bluetooth data collection.  With interchangeable sensors, the probe replaces multiple instruments, reducing overall monitoring costs. Highly stable sensors require minimal maintenance and calibration.\r\nThe electrode uses field-proven flat surface, self-cleaning technology. The reference system is enhanced by the Extended Path Reference (ERP) design which provides a complex path to protect the reference in the presence of interacting ions such as proteins, silver, and sulphides.\r\nThe large optical surface and sample volume combine to ensure that the sensor is providing information that is reliable and representative of the solids present in the process. Deposits of fats and grease in the sensing area do not prevent the sensor from measuring, unlike sensors with small optical surfaces. In addition, the sensor incorporates a self-cleaning mechanism that ensures the optical surfaces are kept clean at all times, the cleaning system is designed to avoid problems with ragging and does not smear the optical system.",
+       "published":"2023-02-01T20:49:00Z",
+       "price":420,
+       "image":"./images/mpx4.png",
+       "category":1
+    },
+    {
+       "id":3,
+       "title":"TurbiTechw² Suspended Solids & Turbidity Sensor",
+       "description":"The TurbiTechw² Sensors have been designed for use in aeration systems to monitor suspended solids also known as mixed liquor suspended solids or activated sludge where solids are typically in the range of 1,500 to 14,000 mg/l. The sensors can also measure Returned Activated Sludge (RAS), Surplus Activated Sludge (SAS) and suspended solids or turbidity. High MLSS concentrations promote numerous process benefits, including stable operation, complete nitrification, and reduced biosolids production reducing biological volume requirements (and associated footprint) to only 20-30 percent of conventional biological processes.\r\n\r\nThe large optical surface and sample volume combine to ensure that the sensor is providing information that is reliable and representative of the solids present in the process. Deposits of fats and grease in the sensing area do not prevent the sensor from measuring, unlike sensors with small optical surfaces. In addition, the sensor incorporates a self-cleaning mechanism that ensures the optical surfaces are kept clean at all times, the cleaning system is designed to avoid problems with ragging and does not smear the optical system.",
+       "published":"2023-02-01T20:46:00Z",
+       "price":250,
+       "status":"published",
+       "image":"./images/turbitechw_website.jpg",
+       "category":1
+    },
+    {
+       "id":4,
+       "title":"WaterTechw² pH & ORP Sensors",
+       "description":"The WaterTechw² pH & ORP Sensors has been designed to provide highly reliable pH, Redox and Temperature measurements. The sensors use a flat surfaced electrode which includes an extended reference path, these features combine to provide extremely robust pH & Redox measurements, suitable for use in surface water, wastewater and drinking water applications.\r\n\r\nThe electrode uses field-proven flat surface, self-cleaning technology. The reference system is enhanced by the Extended Path Reference (ERP) design which provides a complex path to protect the reference in the presence of interacting ions such as proteins, silver, and sulphides.\r\nThe large optical surface and sample volume combine to ensure that the sensor is providing information that is reliable and representative of the solids present in the process. Deposits of fats and grease in the sensing area do not prevent the sensor from measuring, unlike sensors with small optical surfaces. In addition, the sensor incorporates a self-cleaning mechanism that ensures the optical surfaces are kept clean at all times, the cleaning system is designed to avoid problems with ragging and does not smear the optical system.",
+       "published":"2023-02-01T20:46:00Z",
+       "price":400,
+       "status":"published",
+       "image":"./images/ph_orp_sensors_1.png",
+       "category":1
+    },
+    {
+       "id":2,
+       "title":"RDOX Optical Dissolved Oxygen Sensor",
+       "description":"The ChemScan rugged dissolved oxygen (RDO) RDOX probe, with its proprietary membrane protection layer, is the most abrasion-resistant optical DO probe available for measuring dissolved oxygen (DO) in demanding wastewater process environments. A machined stainless steel body option is available for added confidence in the harshest environments. The RDO EPA Approved Method allows NPDES permit holders to monitor influent, effluent, and treatment processes. The RDOX probe is immediately auto-calibrated upon cap installation for ease of use and high accuracy.",
+       "published":"2023-02-01T20:43:00Z",
+       "price":200,
+       "status":"published",
+       "image":"./images/rdox-delrin-ar-16-9-w2000-2.jpg",
+       "category":1
+    },
+    {
+       "id":1,
+       "title":"TDS",
+       "description":"TDS sensors measure the electric charge discharge between the two needles of a sensor probe. When an excitation source is given to the sensor probe immersed in water electric charges are conducted by the ions of dissolved materials between the needles.",
+       "published":"2022-12-03T01:51:35Z",
+       "price":500,
+       "status":"published",
+       "image":"./images/0522-0474_pr4photos_-_partech_1.jpg",
+       "category":1
+    }
+ ]

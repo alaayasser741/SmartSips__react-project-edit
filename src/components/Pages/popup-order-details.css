@@ -1,0 +1,35 @@
+/* .orderContentp{
+  padding-left: 50px;
+  padding-right: 50px;
+} */
+.order-details{
+  width: 420px;
+}
+.order-details h6{
+  margin-left: 108px;
+  color: rgb(117, 117, 117);
+  margin-top: 25px;
+  letter-spacing: .5px;
+  font-weight: bolder;
+  font-size: 15px;
+  font-family: Arial;
+}
+.order-details .upTablee table tr td{
+  padding-left: 190px;
+}
+.order-details .upTablee table {
+ margin-top: 25px;
+}
+.order-details .upTablee table tr th,td{
+  padding-top: 16px;
+}
+.order-details .upTablee table tr td{
+  font-weight: bold;
+  font-size: 14px;
+  color: rgb(146, 146, 146);
+}
+/* @media (max-width: 528px) {
+  .order-details{
+    width: 400px;
+  }
+} */

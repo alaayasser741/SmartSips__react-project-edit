@@ -1,0 +1,178 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+.headh1{
+    font-size: 30px;
+    color: #0396A6;
+    font-family: 'Times New Roman';
+    /* margin-top: 60px;
+    padding-top: 90px;
+    margin-left: 40px; */
+    /* position: absolute;
+    top: 20px;
+    left: 20px; */
+}
+.headh12{
+    font-size: 30px;
+    color: #0396A6;
+    font-family: 'Times New Roman'; 
+}
+.headh2{
+    font-size: 30px;
+    color: #0B69BB;
+    font-family: 'Times New Roman';
+}
+a{
+    text-decoration: none;
+    
+}
+strong{
+    color: #0B69BB;
+}
+.Split-Screen{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.left-screen,.right-screen{
+display: flex;
+justify-content: center;
+align-items: center;
+} 
+/* .left-screen{
+    background-image: url(../images/sign\up.png);
+}  */
+     
+.left-screen .parag{
+    position: relative;
+    /* text-align: center; */
+}.backimg{
+    width: 100%;
+   height: 100%;
+}
+.right-screen .parag{
+    text-align: center;
+}
+.haveacc{
+    margin: 1.5em;
+    font-size: 15px;
+    text-align: center;
+    
+}.right-screen{
+    background-color:  #ECEEF0;
+}
+.right-screen form{
+    width: 328px;
+}
+form input[type="text"],
+form input[type=email],
+form input[type=password]{
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    margin-bottom: 1.25em;
+    padding: 1em;
+   
+    font-size: 0.875rem;
+    outline: none;
+}
+.icon-plac::placeholder{
+    /* color: #0B69BB; */
+    margin-left: -25px;
+    margin-top: 2px;
+    font-size: 13px;
+    opacity: .9;
+    font-family: FontAwesome;
+}
+.sinbttn{
+    display: block;
+    width: 100%;
+    background-color:#0B69BB ;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 5px;
+    font-size: 18px;
+    font-family: 'Times New Roman';
+    /* font-weight: 700; */
+}
+.sinbttn:hover{
+    cursor: pointer;
+    background-color: #0396A6 ;
+}
+.Split-Screen i{
+   color: #0B69BB;
+   font-size: 19px;
+   /* position: absolute; */
+}
+.input-container{
+ position: relative;
+}
+.input-container i {
+ position: absolute;
+ top: 15%;
+ left: 6%;
+}
+.input-container .RegEyeSlash{
+ position: absolute;
+ left: 90%;
+}
+.input-container ::placeholder{
+    position: absolute;
+    left: 15%;
+}
+.Split-Screen .right-screen .social-icons{
+   text-align: center;
+}
+.Split-Screen .right-screen .social-icons i{
+    border: 5px;
+    background-color: #ecf0ec;
+}
+.Split-Screen .right-screen .social-icons img{
+    width: 15%;
+    margin: auto 14px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+@media screen and (min-width:900px) {
+    .Split-Screen{
+        flex-direction: row;
+        height: 100vh;
+      
+    }
+    .headh12{
+        margin-top: 80px;
+        padding-top: 80px;
+        margin-left: 40px; 
+    }
+    .left-screen{
+        margin-top: 70px;
+    padding-top: 20px;
+    margin-left: 40px;
+    }
+    .left-screen,.right-screen{
+        display: flex;
+        width: 50%;
+        height: auto;
+    }
+    
+    
+}
+/* @media screen and(min-width:768px) {
+    .left-screen .headh1{
+        text-align: center;
+         
+    }
+    
+} */
+/* @media screen and(min-width:768px) {
+    .left-screen .headh1{
+        text-align: center;
+         
+    }
+    
+} */

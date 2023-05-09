@@ -1,0 +1,131 @@
+p {
+  font-family: Arial;
+}
+.big-contact-section {
+  margin-bottom: 80px;
+}
+.head-contact {
+  background-image: url(../../../../public/images/pexels-tyler-lastovich-590178.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  margin-bottom: 80px;
+  position: relative;
+}
+.head-contact h1 {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.contact-section {
+  box-shadow: 2px 2px 10px rgb(171, 168, 168);
+  border-radius: 10px;
+}
+.contact-information {
+  margin: 50px 20px;
+}
+.contact-information label {
+  font-family: Arial;
+  font-size: 15.5px;
+  font-weight: bold;
+  letter-spacing: 0.6px;
+  display: block;
+  color: rgb(78, 77, 77);
+}
+.contact-information input,
+.contact-information textarea {
+  margin-bottom: 23px;
+  width: 100%;
+  border: 2px solid #d5d9d9;
+  border-radius: 5px;
+  outline: none;
+  padding: 4px;
+}
+.contact-information input::placeholder,
+.contact-information textarea::placeholder {
+  font-size: 13px;
+  padding-left: 7px;
+}
+.contact-information textarea::placeholder {
+  padding-top: 8px;
+}
+.contact-information textarea {
+  resize: none;
+  height: 150px;
+}
+.contact-information button {
+  background-color: #0b69bb;
+  color: white;
+  outline: none;
+  width: 140px;
+}
+.contact-information button:hover {
+  background-color: #0396a6;
+  color: white;
+}
+.contact-getInTouch {
+  box-shadow: 1px 2px 10px rgb(206, 204, 204);
+  border-radius: 10px;
+  padding: 40px 0px 20px 30px;
+  margin-left: 340px;
+  margin-top: 50px;
+  height: 300px;
+  width: 310px;
+}
+.contact-getInTouch h5 {
+  color: #0b69bb;
+  font-family: Arial;
+  margin-left: 40px;
+}
+.contact-getInTouch h6 {
+  line-height: 1em;
+  font-family: Arial;
+  color: rgb(78, 77, 77);
+}
+.contact-getInTouch p {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(92, 91, 91);
+  margin-left: 40px;
+}
+.contact-getInTouch i {
+  display: inline;
+  color: white;
+  font-size: 15px;
+  border-radius: 50%;
+  background-color: #0b69bb;
+  padding: 0px 5px 5px 5px;
+  float: left;
+  margin-right: 15px;
+  margin-top: -5px;
+}
+@media (max-width: 1199px) {
+  .contact-getInTouch{
+    margin-left: 240px;
+  }
+}
+@media (max-width: 1199px) {
+  .contact-getInTouch{
+    margin-left: 200px;
+    margin-bottom: 60px;
+  }
+  .contact-section{
+    padding-right: 55px;
+  }
+}
+@media (max-width: 767px) {
+  .contact-getInTouch{
+    margin-left: 110px;
+  }
+}
+@media (max-width: 550px) {
+  .contact-getInTouch{
+    margin-left: 80px;
+  }
+}

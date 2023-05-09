@@ -1,0 +1,90 @@
+.invoiceClose {
+  border: none;
+  background-color: white;
+  float: right;
+}
+.invoiceClose img {
+  width: 30px;
+  justify-content: center;
+}
+.invoice-img {
+  align-items: center;
+  text-align: center;
+}
+.invoice-content {
+  border: 1.5px solid rgb(192, 190, 190);
+  border-radius: 10px;
+  padding-top: 20px;
+  padding-bottom: 25px;
+  padding-left: 20px;
+  width: 480px;
+}
+.invoice-img img {
+  width: 120px;
+  margin-bottom: 13px;
+}
+.invoice-img h5 {
+  color: #0396a6;
+  font-family: "Arial";
+  margin-bottom: 30px;
+  letter-spacing: .7px;
+}
+.upTable {
+  margin-bottom: 30px;
+  margin-top: 15px;
+}
+.invoice-content-header table th {
+  font-weight: 500;
+  font-size: 13px;
+}
+.invoice-content-header table td {
+  font-size: 13px;
+  padding-top: 0px;
+  /* padding-right: 20px; */
+}
+.invoice-content-header .tab1 td {
+  padding-right: 25px;
+}
+.invoicePopup .table-head {
+  background-color: #dfe2e4;
+  border-radius: 10px;
+}
+.invoicePopup .headcell .tableCell {
+  color: #0b69bb;
+  font-weight: bold;
+  font-family: Arial;
+}
+.invoicePopup .tableBody .tableCell p {
+  color: rgb(157, 156, 156);
+  font-weight: normal;
+  margin-bottom: 0px;
+}
+.invoicePopup .tableBody .tableCell {
+  font-weight: bold;
+}
+.invoicePopup .tableBody .tableCell img {
+  width: 35px;
+  height: auto;
+}
+.ok-btn-invoice {
+  text-align: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.ok-btn-invoice button {
+  background-color: #0b69bb;
+  color: white;
+  width: 100px;
+}
+.ok-btn-invoice button:hover {
+  background-color: #0396a6;
+  color: white;
+}
+@media (max-width: 767px) {
+  .invoice-content-header .tab1 td {
+    padding-right: 0px;
+  }
+  .invoice-content {
+    width: 350px;
+  }
+}

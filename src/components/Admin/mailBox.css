@@ -1,0 +1,179 @@
+.mail_Box_section{
+    position: relative;
+    top: 64px;
+    width: 100%;
+    margin-left: -69px;
+    z-index: 0;
+    background-image: url(../../../public/images/5630974.jpg);
+    height: 130px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color:#ECEEF0 ;
+
+}
+@media (max-width:786px){
+    .mail_Box_section{
+    margin-left: 0px;
+    }
+    .mail_Box_InfoAndChat{
+        position: absolute;
+        top: 150px !important;
+        margin-left: -7px;
+    }
+    .dash_Board_content{
+        padding-top: 20px;
+    }
+}
+.mail_Box_InfoAndChat{
+    position: absolute;
+    width: 97.5%;
+    top: 100px;
+}
+.mail_Box_InfoAndChat_Space{
+    justify-content: space-evenly;
+}
+.mail_box_Info,.mail_box_Chat{
+    background-color: white;
+    height: 550px;
+    overflow-y: scroll;
+}
+@media (max-width:989px){
+    .mail_box_Chat{
+        margin-top: 30px;
+    }
+}
+.mail-nav-download{
+    width: 30px;
+    height: 30px;
+    padding: 4px;
+    margin-top: -4px;
+}
+.mail-Box-list-links li{
+    padding-top: 25px;
+    padding-right: 66px;
+}
+.mail-Box-list-links{
+    margin-left: -30px;
+}
+.mail-Box-list-link-Active{
+    border-bottom: 2px solid #0B69BB;
+}
+.Link-Active-Color-InBox{
+    color: #0B69BB;
+}
+.Link-NonActive-Color-InBox{
+    color: gray;
+}
+.inbox_count{
+    width: 30px;
+    height: 20px;
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+    margin-left: 5px;
+}
+.star-count{
+    width: 30px;
+    height: 20px;
+    border-radius: 4px;
+    text-align: center;
+    color: white;
+    margin-left: 5px;
+}
+.inbox_messege_container{
+    border-bottom: 1px solid rgb(192, 189, 189);
+    padding: 10px;
+}
+.inbox_messege_container_Active{
+    border: 2px solid #0B69BB;
+    box-shadow: 5px 4px 9px rgb(192, 189, 189);
+    border-radius: 5px;
+    padding: 10px;
+}
+.mail-person-time-part{
+    position: relative;
+}
+.mail-person-Image{
+    width: 54px;
+    height: 50px;
+    border-radius: 50%;
+}
+.mail-person-Messge{
+    color: grey;
+    font-weight: 500;
+}
+.mail-person-Message-Icon1{
+    margin-left: 20px;
+    cursor: pointer;
+}
+.mail-person-Message-Icon2{
+    margin-left: 10px;
+    cursor: pointer;
+}
+.mail-person-time-part-top{
+    color: grey;
+    font-weight: 500;
+}
+
+/* ------------------------------------------------------------------------chat------------------------- */
+.mail_box_chat_icons{
+    border-bottom: 1px solid rgb(192, 189, 189);
+    padding-bottom: 10px;
+}
+.mail_box_chat_icons_Right{
+    position: relative;
+}
+.mail_box_chat_icons_Right img{
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+
+}
+.mail_box_chat_icons_Left,.mail_box_chat_icons_Right{
+margin-top: 10px;
+}
+.Chat_Icon_Leftt{
+margin-right:10px;
+cursor: pointer;
+}
+.inbox_messege_container_Chat img{
+width: 50px;
+height: 50px;
+}
+.mail_box_Chat{
+position: relative;
+}
+.display_Chat{
+display: none;
+}
+.inbox_message_write_input{
+    position: absolute;
+    bottom: 6px;
+    text-align: center;
+    border-top: 1px solid rgb(192, 189, 189);
+    padding-top: 20px;
+}
+.inbox_message_write_input input{
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(192, 189, 189);
+    padding:5px 16px;
+    width: 95%;
+}
+.inbox_message_write_input input::placeholder{
+    color: black;
+    font-size: 14px;
+}
+.inbox_message_write_input_Container{
+    position: absolute;
+    right: 30px;
+    top: 24px;
+}
+.inbox_message_write_input_send,.inbox_message_write_input_attach{
+    margin-left: 6px;
+    cursor: pointer;
+}

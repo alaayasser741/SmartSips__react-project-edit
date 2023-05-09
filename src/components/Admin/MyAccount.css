@@ -1,0 +1,41 @@
+.customers-section {
+    background-image: url(../../../public/images/5630974.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+    margin-left: -68px;
+  }
+  .headCustomers {
+    padding-top: 80px;
+    padding-left: 30px;
+  }
+  .headCustomers h3 {
+    color: #0b69bb;
+    margin-left: 20px;
+  }
+  .acc-left-side{
+    background-color: white;
+    border-radius: 6px;
+    height: 630px;
+    /* margin-left: 40px; */
+    
+  }
+  .borderpenn{
+    
+    margin-top: -23px;
+    margin-left: 70px;
+}
+.nameacc{
+  font-size: 20px;
+  font-weight: bold;
+}
+.imgaccount{
+  width: 90px;
+  height: 90px;
+}
+.text-area{
+  width: 100%;
+  outline: none;
+}
+.lapelcolor{
+  color: #0B69BB;
+}
