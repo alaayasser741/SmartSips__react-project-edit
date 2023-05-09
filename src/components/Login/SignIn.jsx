@@ -48,7 +48,31 @@ export default function SignIn() {
       .then((res) => {
         localStorage.setItem('token', res.data.access_token);
         toast.success('logged in successfully')
-        
+        const token = res.data.access_token;
+        const email = formData.email;
+
+        // Check if the email exists in the admin table
+        axiosInstance
+          .get('/user_api/adminprofile/list', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then((res) => {
+            const adminEmails = res.data.map(admin => admin.email);
+            if (adminEmails.includes(email)) {
+              // Redirect to the dashboard
+              history.push("/dashboard");
+            } else {
+              // Redirect to the home page
+              history.push("/");
+            }
+          })
+          .catch(err => {
+            console.log(err);
+            toast.error('Failed to check admin email');
+          });
+
       }).catch(err => {
         if (err.response.data) {
           const errors = err.response.data;
@@ -68,25 +92,7 @@ export default function SignIn() {
         }
 
       })
-    const email = formData.email;
 
-    // Check if the email exists in the admin table
-    axiosInstance
-      .get('/user_api/adminprofile/list')
-      .then((res) => {
-        const adminEmails = res.data.map(admin => admin.email);
-        if (adminEmails.includes(email)) {
-          // Redirect to the dashboard
-          history.push("/dashboard");
-        } else {
-          // Redirect to the home page
-          history.push("/");
-        }
-      })
-      .catch(err => {
-        console.log(err);
-        toast.error('Failed to check admin email');
-      });
   };
 
   // Google Login
