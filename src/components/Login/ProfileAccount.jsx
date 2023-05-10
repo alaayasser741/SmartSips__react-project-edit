@@ -6,7 +6,7 @@ import { FaPen } from "react-icons/fa";
 const Profile = () => {
     return (
       <>
-      <body style={{backgroundColor:"white"}}>
+      
       <NavBar/>
       <div className="rapborder container" >
     <div className="abutpara">
@@ -41,6 +41,6 @@ const Profile = () => {
               
     </div>
       <Footer/>
-      </body>
+      
       </>)}
 export default Profile

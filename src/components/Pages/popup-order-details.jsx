@@ -1,9 +1,22 @@
 import { DialogContent, DialogTitle } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./popup-order-details.css";
+import axiosInstance from "../../axios";
+
 export default function Popup(props) {
-  const { title, children, openPopup, setOpenPopup } = props;
+  const { title, children, openPopup, setOpenPopup, setOrderID } = props;
+  const [orderData, setOrderData] = useState([]);
+  useEffect(() => {
+    if (openPopup == true) {
+      axiosInstance.get(`/order_api/${setOrderID}/list`).then((res) => {
+        setOrderData(res.data)
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
+  }, [openPopup])
+  const filteredOrder = orderData.filter((order) => order.id === setOrderID);
   return (
     <>
       <Dialog open={openPopup}>
@@ -29,31 +42,35 @@ export default function Popup(props) {
                 <h5>Order Details</h5>
                 <hr />
               </div>
-              <div className="container upTablee ">
-                <h6 className="ORDER">ORDER PECEIVED</h6>
-                <table className="detals-table">
-                  <tr>
-                    <th >ORDER ID</th>
-                    <td >1258</td>
-                  </tr>
-                  <tr>
-                    <th>ORDER DATE</th>
-                    <td>Jul 2 2022</td>
-                  </tr>
-                  <tr>
-                    <th>DELIVERY DATE</th>
-                    <td>Jul 9 2022</td>
-                  </tr>
-                  <tr>
-                    <th>TOTAL ITEMS</th>
-                    <td>3 items</td>
-                  </tr>
-                  <tr>
-                    <th>TOTAL PRICE</th>
-                    <td>2780.00$</td>
-                  </tr>
-                </table>
-              </div>
+              {filteredOrder.map(({ id, amount, total_price, delivery_date, order_date }) => {
+                return (
+                  <div className="container upTablee ">
+                    <h6 className="ORDER">ORDER PECEIVED</h6>
+                    <table className="detals-table">
+                      <tr>
+                        <th >ORDER ID</th>
+                        <td >{id}</td>
+                      </tr>
+                      <tr>
+                        <th>ORDER DATE</th>
+                        <td>{order_date}</td>
+                      </tr>
+                      <tr>
+                        <th>DELIVERY DATE</th>
+                        <td>{delivery_date}</td>
+                      </tr>
+                      <tr>
+                        <th>TOTAL ITEMS</th>
+                        <td>{amount} items</td>
+                      </tr>
+                      <tr>
+                        <th>TOTAL PRICE</th>
+                        <td>{total_price}</td>
+                      </tr>
+                    </table>
+                  </div>
+                )
+              })}
             </div>
             {/* up content */}
           </div>

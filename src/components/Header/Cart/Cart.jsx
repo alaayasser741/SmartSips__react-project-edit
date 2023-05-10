@@ -11,7 +11,7 @@ const Cart = () => {
   
   return (
     <>
-    <body style={{backgroundColor:"white"}}>
+    
     <NavBar/>
       <div className="container cart-section">
         <div className="row">
@@ -99,7 +99,7 @@ const Cart = () => {
       </div>
       <Footer/>
       
-      </body>
+      
     </>
   );
 };

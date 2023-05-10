@@ -3,7 +3,7 @@ import React from 'react';
 import './index.css';
 import App from './App';
 
-import ReactDOM from "react-dom"
+import { createRoot } from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,11 +13,7 @@ import reportWebVitals from './reportWebVitals';
 //   </React.StrictMode>
 // );
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-)
+createRoot(document.getElementById('root')).render(<App />);
+
 
 //reportWebVitals();

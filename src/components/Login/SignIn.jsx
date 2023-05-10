@@ -18,6 +18,9 @@ import { toast } from "react-toastify";
 export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [idToken, setIdToken] = useState('');
+  const [email, setEmail] = useState('');
+  const [userName, setUserName] = useState('');
+
   const history = useHistory();
   const initialFormData = Object.freeze({
     email: '',
@@ -108,27 +111,47 @@ export default function SignIn() {
     setIdToken(response.credential);
     var userObject = jwt_decode(response.credential);
     console.log(userObject)
-    // if (response.credential) {
-
-    //   window.location.href = "/";
-    // }
+    setEmail(userObject.email)
+    setUserName(userObject.given_name)
+    
   };
   useEffect(() => {
     console.log(idToken)
+    console.log(userName)
+    console.log(email)
     if (idToken) {
       axiosInstance
         .post(`/google/connect/`, {
-          access_token: "string",
-          code: "string",
-          id_token: idToken.toString()
+
+          access_token: userName.trim(),
+          code: email.trim(),
+          id_token: idToken,
         })
         .then((res) => {
           toast.success('logged in successfully');
           console.log("Doneeeeeeeeeeeeeeeeeeee:", res);
         })
         .catch(err => {
-          console.log(err);
-          toast.error("login failed");
+          console.log(err.response.data)
+          if (err.response.data) {
+            const errors = err.response.data;
+            let userName = errors.access_token;
+            let pass = errors.code;
+            let pass2 = errors.id_token;
+            let nonField = errors.non_field_errors;
+            userName && userName.forEach(i => {
+              toast.error(i)
+            })
+            pass && pass.forEach(i => {
+              toast.error(i)
+            })
+            pass2 && pass2.forEach(i => {
+              toast.error(i)
+            })
+            nonField && nonField.forEach(i => {
+              toast.error(i)
+            })
+          }
         });
     }
   }, [idToken]);

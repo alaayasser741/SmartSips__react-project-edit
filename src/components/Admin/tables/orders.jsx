@@ -11,6 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Popup from "./popup";
 import Sidebar from "../Sidebar";
+import { toast } from "react-toastify";
 
 import {
   FaDownload,
@@ -20,7 +21,13 @@ import {
   FaSearch,
 } from "react-icons/fa";
 import axiosInstance from "../../../axios";
-
+const handleDelete = (pro_id) => {
+  console.log(pro_id);
+  // 
+  axiosInstance.delete(`/order_api/${pro_id}/delete`)
+    .then(res => toast.success('item deleted successfully'))
+    .catch(err => toast.error('Error occurd try agian'))
+}
 const Orders = () => {
   const [dataSource, setDataSource] = useState([]);
   const [openPopup, setOpenPopup] = useState(false);
@@ -59,10 +66,10 @@ const Orders = () => {
       .catch(err => {
         console.log(err);
       })
-  }, [])
+  }, [tableFilter])
   return (
     <>
-    <Sidebar/>
+      <Sidebar />
       <div className="container-fluid customers-section orders">
         <div
           className="container customers_content"
@@ -214,7 +221,9 @@ const Orders = () => {
 
                                 <i>
                                   {" "}
-                                  <FaTrash />{" "}
+                                  <FaTrash onClick={() => {
+                                    handleDelete(d.id)
+                                  }} />{" "}
                                 </i>
                               </TableCell>
                             </TableRow>
@@ -272,7 +281,9 @@ const Orders = () => {
 
                                 <i>
                                   {" "}
-                                  <FaTrash />{" "}
+                                  <FaTrash onClick={() => {
+                                    handleDelete(d.id)
+                                  }} />{" "}
                                 </i>
                               </TableCell>
                             </TableRow>

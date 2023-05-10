@@ -4,7 +4,7 @@ import NavBar from "../Header/NavBar/NavBar";
 import Footer from "../Footer/Footer";
 const AboutUs = () => {
     return (<>
-    <body style={{backgroundColor:"white"}}>
+    
      <NavBar/>
     <div className="rapborder container">
     <div className="abutpara"><h1>About Us</h1></div>
@@ -61,6 +61,6 @@ const AboutUs = () => {
     </div>
     </div>
     <Footer/>
-    </body>
+    
     </>)}
 export default AboutUs;

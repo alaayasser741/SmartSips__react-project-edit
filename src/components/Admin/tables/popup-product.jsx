@@ -5,35 +5,87 @@ import "./popup.css";
 import "./popup-product.css";
 import "./Customers.scss";
 import axiosInstance from "../../../axios";
+import { toast } from "react-toastify";
 
 export default function Popup(props) {
-  const [title1, setTitle] = useState('')
-  const [desc, setDesc] = useState('')
-  const [price, setPrice] = useState('')
-  const [stock, setStock] = useState('')
-  const [cat, setCat] = useState('')
-  const [file, setFile] = useState('')
-  const handleFileChange = (e) => {
-    if (e.target.files) {
-      console.log(e.target.files[0]);
-      setFile(e.target.files[0]);
-    }
+  const [name, setName] = useState('');
+  const [cat, setCat] = useState(0);
+  const [desc, setDesc] = useState('');
+  const [price, setPrice] = useState(0);
+  const [stock, setStock] = useState(0);
+  const [imageData, setImageData] = useState('');
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      const imageData = reader.result;
+      setImageData(imageData); // Update the state with the image data
+    };
+
+    reader.readAsDataURL(file);
   };
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    const fd = new FormData();
-    fd.append('image', file, file.name)
-    fd.append('title', title1);
-    fd.append('description', desc);
-    fd.append('price', price);
-    fd.append('stock', stock);
-    fd.append('category', cat);
-    fd.append('admincompany', "aaaa");
-    axiosInstance.post('https://smartsips-production.up.railway.app/products_api/product/add', fd)
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
-  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // axiosInstance
+    //   .post(`/products_api/product/add`, {
+    //     title: name,
+    //     description: desc,
+    //     published: '2023-05-10T12:03:56.136Z',
+    //     price: price,
+    //     sales: 0,
+    //     stock: stock,
+    //     image: imageData,
+    //     category: cat,
+    //     admincompany: "Not Allowed"
+    //   })
+    //   .then((res) => {
+    //     toast.success('Add Processing done');
+    //     console.log(res)
+    //   })
+    //   .catch(err => {
+    //     toast.error("add failed")
+    //     console.log(err);
+
+    //   })
+
+    const postData = async () => {
+      try {
+        const formData = new FormData();
+        formData.append('id', 20);
+        formData.append('title', name);
+        formData.append('description', desc);
+        formData.append('published', '2023-05-10T12:03:56.136Z');
+        formData.append('price', price);
+        formData.append('sales', 0);
+        formData.append('stock', stock);
+        formData.append('image', imageData); // Replace 'imageFile' with your actual image file object
+        formData.append('category', cat);
+        formData.append('admincompany', 'string');
+
+        const response = await axiosInstance.post('/products_api/product/add', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data' // Set the content type to multipart/form-data
+          }
+        });
+        console.log(response); // Handle the response data here
+        toast.success('Add Processing done');
+        setName('');
+        setCat(0);
+        setDesc(0);
+        setPrice(0);
+        setStock(0);
+
+
+      } catch (error) {
+        console.error(error);
+        toast.error("add failed")
+      }
+    };
+    postData();
+  }
   const { openPopup, setOpenPopup } = props;
   return (
     <>
@@ -65,7 +117,7 @@ export default function Popup(props) {
             className="container add-product-form "
           // style={{ width: "480px" }}
           >
-            <form className="form-group" onSubmit={handleSubmit} >
+            <form className="form-group" >
               <div className="form-group">
                 <label for="product-imge" >Image</label>
                 <div className="row">
@@ -75,21 +127,25 @@ export default function Popup(props) {
                   </div>
                   <div className="col-3 add-imge-file" style={{ marginLeft: "25px" }}>
                     <label for="product-imge">+</label>
-                    <input type="file" onChange={handleFileChange} id="product-imge" name="product-imge" />
+                    <input type="file" id="product-imge" name="product-imge" onChange={handleFileChange} />
                   </div>
                 </div>
               </div>
               <div className="form-group">
                 <label for="product-name">Product Name</label>
-                <input type="text" id="product-name" name="product-name" onChange={e => setTitle(e.target.value)} />
+                <input type="text" id="product-name" value={name} name="product-name" onChange={(e) => { setName(e.target.value) }} />
               </div>
               <div className="form-group">
                 <label for="product-category">Category</label>
                 <input
-                  type="text"
+                  type="number"
                   id="product-category"
                   name="product-category"
-                  onChange={e => setCat(e.target.value)}
+                  onChange={(e) => {
+                    const value = parseInt(e.target.value);
+                    setCat(value);
+                  }}
+                  value={cat}
                 />
               </div>
               <div className="row">
@@ -98,11 +154,15 @@ export default function Popup(props) {
                 <div className="form-group col-md-6 col-sm-12">
                   <label for="product-price">Price</label>
                   <input
-                    type="text"
+                    type="number"
                     style={{ width: "150px" }}
                     id="product-price"
                     name="product-price"
-                    onChange={e => setPrice(e.target.value)}
+                    onChange={(e) => {
+                      const value = parseInt(e.target.value);
+                      setPrice(value);
+                    }}
+                    value={price}
                   />
                 </div>
                 <div className="form-group col-md-6 col-sm-12">
@@ -110,11 +170,15 @@ export default function Popup(props) {
                     Stock
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     style={{ width: "150px" }}
                     id="product-stock"
                     name="product-stock"
-                    onChange={e => setStock(e.target.value)}
+                    onChange={(e) => {
+                      const value = parseInt(e.target.value);
+                      setStock(value);
+                    }}
+                    value={stock}
                   />
                 </div>
               </div>
@@ -125,12 +189,13 @@ export default function Popup(props) {
                   // style={{ width: "100%", height: "90px", padding: "6px" }}
                   id="product-description"
                   name="product-description"
-                  onChange={e => setDesc(e.target.value)}
+                  onChange={(e) => { setDesc(e.target.value) }}
+                  value={desc}
                 />
               </div>
 
               <div className="ok-btn-invoice">
-                <button className="btn">
+                <button onClick={handleSubmit} className="btn">
                   <img
                     src={"./icons/product (1) (1).png"}
                     alt=""

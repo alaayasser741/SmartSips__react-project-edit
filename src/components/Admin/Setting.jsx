@@ -5,7 +5,7 @@ import Sidebar from "./Sidebar";
 const Setting = () => {
   return (
     <>
-    <Sidebar/>
+      <Sidebar />
       <div className="container-fluid dashboard_section">
         <div className='container   dash_Board_content'>
           <h1>Setting</h1>
@@ -125,9 +125,9 @@ const Setting = () => {
                             <div className="col">
                               <label className=" mb-1 chek">Message Notification</label></div>
                             <div className="col">
-                              <label class="switch ">
+                              <label className="switch ">
                                 <input type="checkbox" />
-                                <span class="slider round"></span>
+                                <span className="slider round"></span>
                               </label>
 
                             </div>
@@ -138,9 +138,9 @@ const Setting = () => {
                             <div className="col">
                               <label className=" mb-1 chek">Email Notification</label></div>
                             <div className="col">
-                              <label class="switch ">
+                              <label className="switch ">
                                 <input type="checkbox" />
-                                <span class="slider round"></span>
+                                <span className="slider round"></span>
                               </label>
 
                             </div>
@@ -150,9 +150,9 @@ const Setting = () => {
                             <div className="col">
                               <label className=" mb-1 chek">New Device is Linked</label></div>
                             <div className="col">
-                              <label class="switch ">
+                              <label className="switch ">
                                 <input type="checkbox" />
-                                <span class="slider round"></span>
+                                <span className="slider round"></span>
                               </label>
 
                             </div>
@@ -168,9 +168,9 @@ const Setting = () => {
                             <div className="col-8">
                               <label className=" mb-1 chek">Information On New Products</label></div>
                             <div className="col">
-                              <label class="switch ">
+                              <label className="switch ">
                                 <input type="checkbox" />
-                                <span class="slider round"></span>
+                                <span className="slider round"></span>
                               </label>
 
                             </div>
@@ -181,9 +181,9 @@ const Setting = () => {
                             <div className="col-8">
                               <label className=" mb-1 chek">Information On New Orders</label></div>
                             <div className="col">
-                              <label class="switch ">
+                              <label className="switch ">
                                 <input type="checkbox" />
-                                <span class="slider round"></span>
+                                <span className="slider round"></span>
                               </label>
 
                             </div>
@@ -193,9 +193,9 @@ const Setting = () => {
                             <div className="col-8">
                               <label className=" mb-1 chek">Information On New Customers</label></div>
                             <div className="col">
-                              <label class="switch ">
+                              <label className="switch ">
                                 <input type="checkbox" />
-                                <span class="slider round"></span>
+                                <span className="slider round"></span>
                               </label>
 
                             </div>

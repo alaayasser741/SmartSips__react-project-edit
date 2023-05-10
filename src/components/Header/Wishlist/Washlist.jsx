@@ -9,7 +9,7 @@ const Wishlist = () => {
   const [openPopup, setOpenPopup] = useState(false);
     return (<>
     
-     <body style={{backgroundColor:"white"}}>
+     
       <NavBar/>
 
       <div className="container cart-section">
@@ -69,6 +69,6 @@ const Wishlist = () => {
             <SuccCart openPopup={openPopup} setOpenPopup={setOpenPopup}></SuccCart>
 
     <Footer/>
-    </body>
+    
     </>)}
     export default Wishlist;

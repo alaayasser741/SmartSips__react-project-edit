@@ -9,15 +9,15 @@ const Sidebar = () => {
     <main className={show ? "space-toggle" : null}>
       <header className="header">
         {/* <header  className="header" className={`header ${show ? 'space-toggle' : null}`}> */}
-        <div  className="logoandlink">
-        <Link to="/dashboard" className="smart-linkk">
-          <img
-            src={"./images/smart sips logo (1).png"}
-            className="photologo"
-            style={{ marginLeft: "-3px" }}
-          />
-          
-          <span className="nav-link-name mt-2">Smart Sips</span>
+        <div className="logoandlink">
+          <Link to="/dashboard" className="smart-linkk">
+            <img
+              src={"./images/smart sips logo (1).png"}
+              className="photologo"
+              style={{ marginLeft: "-3px" }}
+            />
+
+            <span className="nav-link-name mt-2">Smart Sips</span>
           </Link>
         </div>
         {/* <img src={"./images/smart sips logo (1).png"} className="photologo" style={{marginLeft:"-160px",position:"fixed"}}/> */}
@@ -27,12 +27,12 @@ const Sidebar = () => {
         >
           <i className={`fas fa-bars ${show ? "fa-solid fa-xmark" : null}`}></i>
         </div>
-        <nav class="navbar bg-body-tertiary">
-          <div class="container-fluid">
-            <form class="d-flex" role="search">
+        <nav className="navbar bg-body-tertiary">
+          <div className="container-fluid">
+            <form className="d-flex" role="search">
               <div className="input-containerr pass mt-3 big-searsh">
                 <input
-                  class="form-control me-2"
+                  className="form-control me-2"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
@@ -42,9 +42,9 @@ const Sidebar = () => {
                 </i>
               </div>
               {/* <i className='fabell ps-3  pt-1'><FaBell style={{width:"29px"}}/></i> */}
-              <div class="headerrnotif">
-                <div class="container">
-                  <div class="links">
+              <div className="headerrnotif">
+                <div className="container">
+                  <div className="links">
                     <i className="fabell   pt-1">
                       <FaBell style={{ width: "29px" }} />
                     </i>
@@ -99,9 +99,9 @@ const Sidebar = () => {
               </div>
             </form>
 
-            <div class="headerr">
-              <div class="container">
-                <div class="links">
+            <div className="headerr">
+              <div className="container">
+                <div className="links">
                   <img
                     src={"./icons/Ellipse 13.png"}
                     alt=""

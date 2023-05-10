@@ -17,7 +17,7 @@ class Home extends Component {
   render() {
     return (
       <>
-        <body style={{ backgroundColor: "white" }}>
+        
           <NavBar />
           {/* ------------------------start Header----------------------------- */}
           <header className="container mt-5">
@@ -296,7 +296,7 @@ class Home extends Component {
           </div>{" "}
           {/** End of container subscribe-section ***************************************************/}
           <Footer />
-        </body>
+        
       </>
     );
   }

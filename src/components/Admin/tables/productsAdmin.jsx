@@ -116,7 +116,7 @@ const ProductsAdmin = () => {
       .catch(err => {
         console.log(err);
       })
-  }, [])
+  }, [dataSource])
 
   const handleDelete = (pro_id) => {
     console.log(pro_id);
@@ -151,19 +151,7 @@ const ProductsAdmin = () => {
                       Add
 
                     </button>
-                    {/* <label for="files">
-                        {" "}
-                        <i>
-                          <img
-                            src={"./icons/product (1) (1).png"}
-                            alt=""
-                            className="dashphoto"
-                          />
-                        </i>{" "}
-                      </label>
-                      <label for="files">Add</label>
-                      <input type="file" id="files" /> */}
-                    {/* </div> */}
+
                     &nbsp;&nbsp;
                     <div className="product-catogry">
                       <select

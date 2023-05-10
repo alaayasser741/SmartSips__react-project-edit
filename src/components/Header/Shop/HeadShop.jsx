@@ -5,7 +5,7 @@ import NavBar from "../NavBar/NavBar";
 const HeadShop = () => {
   return (
     <>
-      <body style={{ backgroundColor: "white" }}>
+      
         <NavBar />
         <div className="headShop">
           <div className="container">
@@ -28,7 +28,7 @@ const HeadShop = () => {
           </div>
         </div>
         <Product />
-      </body>
+      
     </>
   );
 };

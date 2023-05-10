@@ -12,7 +12,7 @@ import Footer from './../../Footer/Footer';
 const Contact = () => {
   return (
     <>
-    <body style={{backgroundColor:"white"}}>
+    
     <NavBar/>
       <div className="big-contact-section">
         <div className="head-contact">
@@ -61,7 +61,7 @@ const Contact = () => {
         </div>
       </div>
       <Footer/>
-      </body>
+      
     </>
   );
 };

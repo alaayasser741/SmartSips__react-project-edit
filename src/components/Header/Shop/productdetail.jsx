@@ -37,7 +37,7 @@ const ProductDetail = () => {
     };
 
     return ( <>
-    <body style={{backgroundColor:"white"}}>
+    
      <NavBar/>
       <div className="headShop">
         <div className="container">
@@ -127,7 +127,7 @@ const ProductDetail = () => {
     <Footer/>
      <SuccCart openPopup={openPopup1} setOpenPopup={setOpenPopup1}></SuccCart>
       <SuccWashlist openPopup={openPopup2} setOpenPopup={setOpenPopup2}></SuccWashlist>
-    </body>
+    
     </> );
 }
  
