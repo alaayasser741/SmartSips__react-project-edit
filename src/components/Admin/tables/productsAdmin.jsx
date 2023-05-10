@@ -244,15 +244,11 @@ const ProductsAdmin = () => {
                               <TableCell className="tableCell">
                                 {d.sales}
                               </TableCell>
-                              {/* <TableCell className={d.Stock === 0 ? 'not' :'more'}> */}
-                              <TableCell className={d.Stock === 0 ? 'not' : ''}>
-                                {/* <TableCell className={d.Status==='Active'?'Active':'',d.Status==='In Active'?'InActive':'',d.Status=='Pending'?'Pending':''}>
-                                 */}
-                                {/* <TableCell className={`Stock ${d.Stock}`}> */}
-                                {" "}
-                                {d.stock}{" "}
+
+                              <TableCell className={d.stock === 0 ? 'red' : d.stock < 50 ? 'yellow' : 'green'}>
+                                {d.stock}
                               </TableCell>
-                              <TableCell className="tableCell" onClick={()=>{
+                              <TableCell className="tableCell" onClick={() => {
                                 handleDelete(d.id)
                               }}>
                                 <i style={{ paddingLeft: "4px" }}>
@@ -298,13 +294,11 @@ const ProductsAdmin = () => {
                                 {d.sales}
                               </TableCell>
 
-                              {/* <TableCell className={`Stock ${d.Stock}`}> */}
-                              {/* <TableCell className={d.Stock === 0 ? 'not' : 'more'}> */}
-                              <TableCell className={d.Stock === 0 ? 'not' : ''}>
-                                {" "}
-                                {d.stock}{" "}
+
+                              <TableCell className={d.stock === 0 ? 'red' : d.stock < 50 ? 'yellow' : 'green'}>
+                                {d.stock}
                               </TableCell>
-                              <TableCell className="tableCell" onClick={()=>{
+                              <TableCell className="tableCell" onClick={() => {
                                 handleDelete(d.id)
                               }}>
                                 <i style={{ paddingLeft: "4px" }}>

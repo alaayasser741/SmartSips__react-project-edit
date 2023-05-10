@@ -1,10 +1,12 @@
 input[type="file"] {
   opacity: 0;
 }
+
 .entites {
   height: 35px;
   position: relative;
 }
+
 .addproduct {
   background-color: #0b69bb;
   align-items: center;
@@ -17,9 +19,10 @@ input[type="file"] {
   border: none;
   color: white;
 }
-.addproduct:hover{
+
+.addproduct:hover {
   background-color: #0396A6;
-  box-shadow: 2px 2px 5px  rgb(185, 181, 181);
+  box-shadow: 2px 2px 5px rgb(185, 181, 181);
 }
 
 .addproduct img {
@@ -27,46 +30,42 @@ input[type="file"] {
   height: 25px;
   margin: 5px 8px 8px 3px;
 }
+
 .addproduct label {
   color: white;
   font-size: 16px;
 }
+
 .product-catogry {
   display: inline-block;
   position: absolute;
   top: 9%;
 }
 
-// .Stock {
-//   font-weight: bold;
+.Stock {
+  font-weight: bold;
+}
+.green {
+  color: #5ce85c !important;
+}
 
-//   &.more {
-//     color: rgb(12, 84, 12);
-//   }
-//   &.not {
-//     color: red;
-//   }
-//   &.between {
-//     color: rgb(208, 227, 64);
-//   }
-// }
-.more{
-  color: rgb(12, 84, 12);
+.red {
+  color: red !important;
 }
-.not{
-  color: red;
+
+.yellow {
+  color: rgb(255, 204, 0) !important;
 }
-.between{
-  color: rgb(208, 227, 64);
-}
+
 @media (max-width: 580px) {
   .product-admin .table-container {
     width: 150%;
     padding-right: -100px;
     padding-left: -20px;
-   
+
   }
-  .product-admin .customersBodyContent{
+
+  .product-admin .customersBodyContent {
     width: 103%;
     margin-left: -10px;
   }

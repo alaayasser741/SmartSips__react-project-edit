@@ -28,7 +28,7 @@ const OrderHistory = () => {
       <div className="container orderHistory-section">
         <div className="row">
           <h2>Order History</h2>
-          <p className="order-p mt-0">3 Orders</p>
+          <p className="order-p mt-0">{orderData.length} Orders</p>
           {orderData.map(({ delivery_date, category, image, id }) => {
             return (
               <div className="container order" key={id}>
