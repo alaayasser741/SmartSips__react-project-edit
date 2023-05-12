@@ -5,7 +5,6 @@ import {
 } from 'react-icons/fa';
 import { useState } from 'react';
 const InBox = (props) => {
-    // console.log(props)
     const[clickState,SetclickState]=useState(1);
     const[clickStar,SetclickStar]=useState(false);
 

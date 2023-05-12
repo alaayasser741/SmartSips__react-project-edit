@@ -39,7 +39,6 @@ const ProductItem = (props) => {
     })
       .then(res => {
         setOpenPopup2(true)
-        console.log(res)
       })
       .catch(err => console.log(err))
   }

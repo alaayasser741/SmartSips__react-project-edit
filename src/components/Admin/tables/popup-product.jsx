@@ -70,7 +70,6 @@ export default function Popup(props) {
             'Content-Type': 'multipart/form-data' // Set the content type to multipart/form-data
           }
         });
-        console.log(response); // Handle the response data here
         toast.success('Add Processing done');
         setName('');
         setCat(0);

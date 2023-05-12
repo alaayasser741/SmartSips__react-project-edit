@@ -22,7 +22,7 @@ import {
 } from "react-icons/fa";
 import axiosInstance from "../../../axios";
 const handleDelete = (pro_id) => {
-  console.log(pro_id);
+
   // 
   axiosInstance.delete(`/order_api/${pro_id}/delete`)
     .then(res => toast.success('item deleted successfully'))
@@ -61,7 +61,7 @@ const Orders = () => {
       .then(res => {
         const data1 = [...res.data];
         setDataSource(data1);
-        console.log(res.data);
+
       })
       .catch(err => {
         console.log(err);

@@ -10,24 +10,17 @@ import axiosInstance from '../../../axios';
 class NavBar extends Component {
   state = { token: false, layout: false, userName: '', }
 
-
   componentDidMount() {
+    const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token')
-    console.log(token)
     if (token) {
       this.setState({ token: true })
       const fetchUserProfiles = async () => {
         try {
-          const response = await axiosInstance.get('/user_api/auth/user/', {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          });
-          // console.log(response);
-          this.setState({ userName: response.data.email })
+          const response = await axiosInstance.get(`/user_api/${userId}/userprofile/get`);
+          this.setState({ userName: response.data[0].username })
         } catch (error) {
           console.log(error);
-          console.log('failed to get user')
         }
       };
 

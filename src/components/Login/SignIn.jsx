@@ -50,6 +50,7 @@ export default function SignIn() {
       })
       .then((res) => {
         localStorage.setItem('token', res.data.access_token);
+        localStorage.setItem('userId', res.data.user.pk);
         toast.success('logged in successfully')
         const token = res.data.access_token;
         const email = formData.email;
@@ -113,12 +114,9 @@ export default function SignIn() {
     console.log(userObject)
     setEmail(userObject.email)
     setUserName(userObject.given_name)
-    
+
   };
   useEffect(() => {
-    console.log(idToken)
-    console.log(userName)
-    console.log(email)
     if (idToken) {
       axiosInstance
         .post(`/google/connect/`, {

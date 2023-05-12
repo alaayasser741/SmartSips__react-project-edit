@@ -116,7 +116,7 @@ const ProductsAdmin = () => {
       .catch(err => {
         console.log(err);
       })
-  }, [dataSource])
+  }, [])
 
   const handleDelete = (pro_id) => {
     console.log(pro_id);
