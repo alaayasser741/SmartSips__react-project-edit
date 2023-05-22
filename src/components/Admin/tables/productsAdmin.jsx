@@ -24,6 +24,7 @@ import { toast } from "react-toastify";
 
 const ProductsAdmin = () => {
   const [dataSource, setDataSource] = useState([]);
+  const [prodId, setProdId] = useState('')
   // let stockColors = [];
   // ProductsData.map((i) => {
   //  if (i.Stock === 0) {
@@ -76,10 +77,12 @@ const ProductsAdmin = () => {
   const lastIndex = currentPage * recordesPerPage;
   const firstIndex = lastIndex - recordesPerPage;
   const records = dataSource.slice(firstIndex, lastIndex);
+
   const npage = Math.ceil(dataSource.length / recordesPerPage);
   const nnumbers = [...Array(npage + 1).keys()].slice(1);
   const [selects, setSelects] = useState(10);
   const [value, setValue] = useState("");
+  const [products, setProducts] = useState([]);
 
   const [tableFilter, setTableFilter] = useState([]);
   const filterData = (e) => {
@@ -98,26 +101,24 @@ const ProductsAdmin = () => {
   };
 
   useEffect(() => {
-    axiosInstance.get('products_api/product/all')
-      .then(res => {
-        const data1 = [...res.data];
-        data1.forEach(item => {
-          if (item.category === 1) {
-            item.category = 'devices'
-          } else if (item.category === 2) {
-            item.category = 'Accessories'
-          } else {
-            item.category = 'Accessories'
-          }
-        })
-        setDataSource(data1);
-        console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }, [])
+    const fetchProducts = async () => {
+      try {
+        const response = await axiosInstance.get("products_api/product/all");
+        const productsData = response.data.map(async (product) => {
+          const imageResponse = await axiosInstance.get(`/imageupload/${product.id}/imageupload/`);
+          const image = imageResponse.data[0]
+          return { ...product, image };
+        });
+        const productsWithImages = await Promise.all(productsData);
+        setDataSource(productsWithImages);
+        console.log(productsWithImages)
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
+    fetchProducts();
+  }, []);
   const handleDelete = (pro_id) => {
     console.log(pro_id);
     // 
@@ -221,12 +222,13 @@ const ProductsAdmin = () => {
                         ? tableFilter.map((d, i) => {
                           return (
                             <TableRow key={i}>
+
                               <TableCell className="tableCell">
                                 {d.ID}
                               </TableCell>
                               <TableCell className="tableCell">
                                 <img
-                                  src={d.Image}
+                                  src={d.image.profile_photo}
                                   alt=""
                                   className=""
                                   style={{ maxHeight: "50px" }}
@@ -274,12 +276,14 @@ const ProductsAdmin = () => {
                                 className="tableCell"
                                 style={{ height: "50px" }}
                               >
-                                <img
-                                  src={d.image}
-                                  alt=""
-                                  className=""
-                                  style={{ maxHeight: "50px" }}
-                                />
+                                {d.image && d.image.profile_photo && (
+                                  <img
+                                    src={d.image.profile_photo}
+                                    alt="prod"
+                                    className=""
+                                    style={{ maxHeight: "50px" }}
+                                  />
+                                )}
                               </TableCell>
                               <TableCell className="tableCell">
                                 {d.title}

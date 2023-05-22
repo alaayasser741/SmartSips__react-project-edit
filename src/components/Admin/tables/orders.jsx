@@ -59,6 +59,7 @@ const Orders = () => {
   useEffect(() => {
     axiosInstance.get('order_api/all')
       .then(res => {
+        
         const data1 = [...res.data];
         setDataSource(data1);
 
@@ -66,7 +67,7 @@ const Orders = () => {
       .catch(err => {
         console.log(err);
       })
-  }, [tableFilter])
+  }, [])
   return (
     <>
       <Sidebar />
@@ -166,10 +167,8 @@ const Orders = () => {
                         </TableCell>
                       </TableRow>
                     </TableHead>
-
-                    <TableBody>
-                      {/* {records.map((d, i) => ( */}
-                      {value.length > 0
+                    {
+                    value.length > 0
                         ? tableFilter.map((d, i) => {
                           return (
                             <TableRow key={i}>
@@ -289,6 +288,9 @@ const Orders = () => {
                             </TableRow>
                           );
                         })}
+                    <TableBody>
+                      
+                      
                     </TableBody>
                   </Table>
                 </TableContainer>
