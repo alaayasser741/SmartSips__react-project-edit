@@ -5,6 +5,7 @@ import './ProfileAccount.css'
 import { FaPen } from "react-icons/fa";
 import axiosInstance from '../../axios';
 import { toast } from "react-toastify";
+import { borderRadius } from "@mui/system";
 
 const Profile = () => {
   const [username, setUserName] = useState('');
@@ -14,11 +15,14 @@ const Profile = () => {
   const [phone, setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [phoneErrorMessage, setPhoneErrorMessage] = useState('');
+  const [image, setImage] = useState(null);
+
+
   const validatePhone = (value) => {
     const prefixRegex = /^(011|010|012|015)/;
     if (value == '') {
       setPhoneErrorMessage('');
-      
+
     } else if (!prefixRegex.test(value) || value.length !== 11) {
       setPhoneErrorMessage('Phone number should start with 011, 010, 012, or 015');
     }
@@ -33,7 +37,6 @@ const Profile = () => {
     const userId = localStorage.getItem('userId');
     const fetchUserProfiles = async () => {
       try {
-
         const response = await axiosInstance.get(`/user_api/${userId}/userprofile/get`);
         setAddress(response.data[0].address)
         setCountry(response.data[0].country)
@@ -48,11 +51,27 @@ const Profile = () => {
       }
     };
     fetchUserProfiles();
+
+
+    // Image
+    const fetchUserImage = async () => {
+      try {
+        const response = await axiosInstance.get(`/imageupload/${userId}/imageupload/`);
+        setImage(response.data[0].profile_photo)
+
+
+      } catch (error) {
+        console.log(error);
+        console.log('failed to get user')
+      }
+    };
+    fetchUserImage();
+
   }, [])
 
+  const userId = localStorage.getItem('userId');
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userId = localStorage.getItem('userId');
 
     const updateUserProfile = async () => {
 
@@ -92,17 +111,54 @@ const Profile = () => {
 
       }
     }
+
     updateUserProfile();
   }
+  const handleImageUpload = async (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const imageDataUrl = reader.result;
+      setImage(imageDataUrl);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+      try {
+        const formData = new FormData();
+        formData.append('profile_photo', file);
+
+        const res = await axiosInstance.patch(`/imageupload/${userId}/imageupload/${userId}/`, formData);
+        console.log(res);
+        // toast.success('Updated user profile successfully updated');
+      } catch (error) {
+        console.log(error);
+        toast.error('Failed to update user profile');
+      }
+    }
+  };
   return (
     <>
       <NavBar />
       <div className="rapborder container" >
         <div className="abutpara">
           <h1>Your Account</h1>
-          <img src={"./icons/profile.png"} alt="Download" className="imgaccount" />
-          <div className="borderpen">
-            <i className="penicon "><FaPen /></i></div>
+          <div id="addPhoto" >
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+              style={{ display: 'none' }}
+              id="imageInput"
+            />
+            <label htmlFor="imageInput" style={{ border: '2px solid #ccc', borderRadius: '50%',cursor:'pointer',padding:'.5rem' }}>
+              <img src={image} alt="Download" className="imgaccount" />
+              <div className="borderpen">
+                <i className="penicon "><FaPen /></i>
+              </div>
+            </label>
+          </div>
           <p className="paraAccount mt-4">{username}</p>
         </div>
         <div className="row ms-lg-5">
