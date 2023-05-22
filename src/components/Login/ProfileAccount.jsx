@@ -128,7 +128,7 @@ const Profile = () => {
       try {
         const formData = new FormData();
         formData.append('profile_photo', file);
-
+        console.log(file)
         const res = await axiosInstance.patch(`/imageupload/${userId}/imageupload/${userId}/`, formData);
         console.log(res);
         // toast.success('Updated user profile successfully updated');
@@ -152,7 +152,7 @@ const Profile = () => {
               style={{ display: 'none' }}
               id="imageInput"
             />
-            <label htmlFor="imageInput" style={{ border: '2px solid #ccc', borderRadius: '50%',cursor:'pointer',padding:'.5rem' }}>
+            <label htmlFor="imageInput" style={{ border: '2px solid #ccc', borderRadius: '50%', cursor: 'pointer', padding: '.5rem' }}>
               <img src={image} alt="Download" className="imgaccount" />
               <div className="borderpen">
                 <i className="penicon "><FaPen /></i>

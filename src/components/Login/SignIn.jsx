@@ -5,6 +5,7 @@ import "./Sign.css";
 import jwt_decode from 'jwt-decode'
 import { Link } from "react-router-dom";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import {
   FaFacebook,
   FaRegUser,
@@ -100,12 +101,6 @@ export default function SignIn() {
   };
 
   // Google Login
-  useEffect(() => {
-    // Define the global functions for handling Google Sign-In
-    window.handleCallbackResponse = handleCallbackResponse;
-    window.handleGoogleSignIn = handleGoogleSignIn;
-  }, []);
-
   const handleCallbackResponse = (response) => {
     // Handle Google sign-in response here
     console.log(response);
@@ -117,10 +112,15 @@ export default function SignIn() {
 
   };
   useEffect(() => {
+    // Define the global functions for handling Google Sign-In
+    window.handleCallbackResponse = handleCallbackResponse;
+    window.handleGoogleSignIn = handleGoogleSignIn;
+  }, []);
+
+  useEffect(() => {
     if (idToken) {
       axiosInstance
         .post(`/google/connect/`, {
-
           access_token: userName.trim(),
           code: email.trim(),
           id_token: idToken,
