@@ -20,7 +20,7 @@ const ProductItem = (props) => {
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const itemsPerPage = 4;
-
+  const userId = localStorage.getItem('userId');
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(data.slice(itemOffset, endOffset));
@@ -32,12 +32,14 @@ const ProductItem = (props) => {
     const newOffset = (event.selected * itemsPerPage) % data.length;
     setItemOffset(newOffset);
   };
+
   const handleWishList = (p_id) => {
-    axiosInstance.post('https://smartsips-production.up.railway.app/products_api/wishlist/add', {
+    axiosInstance.post('/products_api/wishlist/add', {
       "product": [p_id],
-      "user_wishlist": ['6']
+      "user_wishlist": userId
     })
       .then(res => {
+        console.log(res)
         setOpenPopup2(true)
       })
       .catch(err => console.log(err))

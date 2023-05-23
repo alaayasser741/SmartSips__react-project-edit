@@ -75,8 +75,6 @@ const Product = () => {
                 name="my_range"
                 value=""
               />
-              {/* <!-- Double range slider (flat design)  --> */}
-              {/* <MultiRangeSlider min={0} max={1000} /> */}
             </div>{" "}
             {/** filter */}
             <div className="sort">
