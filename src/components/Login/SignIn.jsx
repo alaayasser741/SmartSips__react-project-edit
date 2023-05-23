@@ -100,7 +100,7 @@ export default function SignIn() {
 
   };
 
-  // Google Login
+  //! Google Login
   const handleCallbackResponse = (response) => {
     // Handle Google sign-in response here
     setIdToken(response.credential);
@@ -185,20 +185,6 @@ export default function SignIn() {
             <section className="parag">
               <h2 className="headh2">Sign In</h2>
             </section>
-            {/* <div className="input-container name">
-              <i>
-                <FaRegUser />
-              </i>
-
-              <input
-                id="username"
-                name="username"
-                type="text"
-                placeholder="&#xf007; &nbsp;&nbsp; User Name"
-                className="icon-plac"
-                onChange={handleChange}
-              />
-            </div> */}
             <div className="input-container name">
               {/* <i>
                 <FaRegUser />
@@ -240,13 +226,10 @@ export default function SignIn() {
 
             <div className="social-icons">
               {/* <i ><FaGoogle/></i> */}
-              <i >
-                <img onClick={handleGoogleSignIn} src="./icons/search1.png" alt="search" style={{ cursor: "pointer" }} />
+              <i onClick={handleGoogleSignIn} style={{ cursor: "pointer" }}>
+                <img src="./icons/search1.png" alt="search" />
+                <span>Login by Google</span>
               </i>
-              <i style={{ cursor: "pointer" }}>
-                <img src="./icons/facebook1.png" alt="facebook" />
-              </i>
-              {/* <i> <FaFacebook/> </i> */}
             </div>
             <div className="login">
               <p className="haveacc">
