@@ -103,10 +103,8 @@ export default function SignIn() {
   // Google Login
   const handleCallbackResponse = (response) => {
     // Handle Google sign-in response here
-    console.log(response);
     setIdToken(response.credential);
     var userObject = jwt_decode(response.credential);
-    console.log(userObject)
     setEmail(userObject.email)
     setUserName(userObject.given_name)
 
@@ -121,16 +119,16 @@ export default function SignIn() {
     if (idToken) {
       axiosInstance
         .post(`/google/connect/`, {
-          access_token: userName.trim(),
-          code: email.trim(),
+          access_token: idToken,
           id_token: idToken,
         })
         .then((res) => {
           toast.success('logged in successfully');
-          console.log("Doneeeeeeeeeeeeeeeeeeee:", res);
+          localStorage.setItem('token', res.data.access_token);
+          localStorage.setItem('userId', res.data.user.pk);
+          history.push("/");
         })
         .catch(err => {
-          console.log(err.response.data)
           if (err.response.data) {
             const errors = err.response.data;
             let userName = errors.access_token;
