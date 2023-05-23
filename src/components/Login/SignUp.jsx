@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axiosInstance from "../../axios";
 import { useHistory } from "react-router-dom";
 import "./Sign.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import jwt_decode from 'jwt-decode'
+
 import {
   FaFacebook,
   FaRegUser,
@@ -20,6 +22,7 @@ import { toast } from "react-toastify";
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
+  const [idToken, setIdToken] = useState('');
 
   const history = useHistory();
   const initialFormData = Object.freeze({
@@ -88,9 +91,49 @@ export default function SignUp() {
 
       })
   };
-  // username: 'ahmed'
-  // email: 'admi11111n@admin.com'
-  // password1: 'a1b2c311@@'
+
+  //! Start Google SignUp 
+  const handleCallbackResponse = (response) => {
+    // Handle Google sign-in response here
+    setIdToken(response.credential);
+    var userObject = jwt_decode(response.credential);
+    console.log(userObject)
+  };
+
+  useEffect(() => {
+    /* global google */
+    const clientId = "413583069200-o26le90g9p1828u7ha1hsqefua6rg4vi.apps.googleusercontent.com";
+
+    google.accounts.id.initialize({
+      client_id: clientId,
+      callback: handleCallbackResponse,
+
+    });
+    google.accounts.id.renderButton(
+      document.getElementById("signInBtn"),
+      { theme: 'filled', size: "large" }
+    )
+  }, [])
+
+  useEffect(() => {
+    if (idToken) {
+      axiosInstance
+        .post(`/google/connect/`, {
+          access_token: idToken,
+          id_token: idToken,
+        })
+        .then((res) => {
+          toast.success('Singed up successfully');
+          localStorage.setItem('token', res.data.access_token);
+          localStorage.setItem('userId', res.data.user.pk);
+          history.push("/");
+        })
+        .catch(err => {
+          toast.error("Singed up failed")
+        });
+    }
+  }, [idToken]);
+  //! End Google SignUp 
 
   return (
     <>
@@ -127,23 +170,7 @@ export default function SignUp() {
                 onChange={handleChange}
               />
             </div>
-            {/* <div className="input-container idd">
-              <i>
-                <p>|id|</p>
-               
-              </i>
-              <input
-                id="id"
-                name="id"
-                type="text"
-                placeholder="|id|&nbsp;&nbsp; Your Id"
-                className="icon-plac"
-              />
-            </div> */}
             <div className="input-container email">
-              {/* <i>
-                <FaRegEnvelope />{" "}
-              </i> */}
               <input
                 id="email"
                 name="email"
@@ -155,9 +182,6 @@ export default function SignUp() {
               />
             </div>
             <div className="input-container pass">
-              {/* <i>
-                <FaLock />
-              </i> */}
               <input
                 id="password1"
                 name="password1"
@@ -168,13 +192,10 @@ export default function SignUp() {
                 onChange={handleChange}
               />
               <i className="RegEyeSlash" onClick={handleTogglePassword}>
-                {showPassword ? <FaRegEyeSlash  /> : <FaRegEye />}
+                {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
               </i>
             </div>
             <div className="input-container pass">
-              {/* <i>
-                <FaLock />
-              </i> */}
               <input
                 id="password2"
                 name="password2"
@@ -185,29 +206,14 @@ export default function SignUp() {
                 onChange={handleChange}
               />
               <i className="RegEyeSlash" onClick={handleTogglePassword2}>
-                {showPassword2 ? <FaRegEyeSlash  /> : <FaRegEye />}
+                {showPassword2 ? <FaRegEyeSlash /> : <FaRegEye />}
               </i>
             </div>
             <button className="sinbttn" type="submit" onClick={handleSubmit}>
               SIGN UP
             </button>
             <p className="haveacc">Or social media</p>
-            <div className="social-icons">
-              <i>
-                {/* <FaGoogle /> */}
-                <i>
-                  <img
-                    src="./icons/search1.png"
-                    alt="search"
-                    style={{ cursor: "pointer" }}
-                  />
-                </i>
-              </i>
-              <i style={{ cursor: "pointer" }}>
-                <img src="./icons/facebook1.png" alt="facebook" />
-                {/* <FaFacebook /> */}
-              </i>
-            </div>
+            <div id="signInBtn" style={{ display: "flex", justifyContent: 'center', alignItems: "center" }}></div>
 
             <div className="login">
               <p className="haveacc">
@@ -220,8 +226,8 @@ export default function SignUp() {
               </p>
             </div>
           </form>
-        </div>
-      </div>
+        </div >
+      </div >
 
     </>
   );

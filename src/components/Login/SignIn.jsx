@@ -100,20 +100,30 @@ export default function SignIn() {
 
   };
 
-  //! Google Login
+  //! Start Google SignUp 
   const handleCallbackResponse = (response) => {
     // Handle Google sign-in response here
     setIdToken(response.credential);
     var userObject = jwt_decode(response.credential);
+    console.log(response)
     setEmail(userObject.email)
     setUserName(userObject.given_name)
-
   };
+
   useEffect(() => {
-    // Define the global functions for handling Google Sign-In
-    window.handleCallbackResponse = handleCallbackResponse;
-    window.handleGoogleSignIn = handleGoogleSignIn;
-  }, []);
+    /* global google */
+    const clientId = "413583069200-o26le90g9p1828u7ha1hsqefua6rg4vi.apps.googleusercontent.com";
+
+    google.accounts.id.initialize({
+      client_id: clientId,
+      callback: handleCallbackResponse,
+
+    });
+    google.accounts.id.renderButton(
+      document.getElementById("signInBtn"),
+      { theme: 'filled', size: "large" }
+    )
+  }, [])
 
   useEffect(() => {
     if (idToken) {
@@ -151,20 +161,6 @@ export default function SignIn() {
         });
     }
   }, [idToken]);
-  const handleGoogleSignIn = () => {
-    /*global google */
-    const clientId = "413583069200-o26le90g9p1828u7ha1hsqefua6rg4vi.apps.googleusercontent.com";
-
-
-    google.accounts.id.initialize({
-      client_id: clientId,
-      callback: handleCallbackResponse,
-      ux_mode: 'redirect',
-      redirect_uri: 'https://smartsips-production.up.railway.app/accounts/google/login/callback/'
-    });
-
-    google.accounts.id.prompt();
-  };
 
 
   return (
@@ -224,13 +220,7 @@ export default function SignIn() {
             </button>
             <p className="haveacc">Or social media</p>
 
-            <div className="social-icons">
-              {/* <i ><FaGoogle/></i> */}
-              <i onClick={handleGoogleSignIn} style={{ cursor: "pointer" }}>
-                <img src="./icons/search1.png" alt="search" />
-                <span>Login by Google</span>
-              </i>
-            </div>
+            <div id="signInBtn" style={{ display: "flex", justifyContent: 'center', alignItems: "center" }}></div>
             <div className="login">
               <p className="haveacc">
                 Don't have an account?
