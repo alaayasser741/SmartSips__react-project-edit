@@ -24,28 +24,8 @@ import { toast } from "react-toastify";
 
 const ProductsAdmin = () => {
   const [dataSource, setDataSource] = useState([]);
-  const [prodId, setProdId] = useState('')
-  // let stockColors = [];
-  // ProductsData.map((i) => {
-  //  if (i.Stock === 0) {
-  //    stockColors.push("not");
-  //  } else if (i.Stock  === 50) {
-  //    stockColors.push("between");
-  //  } else if (i.Stock  === 300) {
-  //    stockColors.push("more");
-  //  }});
+  const [selectedCategory, setSelectedCategory] = useState("All Category");
 
-  //  console.log(stockColors)
-  //  const [loan, SetLoan] = useState(1);
-  //  ProductsData.map((i) => {
-  //   if (i.Stock === 0) {
-  //     loan="red";
-  //   } else if (i.Stock  === 50) {
-  //     loan="green";
-  //   } else if (i.Stock  === 300) {
-  //     loan="blue";
-  //   }});
-  //   console.log(loan)
   const loan = []
   dataSource.map((i) => {
     if (i.Stock === 0) {
@@ -86,19 +66,43 @@ const ProductsAdmin = () => {
 
   const [tableFilter, setTableFilter] = useState([]);
   const filterData = (e) => {
-    if (e.target.value != "") {
-      setValue(e.target.value);
-      const filterTable = dataSource.filter((o) =>
-        Object.keys(o).some((k) =>
-          String(o[k]).toLowerCase().includes(e.target.value.toLowerCase())
+    const selectedValue = e.target.value;
+
+    setSelectedCategory(selectedValue);
+
+    const filterTable = dataSource.filter((o) => {
+      const matchesCategory =
+        String(o.category).toLowerCase() === selectedValue.toLowerCase();
+
+      return matchesCategory;
+    });
+
+    setTableFilter(filterTable);
+
+  };
+
+  const handleSearch = (e) => {
+    let inputValue = e.target.value.toLowerCase();
+    console.log(inputValue)
+    console.log(e.target.value)
+    if (inputValue !== "") {
+      setValue(inputValue);
+
+      const filteredTable = dataSource.filter((o) =>
+        Object.values(o).some(
+          (value) => String(value).toLowerCase().includes(inputValue)
         )
       );
-      setTableFilter([...filterTable]);
+
+      setTableFilter(filteredTable);
     } else {
-      setValue(e.target.value);
-      setDataSource([...dataSource]);
+      setValue(inputValue);
+      setTableFilter([...dataSource]);
     }
+    console.log(tableFilter)
   };
+
+
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -111,7 +115,7 @@ const ProductsAdmin = () => {
         });
         const productsWithImages = await Promise.all(productsData);
         setDataSource(productsWithImages);
-        console.log(productsWithImages)
+
       } catch (error) {
         console.log(error);
       }
@@ -120,8 +124,6 @@ const ProductsAdmin = () => {
     fetchProducts();
   }, []);
   const handleDelete = (pro_id) => {
-    console.log(pro_id);
-    // 
     axiosInstance.delete(`https://smartsips-production.up.railway.app/products_api/${pro_id}/detail`)
       .then(res => toast.success('item deleted successfully'))
       .catch(err => toast.success('Error occurd try agian'))
@@ -156,15 +158,18 @@ const ProductsAdmin = () => {
                     &nbsp;&nbsp;
                     <div className="product-catogry">
                       <select
-                        className=" product-catogry number-rows select-box"
+                        className="product-catogry number-rows select-box"
                         style={{ width: "101px" }}
+                        value={selectedCategory}
+                        onChange={filterData}
                       >
-                        <option value=" All Catogry" selected>
-                          All Catogry
-                        </option>
-                        <option value="Accessorise">Accessorise</option>
-                        <option value="Devices">Devices</option>
+                        <option value="All Category">All Category</option>
+                        <option value="1">Accessories</option>
+                        <option value="2">Device</option>
+                        <option value="3">Gadgets</option>
                       </select>
+
+
                     </div>
                   </div>
                   <div className="col-lg-7 col-sm-12 dS">
@@ -176,8 +181,10 @@ const ProductsAdmin = () => {
                         aria-label="name"
                         aria-describedby="basic-addon1"
                         value={value}
-                        onChange={filterData}
+                        onChange={handleSearch}
                       />
+
+
                     </div>
                     <i className="download">
                       <FaDownload />
@@ -217,9 +224,8 @@ const ProductsAdmin = () => {
                     </TableHead>
 
                     <TableBody>
-                      {/* {records.map((d, i) => ( */}
-                      {value.length > 0
-                        ? tableFilter.map((d, i) => {
+                      {selectedCategory == 'All Category' && value.length === 0
+                        ? records.map((d, i) => {
                           return (
                             <TableRow key={i}>
 
@@ -227,12 +233,14 @@ const ProductsAdmin = () => {
                                 {d.ID}
                               </TableCell>
                               <TableCell className="tableCell">
-                                <img
-                                  src={d.image.profile_photo}
-                                  alt=""
-                                  className=""
-                                  style={{ maxHeight: "50px" }}
-                                />
+                                {d.image && d.image.profile_photo && (
+                                  <img
+                                    src={d.image.profile_photo}
+                                    alt="prod"
+                                    className=""
+                                    style={{ maxHeight: "50px" }}
+                                  />
+                                )}
                               </TableCell>
                               <TableCell className="tableCell">
                                 {d.title}
@@ -266,7 +274,7 @@ const ProductsAdmin = () => {
                             </TableRow>
                           );
                         })
-                        : records.map((d, i) => {
+                        : tableFilter.map((d, i) => {
                           return (
                             <TableRow key={i}>
                               <TableCell className="tableCell">
@@ -318,6 +326,8 @@ const ProductsAdmin = () => {
                             </TableRow>
                           );
                         })}
+
+
                     </TableBody>
                   </Table>
                 </TableContainer>
