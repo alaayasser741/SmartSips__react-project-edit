@@ -73,7 +73,7 @@ const Product = () => {
                 type="text"
                 className="js-range-slider"
                 name="my_range"
-                value=""
+                defaultValue=""
               />
             </div>{" "}
             {/** filter */}
