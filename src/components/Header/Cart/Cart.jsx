@@ -1,4 +1,4 @@
-import { Component ,useState } from "react";
+import { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
@@ -7,12 +7,12 @@ import "./Cart.css";
 // import { useState } from "react";
 
 const Cart = () => {
-  const[countqty,setCountqty]=useState(0);
-  
+  const [countqty, setCountqty] = useState(0);
+
   return (
     <>
-    
-    <NavBar/>
+
+      <NavBar />
       <div className="container cart-section">
         <div className="row">
           <div className="cart col-xl-9 col-lg-8">
@@ -33,10 +33,10 @@ const Cart = () => {
                 </div>
                 <div className="col-md-2 cart-count ">
                   <div className="m-auto ">
-                  <button onClick={()=>{setCountqty(countqty+1)}}>+</button>
-                  <h4 className="count-h4">{countqty}</h4>
-                  <button className='mins' onClick={()=>{setCountqty(countqty-1)}}>-</button>
-                </div>
+                    <button onClick={() => { setCountqty(countqty + 1) }}>+</button>
+                    <h4 className="count-h4">{countqty}</h4>
+                    <button className='mins' onClick={() => { setCountqty(countqty - 1) }}>-</button>
+                  </div>
                 </div>
                 <div className="col-md-2">
                   <h4 className="norm-h4">300$</h4>
@@ -44,62 +44,66 @@ const Cart = () => {
                 <div className="col-md-2">
                   <button className="cart-eliminate">X</button>
                 </div>
-                
+
               </div>
             </div>
             {/** Cart details*/}
-            
-           
-          </div>{" "}
+          </div>
           {/************** Cart ***************/}
           <div className="summary-cart col-lg-4 col-md-5 col-7 col-xl-3">
             <h2>Summary</h2>
             <div className="summary-details">
               <table>
-                <tr>
-                  <th>3 ITEMS</th>
-                  <td>$</td>
-                </tr>
-                <tr>
-                  <th>SHIPPING</th>
-                  <td>$</td>
-                </tr>
-                <tr>
-                  <th>
-                    <label for="code">ADD COUPON CODE</label>
-                  </th>
-                </tr>
-                <tr>
-                  <input
-                    type="text"
-                    id="code"
-                    name="code"
-                    placeholder="Enter Your Code"
-                  />
-                </tr>
-
-                <tr>
-                  {" "}
-                  <hr />{" "}
-                </tr>
-                <tr>
-                  <th>TOTAL PRICE</th>
-                  <td>$</td>
-                </tr>
-                <tr>
-                  <td style={{ paddingLeft: "20px", paddingTop: "10px" }}>
-                  <Link to='/checkout'><button className="btn"> CHEACK OUT </button></Link>
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <th>3 ITEMS</th>
+                    <td>$</td>
+                  </tr>
+                  <tr>
+                    <th>SHIPPING</th>
+                    <td>$</td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <label htmlFor="code">ADD COUPON CODE</label>
+                    </th>
+                  </tr>
+                  <tr>
+                    <td colSpan="2">
+                      <input
+                        type="text"
+                        id="code"
+                        name="code"
+                        placeholder="Enter Your Code"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan="2">
+                      <hr />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>TOTAL PRICE</th>
+                    <td>$</td>
+                  </tr>
+                  <tr>
+                    <td colSpan="2" style={{ paddingLeft: "20px", paddingTop: "10px" }}>
+                      <Link to="/checkout">
+                        <button className="btn">CHECKOUT</button>
+                      </Link>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
-          </div>{" "}
-          {/************** sammary ***************/}
+          </div>
+
         </div>
       </div>
-      <Footer/>
-      
-      
+      <Footer />
+
+
     </>
   );
 };
