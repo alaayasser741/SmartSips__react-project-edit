@@ -238,7 +238,7 @@ const ProductsAdmin = () => {
                                 {d.title}
                               </TableCell>
                               <TableCell className="tableCell">
-                                {d.category}
+                                {d.category === 1 ? 'Accessories' : d.category === 2 ? 'Device' : 'Gadgets'}
                               </TableCell>
                               <TableCell className="tableCell">
                                 {d.price}
@@ -289,7 +289,7 @@ const ProductsAdmin = () => {
                                 {d.title}
                               </TableCell>
                               <TableCell className="tableCell">
-                                {d.category}
+                                {d.category === 1 ? 'Accessories' : d.category === 2 ? 'Device' : 'Gadgets'}
                               </TableCell>
                               <TableCell className="tableCell">
                                 {d.price} $
