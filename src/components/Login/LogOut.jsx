@@ -10,6 +10,10 @@ export default function SignUp() {
 			refresh_token: localStorage.getItem('refresh_token'),
 		});
 		localStorage.removeItem('token');
+		localStorage.removeItem('cart_id');
+		localStorage.removeItem('social');
+		localStorage.removeItem('isAdmin');
+
 		// localStorage.removeItem('refresh_token');
 		// axiosInstance.defaults.headers['Authorization'] = null;
 		history.push('/signin');
