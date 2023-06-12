@@ -9,7 +9,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Popup from "./popup";
+import PopupOrder from "./popupOrder";
 import Sidebar from "../Sidebar";
 import { toast } from "react-toastify";
 
@@ -168,7 +168,7 @@ const Orders = () => {
                     <TableBody>
                       {
                         value.length > 0
-                          ? tableFilter.map(({address,id,username,order_date,total_price,items,amount}) => {
+                          ? tableFilter.map(({ address, id, username, order_date, total_price, items, amount }) => {
                             return (
                               <TableRow key={id}>
                                 <TableCell className="tableCell">
@@ -227,7 +227,7 @@ const Orders = () => {
                               </TableRow>
                             );
                           })
-                          : records.map(({address,id,username,order_date,total_price,items,amount}) => {
+                          : records.map(({ address, id, username, order_date, total_price, items, amount }) => {
                             return (
                               <TableRow key={id}>
                                 <TableCell className="tableCell">
@@ -330,7 +330,7 @@ const Orders = () => {
           </div>
         </div>
       </div>
-      <Popup openPopup={openPopup} setOpenPopup={setOpenPopup}></Popup>
+      <PopupOrder openPopup={openPopup} dataItems={dataSource} setOpenPopup={setOpenPopup}></PopupOrder>
     </>
   );
   function prePage() {
