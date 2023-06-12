@@ -83,8 +83,6 @@ const ProductsAdmin = () => {
 
   const handleSearch = (e) => {
     let inputValue = e.target.value.toLowerCase();
-    console.log(inputValue)
-    console.log(e.target.value)
     if (inputValue !== "") {
       setValue(inputValue);
 
