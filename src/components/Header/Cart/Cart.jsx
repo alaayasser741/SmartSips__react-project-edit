@@ -13,19 +13,44 @@ const Cart = () => {
   const cartId = localStorage.getItem('cart_id');
   const userId = localStorage.getItem('userId');
   const [wishlistUpdate, setWishlistUpdate] = useState(false);
-  const [dataSource, setDataSource] = useState([]);
-
+  const [itemsState, setItemsState] = useState([]);
   useEffect(() => {
     axiosInstance.get(`/order_api/cart/all/${userId}`)
       .then(res => {
-        setDataSource(res.data[0].items);
+        const resData = res.data;
+        const items = resData.map(obj => obj);
+        setItemsState(items);
       })
       .catch(err => {
         console.log(err);
       })
   }, [wishlistUpdate])
 
+  const deleteCart = (cart_Id) => {
+     
+    if(cart_Id == cartId){
+      console.log('Cart id delete')
+      localStorage.removeItem('cart_id');
+    }else{
+      console.log("not cart_id")
+    }
+    const authToken = localStorage.getItem('token');
+    axiosInstance.delete(`/order_api/cart/delete/${cart_Id}`, {
+      headers: {
+        Authorization: `Bearer ${authToken}`, // Include the authentication token in the request headers
+      }
+    })
+      .then((res) => {
+        toast.success('Cart deleted successfully')
+        setWishlistUpdate(prevState => !prevState);
 
+      })
+      .catch((err) => {
+        toast.error('Failed to delete Cart')
+
+        console.log('Error deleting item:', err);
+      });
+  };
   const deleteCartItem = (itemId) => {
     const authToken = localStorage.getItem('token');
     axiosInstance.delete(`order_api/item/cart/delete/${itemId}`, {
@@ -81,41 +106,50 @@ const Cart = () => {
         <div className="row">
           <div className="cart col-xl-9 col-lg-8">
             <h2>Your Cart</h2>
-            {dataSource.map(({ id, product, priceqnt, qnt }) => {
-              return (
-                <div key={id} className="cart-details container">
-                  <div className="row">
-                    <div className="col-md-2">
-                      {product.image && <img src={product.image} alt="product-img" />}
+            {itemsState.map((items, index) => (
+              <div key={index} className="cart__container">
+                {items.items.length > 0 ? (
+                  <ul>
+                    {items.items.map(({ id, product, priceqnt, qnt }) => (
+                      <div key={id} className="cart-details container">
+                        <div className="row">
+                          <div className="col-md-2">
+                            {product.image && <img src={product.image} alt="product-img" />}
 
-                    </div>
-                    <div className="col-md-2">
-                      <p>{product.category == 1 ? 'Accessories' : product.category == 2 ? 'Devices' : 'Gadgets'}</p>
-                      <h4 style={{ marginTop: "0px" }} className="norm-h4">
-                        {product.title}
-                      </h4>
-                    </div>
-                    <div className="col-md-2">
-                      <h4 className="norm-h4">{product.price}$</h4>
-                    </div>
-                    <div className="col-md-2 cart-count ">
-                      <div className="m-auto ">
-                        <button onClick={() => { qtyCountAdd(id, product.id, qnt) }}>+</button>
-                        <h4 className="count-h4">{qnt}</h4>
-                        <button className='mins' onClick={() => { qtyCountMins(id, product.id, qnt) }}>-</button>
+                          </div>
+                          <div className="col-md-2">
+                            <p>{product.category == 1 ? 'Accessories' : product.category == 2 ? 'Devices' : 'Gadgets'}</p>
+                            <h4 style={{ marginTop: "0px" }} className="norm-h4">
+                              {product.title}
+                            </h4>
+                          </div>
+                          <div className="col-md-2">
+                            <h4 className="norm-h4">{product.price}$</h4>
+                          </div>
+                          <div className="col-md-2 cart-count ">
+                            <div className="m-auto ">
+                              <button onClick={() => { qtyCountAdd(id, product.id, qnt) }}>+</button>
+                              <h4 className="count-h4">{qnt}</h4>
+                              <button className='mins' onClick={() => { qtyCountMins(id, product.id, qnt) }}>-</button>
+                            </div>
+                          </div>
+                          <div className="col-md-2">
+                            <h4 className="norm-h4">{priceqnt}$</h4>
+                          </div>
+                          <div className="col-md-2">
+                            <button className="cart-eliminate" onClick={() => { deleteCartItem(id) }}>X</button>
+                          </div>
+
+                        </div>
                       </div>
-                    </div>
-                    <div className="col-md-2">
-                      <h4 className="norm-h4">{priceqnt}$</h4>
-                    </div>
-                    <div className="col-md-2">
-                      <button className="cart-eliminate" onClick={() => { deleteCartItem(id) }}>X</button>
-                    </div>
-
-                  </div>
-                </div>
-              )
-            })}
+                    ))}
+                  </ul>
+                ) : (
+                  "no Items"
+                )}
+                <span className="delete-cart" onClick={() => { deleteCart(items.id) }}>Delete cart</span>
+              </div>
+            ))}
 
             {/** Cart details*/}
           </div>
