@@ -13,10 +13,11 @@ const OrderHistory = () => {
   const [openPopup2, setOpenPopup2] = useState(false);
   const [orderData, setOrderData] = useState([]);
   const [orderId, setOrderId] = useState(0);
-
+  const userId = localStorage.getItem('userId');
   useEffect(() => {
-    axiosInstance.get('/order_api/order/history').then((res) => {
-      setOrderData(res.data)
+    axiosInstance.get(`/order_api/order/history/${userId}`).then((res) => {
+      setOrderData(res.data[0].items)
+      console.log(res.data[0].items)
     }).catch((err) => {
       console.log(err)
     })
@@ -29,7 +30,7 @@ const OrderHistory = () => {
         <div className="row">
           <h2>Order History</h2>
           <p className="order-p mt-0">{orderData.length} Orders</p>
-          {orderData.map(({ delivery_date, category, image, id }) => {
+          {orderData.map(({ Expected_date, category, image, id }) => {
             return (
               <div className="container order" key={id}>
                 <div className="row">
@@ -44,11 +45,11 @@ const OrderHistory = () => {
                         <div className=" col-lg-8 col-md-12 first-col">
                           <div className="row">
                             <div className="col-md-2">
-                              <img src={image} />
+                              {image && <img src={image} alt="img" />}
                             </div>
                             <div className="col-md-3">
-                              <p className="order-p">{category}</p>
-                              <h5>Solar Panal</h5>
+                              <p className="order-p">Category</p>
+                              <h5>{category}</h5>
                             </div>
                             <div className="col-md-3">
                               <p className="order-p">Order Id</p>
@@ -56,7 +57,7 @@ const OrderHistory = () => {
                             </div>
                             <div className="col-md-3">
                               <p className="order-p">Expected Date</p>
-                              <h5>{delivery_date}</h5>
+                              <h5>{Expected_date}</h5>
                             </div>
                           </div>
                         </div>
