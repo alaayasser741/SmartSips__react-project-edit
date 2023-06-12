@@ -1,6 +1,6 @@
 import { DialogContent, DialogTitle } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./popup.css";
 import "./Customers.scss";
 import Table from "@mui/material/Table";
@@ -10,9 +10,26 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import axiosInstance from "../../../axios";
 
 export default function Popup(props) {
   const { title, children, openPopup, setOpenPopup } = props;
+  const [orderData, setOrderData] = useState([]);
+  const [orderInfo, setOrderInfo] = useState([]);
+
+  const userId = localStorage.getItem('userId');
+  useEffect(() => {
+    if (openPopup == true) {
+      axiosInstance.get(`/order_api/cart/all/${userId}`).then((res) => {
+        setOrderInfo(res.data)
+        setOrderData(res.data[0].items)
+        console.log(res.data)
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
+  }, [openPopup])
+console.log(orderInfo)
   return (
     <>
       <Dialog open={openPopup}>
@@ -33,45 +50,49 @@ export default function Popup(props) {
         <DialogContent>
           <div
             className="container invoice-content "
-            // style={{ width: "480px" }}
+          // style={{ width: "480px" }}
           >
             <div className="invoice-content-header">
               <div className="invoice-img">
-                <img src="./icons/invoice (1).png" alt="" />
+                <img src="./icons/invoice (1).png" alt="img" />
                 <h5>Order's Invoice</h5>
               </div>
               <div className="container upTable">
-                <div className="row">
-                  <table className="col-md-6 col-12 tab1">
-                    <tr>
-                      <th>INVOICE NUMBER</th>
-                      <td>#1258</td>
-                    </tr>
-                    <tr>
-                      <th>INVOICE DATE</th>
-                      <td>jul 2 2022</td>
-                    </tr>
-                    <tr>
-                      <th>BILL TO</th>
-                      <td>Ahmed</td>
-                    </tr>
-                  </table>
-                  <div className="col-md-2 col-12"></div>
-                  <table className="col-md-4 col-12">
-                    <tr>
-                      <th>SUB TOTAL</th>
-                      <td>2400.0$</td>
-                    </tr>
-                    <tr>
-                      <th>SHIOOING</th>
-                      <td>250$</td>
-                    </tr>
-                    <tr>
-                      <th>GRAND TOTAL</th>
-                      <td>22$</td>
-                    </tr>
-                  </table>
-                </div>
+                {orderInfo.map((d) => {
+                  return (
+                    <div className="row">
+                      <table className="col-md-6 col-12 tab1">
+                        <tr>
+                          <th>INVOICE NUMBER</th>
+                          <td>#{d.id}</td>
+                        </tr>
+                        <tr>
+                          <th>INVOICE DATE</th>
+                          <td>{new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
+                        </tr>
+                        <tr>
+                          <th>BILL TO</th>
+                          <td>{d.username}</td>
+                        </tr>
+                      </table>
+                      <div className="col-md-2 col-12"></div>
+                      <table className="col-md-4 col-12">
+                        <tr>
+                          <th>SUB TOTAL</th>
+                          <td>{d.total_price}$</td>
+                        </tr>
+                        <tr>
+                          <th>SHIOOING</th>
+                          <td>{d.shipping}$</td>
+                        </tr>
+                        <tr>
+                          <th>GRAND TOTAL</th>
+                          <td>{d.finalprice}$</td>
+                        </tr>
+                      </table>
+                    </div>
+                  )
+                })}
               </div>
               <hr />
             </div>
@@ -111,74 +132,40 @@ export default function Popup(props) {
                       TOTAL
                     </TableCell>
                   </TableRow>
+
                 </TableHead>
                 <TableBody className="tableBody">
-                  {/* {records.map((d, i) => ( */}
-                  {/* <TableRow key={i}> */}
-                  <TableRow className="tableContent">
-                    <TableCell className="tableCell" align="center">
-                      <p>Accessories</p>
-                      Solar Panal
-                    </TableCell>
-                    <TableCell className="tableCell" align="center">
-                      <img src="./images/soalar.png" alt="" />
-                    </TableCell>
-                    <TableCell className="tableCell" align="center">
-                      300$
-                    </TableCell>
-                    <TableCell className="tableCell" align="center">
-                      1
-                    </TableCell>
-                    <TableCell className="tableCell" align="center">
-                      300$
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="tableCell" align="center">
-                      <p>Device</p>
-                      Smart Sips
-                    </TableCell>
-                    <TableCell className="tableCell" align="center">
-                      <img src="./images/product.png" alt="" />
-                    </TableCell>
-                    <TableCell className="tableCell" align="center">
-                      1200$
-                    </TableCell>
-                    <TableCell className="tableCell" align="center">
-                      1
-                    </TableCell>
-                    <TableCell className="tableCell" align="center">
-                      1200$
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="tableCell" align="center">
-                      <p>Accessories</p>
-                     LCD Screen
-                    </TableCell>
-                    <TableCell className="tableCell" align="center">
-                      <img src="./images/screen.png" alt="" />
-                    </TableCell>
-                    <TableCell className="tableCell" align="center">
-                      70$
-                    </TableCell>
-                    <TableCell className="tableCell" align="center">
-                      1
-                    </TableCell>
-                    <TableCell className="tableCell" align="center">
-                      70$
-                    </TableCell>
-                  </TableRow>
-                  {/* ))} */}
+                  {orderData.map(({ id, priceqnt, product, qnt }) => {
+                    return (
+                      <TableRow key={id} className="tableContent">
+                        <TableCell className="tableCell" align="center">
+                          <p>Accessories</p>
+                          {product.category == 1 ? 'Accessories' : product.category == 2 ? 'Devices' : 'Gadgets'}
+                        </TableCell>
+                        <TableCell className="tableCell" align="center">
+                          {product.image && <img src={product.image} alt="product-img" />}
+                        </TableCell>
+                        <TableCell className="tableCell" align="center">
+                          {product.price}$
+                        </TableCell>
+                        <TableCell className="tableCell" align="center">
+                          {qnt}
+                        </TableCell>
+                        <TableCell className="tableCell" align="center">
+                          {priceqnt}$
+                        </TableCell>
+                      </TableRow>
+                    )
+                  })}
                 </TableBody>
               </Table>
             </TableContainer>
-           
+
           </div>
           <div className="ok-btn-invoice">
-          <button className="btn">OK</button>
+            <button className="btn">OK</button>
           </div>
-          
+
         </DialogContent>
       </Dialog>
     </>

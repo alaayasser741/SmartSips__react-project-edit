@@ -7,16 +7,17 @@ import axiosInstance from "../../axios";
 export default function Popup(props) {
   const { title, children, openPopup, setOpenPopup, setOrderID } = props;
   const [orderData, setOrderData] = useState([]);
+  const userId = localStorage.getItem('userId');
   useEffect(() => {
     if (openPopup == true) {
-      axiosInstance.get(`/order_api/${setOrderID}/list`).then((res) => {
+      axiosInstance.get(`/order_api/cart/all/${userId}`).then((res) => {
         setOrderData(res.data)
+        console.log(res.data)
       }).catch((err) => {
         console.log(err)
       })
     }
   }, [openPopup])
-  const filteredOrder = orderData.filter((order) => order.id === setOrderID);
   return (
     <>
       <Dialog open={openPopup}>
@@ -38,34 +39,34 @@ export default function Popup(props) {
           <div className="container invoice-content order-details">
             <div className="invoice-content-header">
               <div className="invoice-img">
-                <img src="./icons/orderdetails.jpg" alt="" />
+                <img src="./icons/orderdetails.jpg" alt="img" />
                 <h5>Order Details</h5>
                 <hr />
               </div>
-              {filteredOrder.map(({ id, amount, total_price, delivery_date, order_date }) => {
+              {orderData.map((d) => {
                 return (
                   <div className="container upTablee ">
                     <h6 className="ORDER">ORDER PECEIVED</h6>
                     <table className="detals-table">
                       <tr>
                         <th >ORDER ID</th>
-                        <td >{id}</td>
+                        <td >{d.id}</td>
                       </tr>
                       <tr>
                         <th>ORDER DATE</th>
-                        <td>{order_date}</td>
+                        <td>{d.order_date}</td>
                       </tr>
                       <tr>
                         <th>DELIVERY DATE</th>
-                        <td>{delivery_date}</td>
+                        <td>{d.delivery_date}</td>
                       </tr>
                       <tr>
                         <th>TOTAL ITEMS</th>
-                        <td>{amount} items</td>
+                        <td>{d.amount} items</td>
                       </tr>
                       <tr>
                         <th>TOTAL PRICE</th>
-                        <td>{total_price}</td>
+                        <td>{d.total_price}</td>
                       </tr>
                     </table>
                   </div>
@@ -75,7 +76,9 @@ export default function Popup(props) {
             {/* up content */}
           </div>
           <div className="ok-btn-invoice">
-            <button className="btn">OK</button>
+            <button className="btn" onClick={() => {
+              setOpenPopup(false);
+            }}>OK</button>
           </div>
         </DialogContent>
       </Dialog>
