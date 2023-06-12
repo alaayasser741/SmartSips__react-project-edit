@@ -1,13 +1,23 @@
 import './dashboard.css';
 import FristChart from './fristchart';
 import SecondChart from './secondchart';
+import React, { useEffect } from 'react';
 import Sidebar from './Sidebar';
-
+import { useHistory } from 'react-router-dom';
 import {
     FaArrowUp,
 } from "react-icons/fa";
 import ThirdChart from './thirdchart';
 const Dashboard = () => {
+    const history = useHistory();
+
+    useEffect(() => {
+        const isAdmin = localStorage.getItem('isAdmin');
+        if (isAdmin !== 'true') {
+            history.push('/');
+        }
+    }, [history]);
+
     return (<>
         <Sidebar />
         <div className="container-fluid dashboard_section" >

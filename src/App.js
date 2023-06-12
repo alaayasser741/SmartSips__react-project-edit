@@ -34,48 +34,102 @@ import MailBox from "./components/Admin/mailBox";
 import Customer from "./components/Admin/tables/customers";
 import Orders from "./components/Admin/tables/orders";
 import AdminProducts from "./components/Admin/tables/productsAdmin";
-import ProductDetail from "./components/Header/Shop/productdetail"
+import ProductDetail from "./components/Header/Shop/productdetail";
 import axios from "axios";
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import PrivateRoute from "./PricvetRoute";
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {
-  const token = localStorage.getItem('token');
-  config.headers.Authorization = token ? `Bearer ${token}` : '';
+  const token = localStorage.getItem("token");
+  config.headers.Authorization = token ? `Bearer ${token}` : "";
   return config;
 });
+
+const isAdmin = localStorage.getItem("isAdmin");
 
 function App() {
   return (
     <>
-
       <BrowserRouter>
-        <Route path="/signup"><SignUp /></Route>
-        <Route path="/signin"><SignIn></SignIn> </Route>
-        <Route path="/logout"><LogOut></LogOut></Route>
-        <Route path="/restpass"><RestPass></RestPass></Route>
-        <Route path="/setpass"><NewPass></NewPass></Route>
+        <Route path="/signup">
+          <SignUp />
+        </Route>
+        <Route path="/signin">
+          <SignIn></SignIn>{" "}
+        </Route>
+        <Route path="/logout">
+          <LogOut></LogOut>
+        </Route>
+        <Route path="/restpass">
+          <RestPass></RestPass>
+        </Route>
+        <Route path="/setpass">
+          <NewPass></NewPass>
+        </Route>
         <Route component={Home} path="/" exact />
-        <Route path="/shop"><HeadShop></HeadShop></Route>
-        <Route path="/cart"> <Cart></Cart></Route>
-        <Route path="/wishlist"><Wishlist></Wishlist></Route>
-        <Route path="/orderhistory"><OrderHistory></OrderHistory> </Route>
-        <Route path="/checkout"><CheckOut></CheckOut></Route>
-        <Route path="/profile"> <Profile></Profile></Route>
-        <Route path="/aboutus"><AboutUs></AboutUs></Route>
-        <Route path="/contact"><Contact></Contact></Route>
-        <Route path='/productdetails'><ProductDetail></ProductDetail></Route>
-        <div className="d-flex" >
-          <Route path="/myaccount"><MyAccount></MyAccount> </Route>
-          <Route path="/dashboard"><Dashboard></Dashboard></Route>
-          <Route path="/devices"><MyDevices></MyDevices></Route>
-          <Route path="/customers"> <Customer></Customer></Route>
-          <Route path="/orders"> <Orders></Orders> </Route>
-          <Route path="/products"><AdminProducts></AdminProducts></Route>
-          <Route path="/setting"><Setting></Setting></Route>
-          <Route path="/mailbox"> <MailBox></MailBox> </Route>
-          <Route path="/notification"><Notification></Notification> </Route>
+        <Route path="/shop">
+          <HeadShop></HeadShop>
+        </Route>
+        <Route path="/cart">
+          {" "}
+          <Cart></Cart>
+        </Route>
+        <Route path="/wishlist">
+          <Wishlist></Wishlist>
+        </Route>
+        <Route path="/orderhistory">
+          <OrderHistory></OrderHistory>{" "}
+        </Route>
+        <Route path="/checkout">
+          <CheckOut></CheckOut>
+        </Route>
+        <Route path="/profile">
+          {" "}
+          <Profile></Profile>
+        </Route>
+        <Route path="/aboutus">
+          <AboutUs></AboutUs>
+        </Route>
+        <Route path="/contact">
+          <Contact></Contact>
+        </Route>
+        <Route path="/productdetails">
+          <ProductDetail></ProductDetail>
+        </Route>
+        <div className="d-flex">
+          <Route path="/myaccount">
+            <MyAccount></MyAccount>{" "}
+          </Route>
+          <PrivateRoute
+            path="/dashboard"
+            component={Dashboard}
+            isAdmin={isAdmin === "true"}
+          />
+          <Route path="/devices">
+            <MyDevices></MyDevices>
+          </Route>
+          <Route path="/customers">
+            {" "}
+            <Customer></Customer>
+          </Route>
+          <Route path="/orders">
+            {" "}
+            <Orders></Orders>{" "}
+          </Route>
+          <Route path="/products">
+            <AdminProducts></AdminProducts>
+          </Route>
+          <Route path="/setting">
+            <Setting></Setting>
+          </Route>
+          <Route path="/mailbox">
+            {" "}
+            <MailBox></MailBox>{" "}
+          </Route>
+          <Route path="/notification">
+            <Notification></Notification>{" "}
+          </Route>
         </div>
         <ToastContainer position="top-right" theme="dark" />
       </BrowserRouter>

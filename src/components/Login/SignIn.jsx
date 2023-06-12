@@ -67,10 +67,13 @@ export default function SignIn() {
             const adminEmails = res.data.map(admin => admin.email);
             if (adminEmails.includes(email)) {
               // Redirect to the dashboard
+              localStorage.setItem('isAdmin', true);
+
               history.push("/dashboard");
             } else {
               // Redirect to the home page
               history.push("/");
+              localStorage.setItem('isAdmin', false);
             }
           })
           .catch(err => {

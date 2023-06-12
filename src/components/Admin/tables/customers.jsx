@@ -54,6 +54,7 @@ const Customer = () => {
     axiosInstance.get('user_api/userprofile/list')
       .then(res => {
         setDataSource(res.data);
+        console.log(res.data)
       })
       .catch(err => {
         console.log(err);
