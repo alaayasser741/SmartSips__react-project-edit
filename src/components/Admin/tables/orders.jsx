@@ -57,12 +57,10 @@ const Orders = () => {
   };
 
   useEffect(() => {
-    axiosInstance.get('order_api/all')
+    axiosInstance.get('/order_api/order/list/all')
       .then(res => {
-        
-        const data1 = [...res.data];
-        setDataSource(data1);
-
+        setDataSource(res.data);
+        console.log(res.data)
       })
       .catch(err => {
         console.log(err);
@@ -167,130 +165,128 @@ const Orders = () => {
                         </TableCell>
                       </TableRow>
                     </TableHead>
-                    {
-                    value.length > 0
-                        ? tableFilter.map((d, i) => {
-                          return (
-                            <TableRow key={i}>
-                              <TableCell className="tableCell">
-                                {d.id}
-                              </TableCell>
-                              <TableCell className="tableCell">
-                                {d.username}
-                              </TableCell>
-                              <TableCell className="tableCell">
-                                {d.address}
-                              </TableCell>
-                              {/* <TableCell className="tableCell">
-                                  {d.Product}
-                                </TableCell> */}
-                              <TableCell className="tableCell">
-                                {d.items[0]}
-                              </TableCell>
-                              <TableCell className="tableCell">
-                                {d.total_price}
-                              </TableCell>
-                              <TableCell className="tableCell">
-                                {d.order_date}
-                              </TableCell>order_date
-                              <TableCell className="tableCell">
-                                <button
-                                  style={{
-                                    outline: "none",
-                                    border: "none",
-                                    backgroundColor: "white",
-                                  }}
-                                >
-                                  <img
-                                    src={"./icons/invoice (1).png"}
-                                    className="dashphoto"
-                                    style={{ width: "28px" }}
-                                  />
-                                </button>
-                              </TableCell>
-                              <TableCell className={`status ${d.Status}`}>
-                                {" "}
-                                {d.Status}{" "}
-                              </TableCell>
-                              <TableCell className="tableCell">
-                                <i>
-                                  {" "}
-                                  <FaPen />{" "}
-                                </i>
-
-                                <i>
-                                  {" "}
-                                  <FaTrash onClick={() => {
-                                    handleDelete(d.id)
-                                  }} />{" "}
-                                </i>
-                              </TableCell>
-                            </TableRow>
-                          );
-                        })
-                        : records.map((d, i) => {
-                          return (
-                            <TableRow key={i}>
-                              <TableCell className="tableCell">
-                                {d.id}
-                              </TableCell>
-                              <TableCell className="tableCell">
-                                {d.username}
-                              </TableCell>
-                              <TableCell className="tableCell">
-                                {d.address}
-                              </TableCell>
-                              {/* <TableCell className="tableCell">
-                                  {d.Product}
-                                </TableCell> */}
-                              <TableCell className="tableCell">
-                                {d.items[0]}
-                              </TableCell>
-                              <TableCell className="tableCell">
-                                {d.total_price}
-                              </TableCell>
-                              <TableCell className="tableCell">
-                                {d.order_date}
-                              </TableCell>
-                              <TableCell className="tableCell">
-                                <button
-                                  style={{
-                                    outline: "none",
-                                    border: "none",
-                                    backgroundColor: "white",
-                                  }}
-                                  onClick={() => setOpenPopup(true)}
-                                >
-                                  <img
-                                    src={"./icons/invoice (1).png"}
-                                    className="dashphoto"
-                                    style={{ width: "28px" }}
-                                  />
-                                </button>
-                              </TableCell>
-                              <TableCell className={`status ${d.Status}`}>
-                                {" "}
-                                {d.Status}{" "}
-                              </TableCell>
-                              <TableCell className="tableCell">
-                                <i>
-                                  {" "}
-                                  <FaPen />{" "}
-                                </i>
-
-                                <i>
-                                  {" "}
-                                  <FaTrash onClick={() => {
-                                    handleDelete(d.id)
-                                  }} />{" "}
-                                </i>
-                              </TableCell>
-                            </TableRow>
-                          );
-                        })}
                     <TableBody>
-                      
-                      
+                      {
+                        value.length > 0
+                          ? tableFilter.map(({address,id,username,order_date,total_price,items,amount}) => {
+                            return (
+                              <TableRow key={id}>
+                                <TableCell className="tableCell">
+                                  {id}
+                                </TableCell>
+                                <TableCell className="tableCell">
+                                  {username}
+                                </TableCell>
+                                <TableCell className="tableCell">
+                                  {address}
+                                </TableCell>
+                                {/* <TableCell className="tableCell">
+                                  {d.Product}
+                                </TableCell> */}
+                                <TableCell className="tableCell">
+                                  {amount}
+                                </TableCell>
+                                <TableCell className="tableCell">
+                                  {total_price}
+                                </TableCell>
+                                <TableCell className="tableCell">
+                                  {order_date}
+                                </TableCell>order_date
+                                <TableCell className="tableCell">
+                                  <button
+                                    style={{
+                                      outline: "none",
+                                      border: "none",
+                                      backgroundColor: "white",
+                                    }}
+                                  >
+                                    <img
+                                      src={"./icons/invoice (1).png"}
+                                      className="dashphoto"
+                                      style={{ width: "28px" }}
+                                    />
+                                  </button>
+                                </TableCell>
+                                <TableCell className={`status ${'d.Status'}`}>
+                                  {" "}
+                                  {'d.Status'}{" "}
+                                </TableCell>
+                                <TableCell className="tableCell">
+                                  <i>
+                                    {" "}
+                                    <FaPen />{" "}
+                                  </i>
+
+                                  <i>
+                                    {" "}
+                                    <FaTrash onClick={() => {
+                                      handleDelete(id)
+                                    }} />{" "}
+                                  </i>
+                                </TableCell>
+                              </TableRow>
+                            );
+                          })
+                          : records.map(({address,id,username,order_date,total_price,items,amount}) => {
+                            return (
+                              <TableRow key={id}>
+                                <TableCell className="tableCell">
+                                  {id}
+                                </TableCell>
+                                <TableCell className="tableCell">
+                                  {username}
+                                </TableCell>
+                                <TableCell className="tableCell">
+                                  {address}
+                                </TableCell>
+                                {/* <TableCell className="tableCell">
+                                  {Product}
+                                </TableCell> */}
+                                <TableCell className="tableCell">
+                                  {amount}
+                                </TableCell>
+                                <TableCell className="tableCell">
+                                  {total_price}
+                                </TableCell>
+                                <TableCell className="tableCell">
+                                  {order_date}
+                                </TableCell>
+                                <TableCell className="tableCell">
+                                  <button
+                                    style={{
+                                      outline: "none",
+                                      border: "none",
+                                      backgroundColor: "white",
+                                    }}
+                                    onClick={() => setOpenPopup(true)}
+                                  >
+                                    <img
+                                      src={"./icons/invoice (1).png"}
+                                      className="dashphoto"
+                                      style={{ width: "28px" }}
+                                    />
+                                  </button>
+                                </TableCell>
+                                <TableCell className={`status ${'Status'}`}>
+                                  {" "}
+                                  {'Status'}{" "}
+                                </TableCell>
+                                <TableCell className="tableCell">
+                                  <i>
+                                    {" "}
+                                    <FaPen />{" "}
+                                  </i>
+
+                                  <i>
+                                    {" "}
+                                    <FaTrash onClick={() => {
+                                      handleDelete(id)
+                                    }} />{" "}
+                                  </i>
+                                </TableCell>
+                              </TableRow>
+                            );
+                          })}
                     </TableBody>
                   </Table>
                 </TableContainer>
