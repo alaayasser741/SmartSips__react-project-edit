@@ -14,6 +14,7 @@ const Wishlist = () => {
   const [openPopup, setOpenPopup] = useState(false);
   const [wishlistUpdate, setWishlistUpdate] = useState(false);
   const userId = localStorage.getItem('userId');
+  const cartId = localStorage.getItem('cart_id');
 
   useEffect(() => {
     axiosInstance.get('/products_api/product/all')
@@ -46,7 +47,39 @@ const Wishlist = () => {
         console.log(err);
       });
   }, [wishlistUpdate]);
-
+  const handleCart = (p_id) => {
+    if (cartId) {
+      axiosInstance.post(`order_api/item/create`,
+        {
+          "product": p_id,
+          "qnt": 1,
+          "cart": cartId
+        }
+      )
+        .then(res => {
+          console.log(res, 'updated cart')
+          setOpenPopup(true)
+        })
+        .catch(err => console.log(err, 'updated cart'))
+    }
+    else {
+      axiosInstance.post('/order_api/cart/create', {
+        "user": userId,
+        "items": [
+          {
+            "product": p_id,
+            "qnt": 1
+          }
+        ]
+      })
+        .then(res => {
+          console.log(res, 'created cart')
+          localStorage.setItem('cart_id', res.data.id)
+          setOpenPopup(true)
+        })
+        .catch(err => console.log(err, 'created cart'))
+    }
+  }
   const deleteProductFromWishlist = (prodID) => {
     const authToken = localStorage.getItem('token'); // Retrieve the authentication token from storage
 
@@ -114,7 +147,7 @@ const Wishlist = () => {
 
                   </div>
                   <div className="col-md-2 mt-3 butadd">
-                    <button className="butAdd" onClick={() => setOpenPopup(true)}>ADD TO CART</button>
+                    <button className="butAdd" onClick={() => handleCart(prod.id)}>ADD TO CART</button>
                     {/* <Link to="/cart"><button className="butAdd" >ADD TO CART</button></Link> */}
                   </div>
                   <div className="col-md-2 ">
