@@ -112,12 +112,10 @@ const ProductDetail = () => {
                 <div className="container product_detail_section_right_buttons">
                     <div className="row product_detail_section_right_buttons_space">
                     <div className="col-5 mt-3 ">
-                    {/* <Link to="/cart"><button className="butAdd">ADD TO CARD</button></Link> */}
-                    <button className="butAdd" onClick={() => setOpenPopup1(true)}>ADD TO CARD</button>
+                    <button aria-label="Add to cart" className="butAdd" onClick={() => setOpenPopup1(true)}>ADD TO CARD</button>
                     </div>
                     <div className="col-5 mt-3 ">
-                    {/* <Link to="/wishlist"><button className="butAdd " >ADD TO Wishlist</button></Link> */}
-                    <button className="butAdd " onClick={() => setOpenPopup2(true)}>ADD TO Wishlist</button>
+                    <button aria-label="Add to wishlist" className="butAdd " onClick={() => setOpenPopup2(true)}>ADD TO Wishlist</button>
                     </div>
                     </div>
                 </div>

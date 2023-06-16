@@ -34,7 +34,7 @@ const Setting = () => {
                         <label className="lapelcolor mb-1">Phone Number </label>
                         <input type="text" placeholder="123 671 889" />
                         <div className="abutparaa">
-                          <button className="buttonform">Update</button>
+                          <button aria-label="Update button" className="buttonform">Update</button>
                         </div>
                       </form>
                     </div>

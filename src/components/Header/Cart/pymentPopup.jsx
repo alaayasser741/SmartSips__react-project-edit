@@ -10,8 +10,9 @@ export default function Popup(props) {
         <DialogTitle>
           <div style={{ textAlign: "center", height: "60px" }}>
             {" "}
-            <img src="./icons/Smart Sips.png" style={{ width: "180px" }} />
+            <img src="./icons/SmartSips.png" style={{ width: "180px" }} />
             <button
+              aria-label="close popup"
               className="invoiceClose"
               onClick={() => {
                 setOpenPopup(false);
@@ -25,9 +26,9 @@ export default function Popup(props) {
           <div className="container invoice-content order-details">
             <div className="invoice-content-header">
               <div className="invoice-img">
-                <img src="./icons/correct.jpg" alt="" />
+                <img src="./icons/correct.jpg" alt="img" />
                 <h5>Payment Received</h5>
-                <p style={{marginTop:"-5px"}}>Hi Ahmed, Thank You For Your Order</p>
+                <p style={{ marginTop: "-5px" }}>Hi Ahmed, Thank You For Your Order</p>
                 <hr />
               </div>
               <div className="container upTablee ">
@@ -59,7 +60,7 @@ export default function Popup(props) {
             {/* up content */}
           </div>
           <div className="ok-btn-invoice">
-            <button className="btn">OK</button>
+            <button aria-label="close popup" className="btn">OK</button>
           </div>
         </DialogContent>
       </Dialog>

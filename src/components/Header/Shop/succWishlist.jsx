@@ -8,21 +8,21 @@ export default function Popup(props) {
   return (
     <>
       <Dialog open={openPopup}>
-        
+
         <DialogContent  >
-        <div >
+          <div >
             <div className="invoice-content-header sucsscart">
               <div className="invoice-img">
-                <img src="./icons/correct.jpg" alt="" />
+                <img src="./icons/correct.jpg" alt="img" />
                 <h5>Successfully Added</h5>
                 <p>Item Added Successfully To Your Wishlist</p>
               </div>
-              </div>
-              </div>
+            </div>
+          </div>
           <div className="ok-btn-invoice">
-            <button className="btn" onClick={() => {
-                setOpenPopup(false);
-              }}>OK</button>
+            <button aria-label="close popup" className="btn" onClick={() => {
+              setOpenPopup(false);
+            }}>OK</button>
           </div>
         </DialogContent>
       </Dialog>

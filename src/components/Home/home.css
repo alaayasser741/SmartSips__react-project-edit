@@ -309,7 +309,6 @@ font-weight: bold;
     }
     .download-image img{
        width: 350px;
-       height: 390px;
     }
     @media (min-width:992px) {
         .download-image img{

@@ -97,7 +97,6 @@ const ProductsAdmin = () => {
       setValue(inputValue);
       setTableFilter([...dataSource]);
     }
-    console.log(tableFilter)
   };
 
 
@@ -143,10 +142,10 @@ const ProductsAdmin = () => {
                 <div className="row">
                   <div className="col-lg-5 col-sm-12 entites">
                     {/* <div className="addproduct"> */}
-                    <button className="addproduct" onClick={() => setOpenPopup(true)}>
+                    <button aria-label="open popup" className="addproduct" onClick={() => setOpenPopup(true)}>
                       <img
                         src={"./icons/product (1) (1).png"}
-                        alt=""
+                        alt="img"
                         className="dashphoto"
                       />
                       Add

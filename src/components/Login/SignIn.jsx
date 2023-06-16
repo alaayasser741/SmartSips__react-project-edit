@@ -108,7 +108,6 @@ export default function SignIn() {
     // Handle Google sign-in response here
     setIdToken(response.credential);
     var userObject = jwt_decode(response.credential);
-    console.log(response)
     setEmail(userObject.email)
     setUserName(userObject.given_name)
   };
@@ -174,7 +173,7 @@ export default function SignIn() {
             <h1 className="headh12">Welcome Back !</h1>
             <img
               className="backimg"
-              src="./images/sign in.png "
+              src="./images/signin.png "
               alt="Sign Up"
             />
           </section>
@@ -218,7 +217,7 @@ export default function SignIn() {
             <p className="haveacc">
               <Link to="/restpass">Forget Your Password?</Link>
             </p>
-            <button className="sinbttn" type="submit" onClick={handleSubmit}>
+            <button aria-label="submit the form" className="sinbttn" type="submit" onClick={handleSubmit}>
               SIGN IN
             </button>
             <p className="haveacc">Or social media</p>

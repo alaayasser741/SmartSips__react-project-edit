@@ -12,7 +12,7 @@ const Sidebar = () => {
         <div className="logoandlink">
           <Link to="/dashboard" className="smart-linkk">
             <img
-              src={"./images/smart sips logo (1).png"}
+              src={"./images/smartSipsLogo.png"}
               className="photologo"
               style={{ marginLeft: "-3px" }}
             />
@@ -20,7 +20,7 @@ const Sidebar = () => {
             <span className="nav-link-name mt-2">Smart Sips</span>
           </Link>
         </div>
-        {/* <img src={"./images/smart sips logo (1).png"} className="photologo" style={{marginLeft:"-160px",position:"fixed"}}/> */}
+        {/* <img src={"./images/smartSipsLogo.png"} className="photologo" style={{marginLeft:"-160px",position:"fixed"}}/> */}
         <div
           className="header-toggle"
           onClick={() => setShow(!show)}
@@ -56,7 +56,7 @@ const Sidebar = () => {
                       <li>
                         <img
                           src={"./icons/Ellipse 13.png"}
-                          alt=""
+                          alt="img"
                           className="notifphoto"
                         />
                         <span className="ms-1 spanpara">
@@ -67,7 +67,7 @@ const Sidebar = () => {
                       <li>
                         <img
                           src={"./icons/Intersect-1.png"}
-                          alt=""
+                          alt="img"
                           className="notifphoto"
                         />
                         <span className="ms-1 spanpara">
@@ -78,7 +78,7 @@ const Sidebar = () => {
                       <li>
                         <img
                           src={"./icons/Intersect.png"}
-                          alt=""
+                          alt="img"
                           className="notifphoto"
                         />
                         <span className="ms-1 spanpara">
@@ -104,7 +104,7 @@ const Sidebar = () => {
                 <div className="links">
                   <img
                     src={"./icons/Ellipse 13.png"}
-                    alt=""
+                    alt="img"
                     className="imgnav"
                   />
 
@@ -134,13 +134,10 @@ const Sidebar = () => {
       <aside className={`sidebar ${show ? "show" : null}`}>
         <nav className="nav">
           <div>
-            {/* <Link to='/' className='nav-logo'>
-              <i className={`fas fa-home-alt nav-logo-icon`}></i>
-              <img src={"./images/large size logo.png"} alt="our logo" className="smartlogo"/>
-            </Link> */}
+
             <Link to="/dashboard" className="nav-linkk">
               <img
-                src={"./images/smart sips logo (1).png"}
+                src={"./images/smartSipsLogo.png"}
                 className="photologo"
                 style={{ marginLeft: "-3px" }}
               />

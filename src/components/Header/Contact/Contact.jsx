@@ -29,7 +29,7 @@ const Contact = () => {
                 <label>Your Message</label>
                 <textarea placeholder="Enter Your Message" />
 
-                <button className="btn">SEND</button>
+                <button aria-label="submit the form" className="btn">SEND</button>
               </div>{" "}
               {/** end of contact-information */}
               <div className="col-lg-4 col-md-12 contact-getInTouch">

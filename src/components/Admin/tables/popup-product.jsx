@@ -79,7 +79,6 @@ export default function Popup(props) {
         setStock(0);
         setShowUploadForm(1)
         setProdID(response.data.id);
-        console.log(response)
       } catch (error) {
         console.error(error);
         toast.error("add failed")
@@ -97,19 +96,20 @@ export default function Popup(props) {
             <div style={{ float: "left", margin: "10px", color: " #0b69bb" }}>
               <img
                 src={"./icons/product.png"}
-                alt=""
+                alt="img"
                 className="dashphoto"
                 style={{ width: "30px", height: "30px" }}
               />
               &nbsp;&nbsp; Add Product
             </div>
             <button
+            aria-label="close button"
               className="invoiceClose"
               onClick={() => {
                 setOpenPopup(false);
               }}
             >
-              <img src="./icons/cross.png" alt="" />
+              <img src="./icons/cross.png" alt="img" />
             </button>
           </div>
         </DialogTitle>
@@ -130,7 +130,7 @@ export default function Popup(props) {
                     />
                     <p>تصفح ملفاتك</p>
                   </form>
-                  <button className="image-btn" onClick={handleUploadSubmit}>Save</button>
+                  <button aria-label="submit the form" className="image-btn" onClick={handleUploadSubmit}>Save</button>
                 </div> : <div>
                   <div className="form-group">
                     <label for="product-name">Product Name</label>
@@ -196,10 +196,10 @@ export default function Popup(props) {
                   </div>
 
                   <div className="ok-btn-invoice">
-                    <button onClick={handleSubmit} className="btn">
+                    <button aria-label="submit the form" onClick={handleSubmit} className="btn">
                       <img
                         src={"./icons/product (1) (1).png"}
-                        alt=""
+                        alt="img"
                         className="dashphoto"
                       />
                       &nbsp; Add

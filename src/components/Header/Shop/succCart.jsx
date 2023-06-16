@@ -12,7 +12,7 @@ export default function Popup(props) {
           <div>
             <div className="invoice-content-header sucsscart">
               <div className="invoice-img">
-                <img src="./icons/correct.jpg" alt="" />
+                <img src="./icons/correct.jpg" alt="img" />
                 <h5>Successfully Added</h5>
                 <p>Item Added Successfully To Your Cart</p>
               </div>
@@ -20,6 +20,7 @@ export default function Popup(props) {
           </div>
           <div className="ok-btn-invoice">
             <button
+              aria-label="close popup"
               className="btn"
               onClick={() => {
                 setOpenPopup(false);

@@ -23,21 +23,20 @@ export default function Popup(props) {
       axiosInstance.get(`/order_api/cart/all/${userId}`).then((res) => {
         setOrderInfo(res.data)
         setOrderData(res.data[0].items)
-        console.log(res.data)
       }).catch((err) => {
         console.log(err)
       })
     }
   }, [openPopup])
-console.log(orderInfo)
   return (
     <>
       <Dialog open={openPopup}>
         <DialogTitle>
           <div style={{ textAlign: "center", height: "60px" }}>
             {" "}
-            <img src="./icons/Smart Sips.png" style={{ width: "180px" }} />
+            <img src="./icons/SmartSips.png" style={{ width: "180px" }} />
             <button
+              aria-label="submit the form"
               className="invoiceClose"
               onClick={() => {
                 setOpenPopup(false);
@@ -163,7 +162,7 @@ console.log(orderInfo)
 
           </div>
           <div className="ok-btn-invoice">
-            <button className="btn">OK</button>
+            <button aria-label="close popup" className="btn">OK</button>
           </div>
 
         </DialogContent>

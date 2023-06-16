@@ -21,7 +21,7 @@ const NewPass = () => {
             </h1>
             <img
               className="backimg"
-              src="./images/sign up.png "
+              src="./images/signup.png "
               alt="Sign Up"
             />
           </section>
@@ -46,7 +46,7 @@ const NewPass = () => {
               />
             </div>
            
-            <button className="sinbttn" type="submit">
+            <button aria-label="submit the form" className="sinbttn" type="submit">
               Set Password
             </button>
             

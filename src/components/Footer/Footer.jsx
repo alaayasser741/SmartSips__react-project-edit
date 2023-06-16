@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import {FaInstagram, FaTwitter , FaFacebookF} from 'react-icons/fa';
+import { FaInstagram, FaTwitter, FaFacebookF } from 'react-icons/fa';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="row">
             <div className="box ftr col-lg-4 col-md-3 col-6 divimg  ">
               <div className="imagfooter">
-                <img className="" src="./images/Smart Sips.png " width="44%" />
+                <img className="" src="./images/SmartSips.png" alt="logo" width="44%" />
                 <p className="footerpara">
                   Check Your Water To Get Cood
                   <br />

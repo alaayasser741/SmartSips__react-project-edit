@@ -47,7 +47,6 @@ const Profile = () => {
 
       } catch (error) {
         console.log(error);
-        console.log('failed to get user')
       }
     };
     fetchUserProfiles();
@@ -62,7 +61,6 @@ const Profile = () => {
 
       } catch (error) {
         console.log(error);
-        console.log('failed to get user')
       }
     };
     fetchUserImage();
@@ -102,7 +100,6 @@ const Profile = () => {
           requestData.country = country;
         }
         const res = await axiosInstance.put(`/user_api/${userId}/userprofile/update`, requestData);
-        console.log(res)
         toast.success('Updated user profile successfully updated');
 
       } catch (error) {
@@ -128,9 +125,7 @@ const Profile = () => {
       try {
         const formData = new FormData();
         formData.append('profile_photo', file);
-        console.log(file)
         const res = await axiosInstance.patch(`/imageupload/${userId}/imageupload/${userId}/`, formData);
-        console.log(res);
         // toast.success('Updated user profile successfully updated');
       } catch (error) {
         console.log(error);
@@ -191,7 +186,7 @@ const Profile = () => {
           </div>
         </div>
         <div className="abutpara">
-          <button className="buttonform" onClick={handleSubmit}>Save</button>
+          <button aria-label="submit the form" className="buttonform" onClick={handleSubmit}>Save</button>
         </div>
 
       </div>

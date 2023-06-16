@@ -41,7 +41,6 @@ const ProductItem = (props) => {
       "user_wishlist": userId
     })
       .then(res => {
-        console.log(res)
         setOpenPopup2(true)
       })
       .catch(err => console.log(err))
@@ -56,7 +55,6 @@ const ProductItem = (props) => {
         }
       )
         .then(res => {
-          console.log(res,'updated cart')
           setOpenPopup1(true)
         })
         .catch(err => console.log(err,'updated cart'))
@@ -72,7 +70,6 @@ const ProductItem = (props) => {
         ]
       })
         .then(res => {
-          console.log(res,'created cart')
           localStorage.setItem('cart_id', res.data.id)
           setOpenPopup1(true)
         })

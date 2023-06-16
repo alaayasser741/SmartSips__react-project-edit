@@ -40,8 +40,8 @@ class NavBar extends Component {
     return (<>
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid navpos">
-          <img src={"./icons/Smart Sips.png"} alt="our logo" className="logoImg" />
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <img src={"./icons/SmartSips.png"} alt="our logo" className="logoImg" />
+          <button aria-label="button toggler" className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse " id="navbarSupportedContent">
@@ -84,7 +84,7 @@ class NavBar extends Component {
 
 
               <li className="nav-item nav-icon lastNavIcon" style={{ marginRight: "20px", marginTop: "2px" }}>
-                <button style={{ background: "transparent", border: "none", color: "#0B69BB" }} className="nav-link" href="#/" onClick={this.handleUserLogin.bind(this)}><FaRegUser /></button>
+                <button aria-label="button toggler" style={{ background: "transparent", border: "none", color: "#0B69BB" }} className="nav-link" href="#/" onClick={this.handleUserLogin.bind(this)}><FaRegUser /></button>
                 {
                   this.state.layout && (
                     <div className="userLoggedInWrapper">

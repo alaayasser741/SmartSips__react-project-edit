@@ -23,7 +23,6 @@ const Wishlist = () => {
         axiosInstance.get(`/products_api/wishlist/list/${userId}`)
           .then(wishlistRes => {
             const wishlist = wishlistRes.data;
-            console.log(wishlist)
             const productIdsInWishlist = wishlist.map(item => item.product[0]);
             const productsInWishlist = allProducts.filter(product => productIdsInWishlist.includes(product.id));
 
@@ -57,7 +56,6 @@ const Wishlist = () => {
         }
       )
         .then(res => {
-          console.log(res, 'updated cart')
           setOpenPopup(true)
         })
         .catch(err => console.log(err, 'updated cart'))
@@ -73,7 +71,6 @@ const Wishlist = () => {
         ]
       })
         .then(res => {
-          console.log(res, 'created cart')
           localStorage.setItem('cart_id', res.data.id)
           setOpenPopup(true)
         })
@@ -147,11 +144,11 @@ const Wishlist = () => {
 
                   </div>
                   <div className="col-md-2 mt-3 butadd">
-                    <button className="butAdd" onClick={() => handleCart(prod.id)}>ADD TO CART</button>
+                    <button aria-label="Add to cart" className="butAdd" onClick={() => handleCart(prod.id)}>ADD TO CART</button>
                     {/* <Link to="/cart"><button className="butAdd" >ADD TO CART</button></Link> */}
                   </div>
                   <div className="col-md-2 ">
-                    <button className="cart-eliminatee wishdel" onClick={() => deleteProductFromWishlist(prod.id_wishlist)}>X</button>
+                    <button aria-label="delete from cart" className="cart-eliminatee wishdel" onClick={() => deleteProductFromWishlist(prod.id_wishlist)}>X</button>
                   </div>
                 </div>
               </div>

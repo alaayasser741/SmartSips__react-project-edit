@@ -99,7 +99,7 @@ const CheckOut = () => {
                 </select>
               </div>
               <div className="col-12 mt-5">
-                <button type="button" className="btn border-primary Billing_Back_button"><a href='#/'>BACK</a></button>
+                <button aria-label="back" type="button" className="btn border-primary Billing_Back_button"><a href='#/'>BACK</a></button>
               </div>
             </form>
           </div>
@@ -158,7 +158,7 @@ const CheckOut = () => {
                 <input type="text" className="form-control h-50" id="inputHolderName" placeholder="468" />
               </div>
               <div className="col-12 Continue_Button_Container">
-                <button type="button" className="btn border-primary Billing_Continue_button" onClick={() => setOpenPopup(true)}><a href='#/'>CONTINUE</a></button>
+                <button aria-label="Continue" type="button" className="btn border-primary Billing_Continue_button" onClick={() => setOpenPopup(true)}><a href='#/'>CONTINUE</a></button>
               </div>
             </form>
 

@@ -173,7 +173,7 @@ const Customer = () => {
                           return (
                             <TableRow key={i}>
                               <TableCell className="tableCell">
-                                <img src={d.profile_photo} alt="" />
+                                <img src={d.profile_photo} alt="img" />
                               </TableCell>
                               <TableCell className="tableCell">
                                 {d.username}
@@ -215,7 +215,7 @@ const Customer = () => {
                           return (
                             <TableRow key={i}>
                               <TableCell className="tableCell">
-                                <img src={d.profile_photo} alt="" />
+                                <img src={d.profile_photo} alt="img" />
                               </TableCell>
                               <TableCell className="tableCell">
                                 {d.username}

@@ -1,9 +1,11 @@
 p {
   font-family: Arial;
 }
+
 .big-contact-section {
   margin-bottom: 80px;
 }
+
 .head-contact {
   background-image: url(../../../../public/images/pexels-tyler-lastovich-590178.png);
   background-position: center;
@@ -16,6 +18,7 @@ p {
   margin-bottom: 80px;
   position: relative;
 }
+
 .head-contact h1 {
   color: white;
   position: absolute;
@@ -23,13 +26,16 @@ p {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .contact-section {
   box-shadow: 2px 2px 10px rgb(171, 168, 168);
   border-radius: 10px;
 }
+
 .contact-information {
   margin: 50px 20px;
 }
+
 .contact-information label {
   font-family: Arial;
   font-size: 15.5px;
@@ -38,6 +44,7 @@ p {
   display: block;
   color: rgb(78, 77, 77);
 }
+
 .contact-information input,
 .contact-information textarea {
   margin-bottom: 23px;
@@ -47,28 +54,34 @@ p {
   outline: none;
   padding: 4px;
 }
+
 .contact-information input::placeholder,
 .contact-information textarea::placeholder {
   font-size: 13px;
   padding-left: 7px;
 }
+
 .contact-information textarea::placeholder {
   padding-top: 8px;
 }
+
 .contact-information textarea {
   resize: none;
   height: 150px;
 }
+
 .contact-information button {
   background-color: #0b69bb;
   color: white;
   outline: none;
   width: 140px;
 }
+
 .contact-information button:hover {
   background-color: #0396a6;
   color: white;
 }
+
 .contact-getInTouch {
   box-shadow: 1px 2px 10px rgb(206, 204, 204);
   border-radius: 10px;
@@ -78,22 +91,26 @@ p {
   height: 300px;
   width: 310px;
 }
+
 .contact-getInTouch h5 {
   color: #0b69bb;
   font-family: Arial;
   margin-left: 40px;
 }
+
 .contact-getInTouch h6 {
   line-height: 1em;
   font-family: Arial;
   color: rgb(78, 77, 77);
 }
+
 .contact-getInTouch p {
   font-size: 14px;
   font-weight: 500;
   color: rgb(92, 91, 91);
   margin-left: 40px;
 }
+
 .contact-getInTouch i {
   display: inline;
   color: white;
@@ -105,27 +122,32 @@ p {
   margin-right: 15px;
   margin-top: -5px;
 }
+
 @media (max-width: 1199px) {
-  .contact-getInTouch{
+  .contact-getInTouch {
     margin-left: 240px;
   }
 }
+
 @media (max-width: 1199px) {
-  .contact-getInTouch{
+  .contact-getInTouch {
     margin-left: 200px;
     margin-bottom: 60px;
   }
-  .contact-section{
+
+  .contact-section {
     padding-right: 55px;
   }
 }
+
 @media (max-width: 767px) {
-  .contact-getInTouch{
+  .contact-getInTouch {
     margin-left: 110px;
   }
 }
+
 @media (max-width: 550px) {
-  .contact-getInTouch{
+  .contact-getInTouch {
     margin-left: 80px;
   }
 }

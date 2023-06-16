@@ -29,7 +29,6 @@ const Cart = () => {
   const deleteCart = (cart_Id) => {
      
     if(cart_Id == cartId){
-      console.log('Cart id delete')
       localStorage.removeItem('cart_id');
     }else{
       console.log("not cart_id")
@@ -47,8 +46,6 @@ const Cart = () => {
       })
       .catch((err) => {
         toast.error('Failed to delete Cart')
-
-        console.log('Error deleting item:', err);
       });
   };
   const deleteCartItem = (itemId) => {
@@ -65,8 +62,6 @@ const Cart = () => {
       })
       .catch((err) => {
         toast.error('Failed to delete product')
-
-        console.log('Error deleting item:', err);
       });
   };
   const updateCartQty = (itemId, productId, updatedQuantity) => {
@@ -79,7 +74,6 @@ const Cart = () => {
       })
       .catch((err) => {
         toast.error('Failed to update product');
-        console.log('Error updating item:', err);
       });
   };
 
@@ -128,16 +122,16 @@ const Cart = () => {
                           </div>
                           <div className="col-md-2 cart-count ">
                             <div className="m-auto ">
-                              <button onClick={() => { qtyCountAdd(id, product.id, qnt) }}>+</button>
+                              <button aria-label="increase" onClick={() => { qtyCountAdd(id, product.id, qnt) }}>+</button>
                               <h4 className="count-h4">{qnt}</h4>
-                              <button className='mins' onClick={() => { qtyCountMins(id, product.id, qnt) }}>-</button>
+                              <button aria-label="decrease" className='mins' onClick={() => { qtyCountMins(id, product.id, qnt) }}>-</button>
                             </div>
                           </div>
                           <div className="col-md-2">
                             <h4 className="norm-h4">{priceqnt}$</h4>
                           </div>
                           <div className="col-md-2">
-                            <button className="cart-eliminate" onClick={() => { deleteCartItem(id) }}>X</button>
+                            <button aria-label="delete item" className="cart-eliminate" onClick={() => { deleteCartItem(id) }}>X</button>
                           </div>
 
                         </div>

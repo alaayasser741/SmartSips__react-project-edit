@@ -17,7 +17,6 @@ const OrderHistory = () => {
   useEffect(() => {
     axiosInstance.get(`/order_api/order/history/${userId}`).then((res) => {
       setOrderData(res.data[0].items)
-      console.log(res.data[0].items)
     }).catch((err) => {
       console.log(err)
     })
@@ -62,8 +61,8 @@ const OrderHistory = () => {
                           </div>
                         </div>
                         <div className="col-md-12 col-lg-3 order-btn">
-                          <button className="btn" onClick={() => { setOpenPopup1(true); setOrderId(id) }}>View Order Details</button>
-                          <button className="btn" onClick={() => setOpenPopup2(true)}>Get Invoice</button>
+                          <button aria-label="view order" className="btn" onClick={() => { setOpenPopup1(true); setOrderId(id) }}>View Order Details</button>
+                          <button aria-label="get invoice" className="btn" onClick={() => setOpenPopup2(true)}>Get Invoice</button>
                         </div>
                       </div>
                     </div>

@@ -18,7 +18,6 @@ export default function PopupOrder(props) {
   const [items, setItems] = useState([])
   useEffect(() => {
     const items = dataItems
-    console.log(items, 'items')
     setItems(items);
   }, [openPopup])
   return (
@@ -27,8 +26,9 @@ export default function PopupOrder(props) {
         <DialogTitle>
           <div style={{ textAlign: "center", height: "60px" }}>
             {" "}
-            <img src="./icons/Smart Sips.png" style={{ width: "180px" }} />
+            <img src="./icons/SmartSips.png" style={{ width: "180px" }} />
             <button
+              aria-label="invoiceClose"
               className="invoiceClose"
               onClick={() => {
                 setOpenPopup(false);
@@ -156,7 +156,7 @@ export default function PopupOrder(props) {
 
           </div>
           <div className="ok-btn-invoice">
-            <button className="btn" onClick={() => {
+            <button aria-label="submit the form" className="btn" onClick={() => {
               setOpenPopup(false)
             }}>OK</button>
           </div>

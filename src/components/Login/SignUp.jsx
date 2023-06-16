@@ -97,7 +97,6 @@ export default function SignUp() {
     // Handle Google sign-in response here
     setIdToken(response.credential);
     var userObject = jwt_decode(response.credential);
-    console.log(userObject)
   };
 
   useEffect(() => {
@@ -146,7 +145,7 @@ export default function SignUp() {
             </h1>
             <img
               className="backimg"
-              src="./images/sign up.png "
+              src="./images/signup.png"
               alt="Sign Up"
             />
           </section>
@@ -209,7 +208,7 @@ export default function SignUp() {
                 {showPassword2 ? <FaRegEyeSlash /> : <FaRegEye />}
               </i>
             </div>
-            <button className="sinbttn" type="submit" onClick={handleSubmit}>
+            <button aria-label="submit the form" className="sinbttn" type="submit" onClick={handleSubmit}>
               SIGN UP
             </button>
             <p className="haveacc">Or social media</p>

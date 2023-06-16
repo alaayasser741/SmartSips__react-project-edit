@@ -193,6 +193,7 @@ const Orders = () => {
                                 </TableCell>order_date
                                 <TableCell className="tableCell">
                                   <button
+                                  aria-label="button"
                                     style={{
                                       outline: "none",
                                       border: "none",
@@ -252,6 +253,7 @@ const Orders = () => {
                                 </TableCell>
                                 <TableCell className="tableCell">
                                   <button
+                                  aria-label="button"
                                     style={{
                                       outline: "none",
                                       border: "none",

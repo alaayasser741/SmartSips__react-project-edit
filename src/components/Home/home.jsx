@@ -34,7 +34,7 @@ class Home extends Component {
                   Let's Buy Smart Sips And Download Our Remote <br></br>{" "}
                   Monitoring App.
                 </p>
-                <button type="button" className="btn header_button">
+                <button aria-label="More" type="button" className="btn header_button">
                   <a href="#/">More</a>
                 </button>
               </div>
@@ -191,7 +191,7 @@ class Home extends Component {
                   </p>
                 </div>
                 <div className="row">
-                  <button className="col-lg-6">
+                  <button aria-label="singIn with google" className="col-lg-6">
                     <div>
                       <i>
                         <FaGooglePlay />
@@ -199,7 +199,7 @@ class Home extends Component {
                       <p>Play Store</p>
                     </div>
                   </button>
-                  <button className="col-lg-6">
+                  <button aria-label="SignIn with facebook" className="col-lg-6">
                     <div>
                       <i>
                         {/* <img src={appStore} /> */}
@@ -213,7 +213,7 @@ class Home extends Component {
               {/** End of explain */}
               <div className="col-lg-6 col-sm-12 download-image">
                 {/* <img src={downloadApp}/>   */}
-                <img src="./images/download app.png" alt="Download" />
+                <img src="./images/downloadapp.png" alt="Download" />
               </div>{" "}
               {/** End of download image */}
             </div>
@@ -251,10 +251,10 @@ class Home extends Component {
                   <p className="country-comment">alex,egypt</p>
                 </div>{" "}
                 {/**crise */}
-                <button className="commentUp">
+                <button className="commentUp" aria-label="Comment Up">
                   <FaChevronUp />
                 </button>
-                <button className="commentDown">
+                <button className="commentDown" aria-label="Comment Down">
                   <FaChevronDown />
                 </button>
               </div>{" "}

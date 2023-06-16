@@ -69,7 +69,7 @@ const MyAccount = () => {
                           ilove programmong and work in 3 companies in past ,
                           now  work as admin in Smart Sips company  </textarea>
                         <div className="abutparaa">
-                          <button className="buttonform">Save</button>
+                          <button aria-label="Submit the form" className="buttonform">Save</button>
                         </div>
                       </form>
                     </div>
