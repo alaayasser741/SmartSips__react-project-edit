@@ -45,7 +45,7 @@ class NavBar extends Component {
     return (<>
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid navpos">
-          <img src={"./icons/SmartSips.png"} alt="our logo" className="logoImg" />
+          <img src={process.env.PUBLIC_URL + '/images/SmartSips.png'} alt="our logo" className="logoImg" />
           <button aria-label="button toggler" className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false">
             <span className="navbar-toggler-icon"></span>
           </button>

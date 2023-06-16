@@ -12,7 +12,7 @@ export default function Popup(props) {
           <div>
             <div className="invoice-content-header sucsscart">
               <div className="invoice-img">
-                <img src="./icons/correct.jpg" alt="img" />
+                <img src={process.env.PUBLIC_URL + '/icons/correct.jpg'} alt="img" />
                 <h5>Successfully Added</h5>
                 <p>Item Added Successfully To Your Cart</p>
               </div>

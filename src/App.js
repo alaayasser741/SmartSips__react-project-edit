@@ -94,9 +94,9 @@ function App() {
         <Route path="/contact">
           <Contact></Contact>
         </Route>
-        <Route path="/productdetails">
-          <ProductDetail></ProductDetail>
-        </Route>
+        <Route path="/productdetails/:id" component={ProductDetail} />
+
+
         <div className="d-flex">
           <Route path="/myaccount">
             <MyAccount></MyAccount>{" "}

@@ -29,10 +29,27 @@ export default function SignIn() {
     // username:''
   });
 
+  // ! get cart id
+  const [cartDataId, setCartDataId] = useState(0);
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    axiosInstance.get(`/order_api/cart/all/${userId}`)
+      .then(res => {
+        const resData = res.data;
+        setCartDataId(resData[0].id)
+        localStorage.setItem('cartID', resData[0].id);
+        console.log(resData[0].id)
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, [idToken])
+
   // Hide or show the password
   const handleTogglePassword = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
+
   const [formData, updateFormData] = useState(initialFormData);
 
   const handleChange = (e) => {

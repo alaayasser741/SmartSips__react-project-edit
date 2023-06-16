@@ -13,6 +13,8 @@ export default function SignUp() {
 		localStorage.removeItem('cart_id');
 		localStorage.removeItem('social');
 		localStorage.removeItem('isAdmin');
+		localStorage.removeItem('cartID');
+
 
 		// localStorage.removeItem('refresh_token');
 		// axiosInstance.defaults.headers['Authorization'] = null;

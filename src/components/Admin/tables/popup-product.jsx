@@ -109,7 +109,7 @@ export default function Popup(props) {
                 setOpenPopup(false);
               }}
             >
-              <img src="./icons/cross.png" alt="img" />
+              <img src={process.env.PUBLIC_URL + '/images/product.png'} alt="img" />
             </button>
           </div>
         </DialogTitle>

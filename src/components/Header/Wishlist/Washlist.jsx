@@ -15,6 +15,7 @@ const Wishlist = () => {
   const [wishlistUpdate, setWishlistUpdate] = useState(false);
   const userId = localStorage.getItem('userId');
   const cartId = localStorage.getItem('cart_id');
+  const cartId2 = localStorage.getItem('cartID');
 
   useEffect(() => {
     axiosInstance.get('/products_api/product/all')
@@ -53,6 +54,19 @@ const Wishlist = () => {
           "product": p_id,
           "qnt": 1,
           "cart": cartId
+        }
+      )
+        .then(res => {
+          setOpenPopup(true)
+        })
+        .catch(err => console.log(err, 'updated cart'))
+    } else if (cartId2 != null) {
+      console.log(cartId2)
+      axiosInstance.post(`order_api/item/create`,
+        {
+          "product": p_id,
+          "qnt": 1,
+          "cart": cartId2
         }
       )
         .then(res => {

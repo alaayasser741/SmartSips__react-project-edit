@@ -97,8 +97,8 @@ const Cart = () => {
   }
 
   const qtyCountMins = (id, productId, qnt) => {
-    if (qnt == 0) {
-      toast.info('quantity already 0');
+    if (qnt == 1) {
+      toast.info('cant be less than one item');
     } else {
       const updatedQuantity = qnt - 1;
       setCountqty(updatedQuantity);

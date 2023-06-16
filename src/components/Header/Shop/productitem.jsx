@@ -18,36 +18,26 @@ const ProductItem = (props) => {
   const { data } = props;
   const [itemOffset, setItemOffset] = useState(0);
   const [currentItems, setCurrentItems] = useState([]);
-  const [cartDataId, setCartDataId] = useState(0);
+
 
   const [pageCount, setPageCount] = useState(0);
   const itemsPerPage = 4;
   const userId = localStorage.getItem('userId');
   const cartId = localStorage.getItem('cart_id');
-
-  useEffect(() => {
-    axiosInstance.get(`/order_api/cart/all/${userId}`)
-      .then(res => {
-        const resData = res.data;
-        setCartDataId(resData[0].id)
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }, [])
-
+  const cartId2 = localStorage.getItem('cartID');
+  
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(data.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(data.length / itemsPerPage));
-
+    
   }, [itemOffset, itemsPerPage, data]);
-
+  
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % data.length;
     setItemOffset(newOffset);
   };
-
+  
   const handleWishList = (p_id) => {
     axiosInstance.post('/products_api/wishlist/add', {
       "product": [p_id],
@@ -71,12 +61,12 @@ const ProductItem = (props) => {
           setOpenPopup1(true)
         })
         .catch(err => console.log(err, 'updated cart'))
-    } else if (cartDataId != 0) {
+    } else if (cartId2 != null) {
       axiosInstance.post(`order_api/item/create`,
         {
           "product": p_id,
           "qnt": 1,
-          "cart": cartDataId
+          "cart": cartId2
         }
       )
         .then(res => {
@@ -96,6 +86,7 @@ const ProductItem = (props) => {
       })
         .then(res => {
           localStorage.setItem('cart_id', res.data.id)
+          console.log(res.data.id)
           setOpenPopup1(true)
         })
         .catch(err => console.log(err, 'created cart'))
@@ -112,7 +103,7 @@ const ProductItem = (props) => {
             <div className="container-fluid product_description">
               <div className="row">
                 <div className="col-6">
-                  <Link to='/productdetails'>{p.title}</Link>
+                  <Link to={`/productdetails/${p.id}`}>{p.title}</Link>
                   <h6>{p.price}$</h6>
                 </div>
                 <div className="col-6 container product_Icons_Container">
