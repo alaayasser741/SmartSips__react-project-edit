@@ -13,7 +13,25 @@
 .navLink {
   margin-right: 24px;
 }
+.dropdown-menu li{
+  margin-right: 0 !important;
+  text-align: center;
+}
+.dropdown-menu{
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.dropdown-menu::after{
+  content: '';
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: -25%;
+  left: 23px;
+  border: 10px solid;
+  border-color: transparent transparent #ccc transparent;
+  z-index: 999;
 
+}
 .nav-icon {
   margin-right: -70px;
   margin-left: -70px;

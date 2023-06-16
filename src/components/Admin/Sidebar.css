@@ -190,9 +190,7 @@
     transition: 0.5s;
   } */
   
-  .show {
-    left: 0;
-  }
+
   
   .space-toggle {
     padding-left: calc(var(--nav-width) + 1rem);
@@ -214,9 +212,6 @@
       padding: 1rem 0 0 0;
     }
   
-    .show {
-      width: calc(var(--header-height) + 156px);
-    }
   
     .space-toggle {
       padding-left: calc(var(--nav-width) + 188px);
