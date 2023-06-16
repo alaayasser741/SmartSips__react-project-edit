@@ -1,13 +1,7 @@
 /* --------------------------------header style------------------------ */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  /* font-family: 'Times New Roman','Arial'; */
-  font-family: 'Libre Baskerville', serif;
-  font-weight: 700;
+h1,h2,h3,h4,h5,h6{
+  font-family: 'Times New Roman','Arial';
+  font-weight: bold;
 }
 
 .heading1 {
