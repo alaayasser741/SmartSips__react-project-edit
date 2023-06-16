@@ -9,7 +9,7 @@ import {
 } from 'react-icons/fa';
 import './mailBox.css';
 const MailChat = (props) => {
-    // console.log(props)
+    
     return ( <>
     <div className='mail_box_chat_icons container'>
                         <div className='row justify-content-between'>

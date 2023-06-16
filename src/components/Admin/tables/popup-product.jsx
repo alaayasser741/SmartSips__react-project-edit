@@ -23,8 +23,6 @@ export default function Popup(props) {
       const formData = new FormData();
       formData.append('profile_photo', selectedFile);
       const response = await axiosInstance.post(`/products_api/imageupload/${prodID}/imageupload/`, formData);
-      console.log(response.data);
-      // Handle the success case
       setShowUploadForm(0)
     } catch (error) {
       console.log(error);

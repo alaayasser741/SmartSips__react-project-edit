@@ -60,7 +60,6 @@ const Orders = () => {
     axiosInstance.get('/order_api/order/list/all')
       .then(res => {
         setDataSource(res.data);
-        console.log(res.data)
       })
       .catch(err => {
         console.log(err);
