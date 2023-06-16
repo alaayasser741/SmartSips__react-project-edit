@@ -8,8 +8,12 @@ import { IoMdLogOut, IoIosClose } from 'react-icons/io'
 import { useHistory } from 'react-router-dom';
 import axiosInstance from '../../../axios';
 class NavBar extends Component {
-  state = { token: false, layout: false, userName: '', }
-
+  state = { token: false, layout: false, userName: '', dropdownOpen: false }
+  handleDropdownToggle = () => {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen
+    }));
+  };
   componentDidMount() {
     const userId = localStorage.getItem('userId');
     const token = localStorage.getItem('token')
@@ -37,6 +41,7 @@ class NavBar extends Component {
   }
 
   render() {
+    const { dropdownOpen } = this.state;
     return (<>
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid navpos">
@@ -54,25 +59,18 @@ class NavBar extends Component {
                 <Link className="nav-link active" aria-current="page" to="/shop">Shop</Link>
               </li>
 
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <li className={`nav-item dropdown ${dropdownOpen ? "drop" : ""}`}>
+                <a onClick={this.handleDropdownToggle} className="nav-link dropdown-toggle" href="#/" role="button" aria-expanded="false">
                   Pages
                 </a>
-                <ul className="dropdown-menu">
-                  <li><Link className="dropdown-item" href="/" to='/aboutus'>About Us</Link></li>
-                  <li><Link className="dropdown-item" href="/" to='/orderhistory'>History Order</Link></li>
-
+                <ul className="dropdown-menu" style={{ display: dropdownOpen ? "block" : "none" }}>
+                  <li><Link className="dropdown-item" to='/aboutus'>About Us</Link></li>
+                  <li><Link className="dropdown-item" to='/orderhistory'>History Order</Link></li>
                 </ul>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" href="#/" to='/contact'>Contact</Link>
               </li>
-              {/* <li className="nav-item">
-          <Link className="nav-link" href="#/" to='/signin'>Login</Link>
-        </li> */}
-              {/* <li className="nav-item">
-                <Link className="nav-link" href="#/" to='/logout'>LogOut</Link>
-              </li> */}
 
               <li className="nav-item nav-icon" style={{ marginLeft: "20px" }} >
                 <Link className="nav-link" href="/" to='/wishlist'><FaRegHeart /></Link>

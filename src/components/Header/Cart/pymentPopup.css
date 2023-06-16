@@ -1,0 +1,10 @@
+.detals-table tr {
+    border: 1px solid #e0dfdf;
+    padding: 1rem 1rem;
+    display: block;
+}
+
+.order-details table tr th,
+td {
+    padding-top: 0;
+}

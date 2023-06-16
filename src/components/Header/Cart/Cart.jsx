@@ -13,6 +13,10 @@ const Cart = () => {
   const cartId = localStorage.getItem('cart_id');
   const userId = localStorage.getItem('userId');
   const [wishlistUpdate, setWishlistUpdate] = useState(false);
+  const [totalPrice, setTotalPrice] = useState('');
+  const [shipping, setShipping] = useState('');
+  const [itemsLength, setItemsLength] = useState('');
+
   const [itemsState, setItemsState] = useState([]);
   useEffect(() => {
     axiosInstance.get(`/order_api/cart/all/${userId}`)
@@ -20,6 +24,10 @@ const Cart = () => {
         const resData = res.data;
         const items = resData.map(obj => obj);
         setItemsState(items);
+        setTotalPrice(resData[0].total_price)
+        setShipping(resData[0].shipping)
+        setItemsLength(resData[0].items.length)
+
       })
       .catch(err => {
         console.log(err);
@@ -27,10 +35,10 @@ const Cart = () => {
   }, [wishlistUpdate])
 
   const deleteCart = (cart_Id) => {
-     
-    if(cart_Id == cartId){
+
+    if (cart_Id == cartId) {
       localStorage.removeItem('cart_id');
-    }else{
+    } else {
       console.log("not cart_id")
     }
     const authToken = localStorage.getItem('token');
@@ -155,11 +163,11 @@ const Cart = () => {
                 <tbody>
                   <tr>
                     <th>3 ITEMS</th>
-                    <td>$</td>
+                    <td>{itemsLength}$</td>
                   </tr>
                   <tr>
                     <th>SHIPPING</th>
-                    <td>$</td>
+                    <td>{shipping}$</td>
                   </tr>
                   <tr>
                     <th>
@@ -183,7 +191,7 @@ const Cart = () => {
                   </tr>
                   <tr>
                     <th>TOTAL PRICE</th>
-                    <td>$</td>
+                    <td>{totalPrice}$</td>
                   </tr>
                   <tr>
                     <td colSpan="2" style={{ paddingLeft: "20px", paddingTop: "10px" }}>
