@@ -18,10 +18,23 @@ const ProductItem = (props) => {
   const { data } = props;
   const [itemOffset, setItemOffset] = useState(0);
   const [currentItems, setCurrentItems] = useState([]);
+  const [cartDataId, setCartDataId] = useState(0);
+
   const [pageCount, setPageCount] = useState(0);
   const itemsPerPage = 4;
   const userId = localStorage.getItem('userId');
   const cartId = localStorage.getItem('cart_id');
+
+  useEffect(() => {
+    axiosInstance.get(`/order_api/cart/all/${userId}`)
+      .then(res => {
+        const resData = res.data;
+        setCartDataId(resData[0].id)
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, [])
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
@@ -57,7 +70,19 @@ const ProductItem = (props) => {
         .then(res => {
           setOpenPopup1(true)
         })
-        .catch(err => console.log(err,'updated cart'))
+        .catch(err => console.log(err, 'updated cart'))
+    } else if (cartDataId != 0) {
+      axiosInstance.post(`order_api/item/create`,
+        {
+          "product": p_id,
+          "qnt": 1,
+          "cart": cartDataId
+        }
+      )
+        .then(res => {
+          setOpenPopup1(true)
+        })
+        .catch(err => console.log(err, 'updated cart'))
     }
     else {
       axiosInstance.post('/order_api/cart/create', {
@@ -73,7 +98,7 @@ const ProductItem = (props) => {
           localStorage.setItem('cart_id', res.data.id)
           setOpenPopup1(true)
         })
-        .catch(err => console.log(err,'created cart'))
+        .catch(err => console.log(err, 'created cart'))
     }
   }
   return (

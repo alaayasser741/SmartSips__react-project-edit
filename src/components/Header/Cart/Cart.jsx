@@ -13,25 +13,28 @@ const Cart = () => {
   const cartId = localStorage.getItem('cart_id');
   const userId = localStorage.getItem('userId');
   const [wishlistUpdate, setWishlistUpdate] = useState(false);
-  const [totalPrice, setTotalPrice] = useState('');
-  const [shipping, setShipping] = useState('');
-  const [itemsLength, setItemsLength] = useState('');
+  const [totalPrice, setTotalPrice] = useState('0');
+  const [shipping, setShipping] = useState('0');
+  const [itemsLength, setItemsLength] = useState('0');
 
   const [itemsState, setItemsState] = useState([]);
   useEffect(() => {
     axiosInstance.get(`/order_api/cart/all/${userId}`)
       .then(res => {
         const resData = res.data;
-        const items = resData.map(obj => obj);
-        setItemsState(items);
-        setTotalPrice(resData[0].total_price)
-        setShipping(resData[0].shipping)
-        setItemsLength(resData[0].items.length)
+        if (resData.length > 0) {
+          const items = resData.map(obj => obj);
+          setItemsState(items);
+          setTotalPrice(resData[0].total_price);
+          setShipping(resData[0].shipping);
+          setItemsLength(resData[0].items.length);
+        }
 
       })
       .catch(err => {
         console.log(err);
       })
+
   }, [wishlistUpdate])
 
   const deleteCart = (cart_Id) => {
@@ -41,6 +44,7 @@ const Cart = () => {
     } else {
       console.log("not cart_id")
     }
+
     const authToken = localStorage.getItem('token');
     axiosInstance.delete(`/order_api/cart/delete/${cart_Id}`, {
       headers: {
@@ -71,6 +75,7 @@ const Cart = () => {
       .catch((err) => {
         toast.error('Failed to delete product')
       });
+
   };
   const updateCartQty = (itemId, productId, updatedQuantity) => {
     axiosInstance.put(`order_api/item/cart/update/${itemId}`, {
