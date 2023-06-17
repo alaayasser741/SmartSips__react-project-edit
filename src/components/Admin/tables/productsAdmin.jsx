@@ -114,11 +114,15 @@ const ProductsAdmin = () => {
   }
 
 
-  const handleImageUpload = (id) => {
+  const handleEdit = (id) => {
     setOpenPopup(true)
     setProductId(id)
   };
 
+  const handleAdd = (id) => {
+    setOpenPopup(true)
+    setProductId(id)
+  };
 
   return (
     <>
@@ -137,14 +141,13 @@ const ProductsAdmin = () => {
                 <div className="row">
                   <div className="col-lg-5 col-sm-12 entites">
                     {/* <div className="addproduct"> */}
-                    <button aria-label="open popup" className="addproduct" onClick={() => setOpenPopup(true)}>
+                    <button aria-label="open popup" className="addproduct" onClick={() => handleAdd(0)}>
                       <img
                         src={"./icons/product (1) (1).png"}
                         alt="img"
                         className="dashphoto"
                       />
                       Add
-
                     </button>
 
                     &nbsp;&nbsp;
@@ -253,7 +256,7 @@ const ProductsAdmin = () => {
                               <TableCell className="tableCell" >
                                 <i style={{ paddingLeft: "15px" }}>
                                   <FaPen className="FaPen" onClick={() => {
-                                    handleImageUpload(d.id)
+                                    handleEdit(d.id)
                                   }} />
                                 </i>
                                 <i style={{ paddingLeft: "15px" }}>
@@ -302,7 +305,7 @@ const ProductsAdmin = () => {
                               <TableCell className="tableCell" >
                                 <i style={{ paddingLeft: "15px" }}>
                                   <FaPen className="FaPen" onClick={() => {
-                                    handleImageUpload(d.id)
+                                    handleEdit(d.id)
                                   }} />
                                 </i>
 
