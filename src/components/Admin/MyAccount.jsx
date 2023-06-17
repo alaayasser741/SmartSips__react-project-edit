@@ -5,16 +5,6 @@ import Sidebar from "./Sidebar";
 const MyAccount = () => {
   return (
     <>
-
-      {/* <section className="customers-section">
-        <div className="headCustomers">
-          <div className="container">
-            <h3>My Account</h3>
-            <h5 className="ms-2">&nbsp; Welcome!</h5>
-          </div>
-        </div>{" "}
-        
-      </section> */}
       <Sidebar/>
       <div className="container-fluid dashboard_section">
         <div className='container dash_Board_content'>

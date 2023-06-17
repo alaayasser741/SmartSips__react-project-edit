@@ -22,6 +22,7 @@ const Cart = () => {
     axiosInstance.get(`/order_api/cart/all/${userId}`)
       .then(res => {
         const resData = res.data;
+        console.log(resData)
         if (resData.length > 0) {
           const items = resData.map(obj => obj);
           setItemsState(items);

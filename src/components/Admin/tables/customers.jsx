@@ -49,28 +49,33 @@ const Customer = () => {
   const records = dataSource.slice(firstIndex, lastIndex);
   const npage = Math.ceil(dataSource.length / recordesPerPage);
   const nnumbers = [...Array(npage + 1).keys()].slice(1);
+  const [isLoad, setIsLoad] = useState(false);
 
   useEffect(() => {
-    axiosInstance.get('user_api/userprofile/list')
-      .then(res => {
-        setDataSource(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }, [])
+    const fetchProducts = async () => {
+      try {
+        const response = await axiosInstance.get("user_api/userprofile/list");
+        const productsData = response.data.map(async (user) => {
+          const imageResponse = await axiosInstance.get(`/imageupload/${user.id}/imageupload/${user.id}/`);
+          const image = imageResponse.data
+          return { ...user, image };
+        });
+        const productsWithImages = await Promise.all(productsData);
+        setIsLoad(isLoad => !isLoad);
+        setDataSource(productsWithImages);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchProducts();
+  }, [isLoad]);
 
   const handleDelete = id => {
     axiosInstance.delete(`user_api/userprofile/delete/${id}`)
       .then(res => {
-        toast.success('user deleted successfully')
-        axiosInstance.get('user_api/userprofile/list')
-          .then(res => {
-            setDataSource(res.data);
-          })
-          .catch(err => {
-            console.log(err);
-          })
+        toast.success('user deleted successfully');
+        setIsLoad(isLoad => !isLoad);
       })
       .catch(err => {
         toast.error('Error occured')
@@ -97,7 +102,7 @@ const Customer = () => {
               <div className="container table-container ">
                 <div className="row">
                   <div className="col-lg-4 col-md-12 entites">
-                    <label>Show Entites :&nbsp;&nbsp;</label>
+                    <label>Show Entities :&nbsp;&nbsp;</label>
 
                     <select
                       className=" select-box number-rows "
@@ -173,7 +178,7 @@ const Customer = () => {
                           return (
                             <TableRow key={i}>
                               <TableCell className="tableCell">
-                                <img src={d.profile_photo} alt="img" />
+                                <img src={d.image.profile_photo} alt="img" />
                               </TableCell>
                               <TableCell className="tableCell">
                                 {d.username}
@@ -196,17 +201,11 @@ const Customer = () => {
                               <TableCell className={`status ${d.Status}`}>
                                 Pending
                               </TableCell>
-                              <TableCell className="tableCell">
+                              <TableCell style={{ display: 'flex', gap: '1rem' }} className="tableCell">
                                 <i>
-                                  {" "}
-                                  <FaPen />{" "}
-                                </i>
-
-                                <i>
-                                  {" "}
                                   <FaPaperPlane />
                                 </i>
-                                <i onClick={() => handleDelete(d.id)}><FaTrash /> </i>
+                                <i onClick={() => handleDelete(d.id)}><FaTrash style={{ color: 'red' }} /> </i>
                               </TableCell>
                             </TableRow>
                           );
@@ -215,7 +214,7 @@ const Customer = () => {
                           return (
                             <TableRow key={i}>
                               <TableCell className="tableCell">
-                                <img src={d.profile_photo} alt="img" />
+                                <img src={d.image.profile_photo} alt="img" />
                               </TableCell>
                               <TableCell className="tableCell">
                                 {d.username}
@@ -238,17 +237,12 @@ const Customer = () => {
                               <TableCell className={`status ${d.Status}`}>
                                 Pending
                               </TableCell>
-                              <TableCell className="tableCell">
-                                <i>
-                                  {" "}
-                                  <FaPen />{" "}
-                                </i>
-
+                              <TableCell style={{ display: 'flex', gap: '1rem' }} className="tableCell">
                                 <i>
                                   {" "}
                                   <FaPaperPlane />
                                 </i>
-                                <i onClick={() => handleDelete(d.id)}><FaTrash /> </i>
+                                <i onClick={() => handleDelete(d.id)}><FaTrash style={{ color: 'red' }} /> </i>
                               </TableCell>
                             </TableRow>
                           );
@@ -287,9 +281,8 @@ const Customer = () => {
                 </ul>
               </nav>
               <div className="foot-table-nuber-rows">
-                {" "}
                 <p>
-                  Show {recordesPerPage} Of {dataSource.length} Entites
+                  Show {recordesPerPage} Of {dataSource.length} Entities
                 </p>
               </div>
             </div>
