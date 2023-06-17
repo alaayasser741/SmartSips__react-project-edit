@@ -70,3 +70,19 @@ input[type="file"] {
     margin-left: -10px;
   }
 }
+.FaTrash{
+  color: red;
+  transition: 0.3s;
+}
+.FaTrash:hover{
+  color: rgb(144, 4, 4);
+}
+
+.FaPen{
+  color: #0b69bb;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.FaPen:hover{
+  color: #034077;
+}

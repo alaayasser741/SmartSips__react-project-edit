@@ -9,35 +9,6 @@ import { toast } from "react-toastify";
 import { async } from "q";
 
 export default function Popup(props) {
-
-  const fileInputRef = useRef(null);
-  const handleFileClick = (e) => {
-    fileInputRef.current.click();
-  }
-  const handleInputChange = ({ target }) => {
-    setSelectedFile(target.files[0]);
-
-  }
-  const handleUpload = async (productId) => {
-    try {
-      const formData = new FormData();
-      formData.append('profile_photo', selectedFile);
-      const response = await axiosInstance.post(`/products_api/imageupload/${prodID}/imageupload/`, formData);
-      setShowUploadForm(0)
-    } catch (error) {
-      console.log(error);
-      // Handle the error case
-    }
-  };
-  const handleUploadSubmit = async (e) => {
-    e.preventDefault();
-    handleUpload(prodID);
-  }
-
-
-
-
-
   const [name, setName] = useState('');
   const [cat, setCat] = useState(0);
   const [desc, setDesc] = useState('');
@@ -86,10 +57,36 @@ export default function Popup(props) {
     };
     postData();
   }
-  const { openPopup, setOpenPopup } = props;
+  const { openPopup, setOpenPopup, productId } = props;
+
+  const fileInputRef = useRef(null);
+  const handleFileClick = (e) => {
+    fileInputRef.current.click();
+  }
+  const handleInputChange = ({ target }) => {
+    setSelectedFile(target.files[0]);
+
+  }
+  const handleUpload = async (productId) => {
+    try {
+      const formData = new FormData();
+      formData.append('image', selectedFile);
+      const response = await axiosInstance.patch(`/products_api/imageupload/${productId}/`, formData);
+      console.log(response)
+      setShowUploadForm(0)
+    } catch (error) {
+      console.log(error);
+      // Handle the error case
+    }
+  };
+  const handleUploadSubmit = async (e) => {
+    e.preventDefault();
+    handleUpload(prodID);
+  }
   return (
     <>
       <Dialog open={openPopup}>
+        {productId != 0 ? 'Edit' : 'Add'}
         <DialogTitle>
           <div style={{ textAlign: "center", height: "60px" }}>
             {" "}
@@ -103,20 +100,19 @@ export default function Popup(props) {
               &nbsp;&nbsp; Add Product
             </div>
             <button
-            aria-label="close button"
+              aria-label="close button"
               className="invoiceClose"
               onClick={() => {
                 setOpenPopup(false);
               }}
             >
-              <img src={process.env.PUBLIC_URL + '/images/product.png'} alt="img" />
+              <img src={process.env.PUBLIC_URL + '/icons/cross.png'} alt="img" />
             </button>
           </div>
         </DialogTitle>
         <DialogContent className="bodyofproductpoup">
           <div
             className="container add-product-form "
-          // style={{ width: "480px" }}
           >
             <form className="form-group" >
               {showUploadForm === 1 ?

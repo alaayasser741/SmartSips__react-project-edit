@@ -40,31 +40,21 @@ const ProductsAdmin = () => {
     }
   });
 
-
-  //  const getColor=(colorr) =>{
-  //   ProductsData.map((i) => {
-  //      if (i.Stock === 0) {
-  //       return "red"
-  //      } else if (i.Stock  === 50) {
-  //        return "green"
-  //      } else if (i.Stock  === 300) {
-  //        return "blue"
-  //      }});
-  //  };
   const [openPopup, setOpenPopup] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const recordesPerPage = 10;
   const lastIndex = currentPage * recordesPerPage;
   const firstIndex = lastIndex - recordesPerPage;
   const records = dataSource.slice(firstIndex, lastIndex);
-
   const npage = Math.ceil(dataSource.length / recordesPerPage);
   const nnumbers = [...Array(npage + 1).keys()].slice(1);
-  const [selects, setSelects] = useState(10);
   const [value, setValue] = useState("");
-  const [products, setProducts] = useState([]);
-
   const [tableFilter, setTableFilter] = useState([]);
+  const [isLoad, setIsLoad] = useState(false);
+  const [productId, setProductId] = useState(0);
+
+
+
   const filterData = (e) => {
     const selectedValue = e.target.value;
 
@@ -98,33 +88,38 @@ const ProductsAdmin = () => {
       setTableFilter([...dataSource]);
     }
   };
-
-
-
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await axiosInstance.get("products_api/product/all");
         const productsData = response.data.map(async (product) => {
-          const imageResponse = await axiosInstance.get(`/imageupload/${product.id}/imageupload/`);
-          const image = imageResponse.data[0]
+          const imageResponse = await axiosInstance.get(`/products_api/imageupload/${product.id}/`);
+          const image = imageResponse.data
           return { ...product, image };
         });
         const productsWithImages = await Promise.all(productsData);
         setDataSource(productsWithImages);
-
+        setIsLoad(isLoad => !isLoad);
       } catch (error) {
         console.log(error);
       }
     };
 
     fetchProducts();
-  }, []);
+  }, [isLoad]);
   const handleDelete = (pro_id) => {
     axiosInstance.delete(`https://smartsips-production.up.railway.app/products_api/${pro_id}/detail`)
       .then(res => toast.success('item deleted successfully'))
       .catch(err => toast.success('Error occurd try agian'))
   }
+
+
+  const handleImageUpload = (id) => {
+    setOpenPopup(true)
+    setProductId(id)
+  };
+
+
   return (
     <>
       <Sidebar />
@@ -196,13 +191,13 @@ const ProductsAdmin = () => {
                           ID
                         </TableCell>
                         <TableCell className="tableCell" align="center">
-                          Imge
+                          Image
                         </TableCell>
                         <TableCell className="tableCell" align="center">
                           Name
                         </TableCell>
                         <TableCell className="tableCell" align="center">
-                          Catogry
+                          Category
                         </TableCell>
                         <TableCell className="tableCell" align="center">
                           Price
@@ -230,9 +225,9 @@ const ProductsAdmin = () => {
                                 {d.ID}
                               </TableCell>
                               <TableCell className="tableCell">
-                                {d.image && d.image.profile_photo && (
+                                {d.image && (
                                   <img
-                                    src={d.image.profile_photo}
+                                    src={d.image.image}
                                     alt="prod"
                                     className=""
                                     style={{ maxHeight: "50px" }}
@@ -255,17 +250,16 @@ const ProductsAdmin = () => {
                               <TableCell className={d.stock === 0 ? 'red' : d.stock < 50 ? 'yellow' : 'green'}>
                                 {d.stock}
                               </TableCell>
-                              <TableCell className="tableCell" onClick={() => {
-                                handleDelete(d.id)
-                              }}>
-                                <i style={{ paddingLeft: "4px" }}>
-                                  {" "}
-                                  <FaPen />{" "}
+                              <TableCell className="tableCell" >
+                                <i style={{ paddingLeft: "15px" }}>
+                                  <FaPen className="FaPen" onClick={() => {
+                                    handleImageUpload(d.id)
+                                  }} />
                                 </i>
-
-                                <i style={{ paddingLeft: "4px" }}>
-                                  {" "}
-                                  <FaTrash />{" "}
+                                <i style={{ paddingLeft: "15px" }}>
+                                  <FaTrash className="FaTrash" onClick={() => {
+                                    handleDelete(d.id)
+                                  }} />{" "}
                                 </i>
                               </TableCell>
                             </TableRow>
@@ -281,9 +275,9 @@ const ProductsAdmin = () => {
                                 className="tableCell"
                                 style={{ height: "50px" }}
                               >
-                                {d.image && d.image.profile_photo && (
+                                {d.image && (
                                   <img
-                                    src={d.image.profile_photo}
+                                    src={d.image.image}
                                     alt="prod"
                                     className=""
                                     style={{ maxHeight: "50px" }}
@@ -302,22 +296,21 @@ const ProductsAdmin = () => {
                               <TableCell className="tableCell">
                                 {d.sales}
                               </TableCell>
-
-
                               <TableCell className={d.stock === 0 ? 'red' : d.stock < 50 ? 'yellow' : 'green'}>
                                 {d.stock}
                               </TableCell>
-                              <TableCell className="tableCell" onClick={() => {
-                                handleDelete(d.id)
-                              }}>
-                                <i style={{ paddingLeft: "4px" }}>
-                                  {" "}
-                                  <FaPen />{" "}
+                              <TableCell className="tableCell" >
+                                <i style={{ paddingLeft: "15px" }}>
+                                  <FaPen className="FaPen" onClick={() => {
+                                    handleImageUpload(d.id)
+                                  }} />
                                 </i>
 
-                                <i style={{ paddingLeft: "4px" }}>
+                                <i style={{ paddingLeft: "15px" }}>
                                   {" "}
-                                  <FaTrash />{" "}
+                                  <FaTrash className="FaTrash" onClick={() => {
+                                    handleDelete(d.id)
+                                  }} />{" "}
                                 </i>
                               </TableCell>
                             </TableRow>
@@ -358,17 +351,11 @@ const ProductsAdmin = () => {
                   </li>
                 </ul>
               </nav>
-              {/* <div className="foot-table-nuber-rows">
-                {" "}
-                <p>
-                  Show {recordesPerPage} Of {ProductsData.length} Entites
-                </p>
-              </div> */}
             </div>
           </div>
         </div>
       </div>
-      <PopupProduct openPopup={openPopup} setOpenPopup={setOpenPopup}></PopupProduct>
+      <PopupProduct openPopup={openPopup} productId={productId} setOpenPopup={setOpenPopup}></PopupProduct>
     </>
   );
 
