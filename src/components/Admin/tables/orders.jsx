@@ -15,14 +15,10 @@ import { toast } from "react-toastify";
 
 import {
   FaDownload,
-  FaPen,
   FaTrash,
-  FaPaperPlane,
-  FaSearch,
 } from "react-icons/fa";
 import axiosInstance from "../../../axios";
 const handleDelete = (pro_id) => {
-
   // 
   axiosInstance.delete(`/order_api/${pro_id}/delete`)
     .then(res => toast.success('item deleted successfully'))
@@ -41,6 +37,7 @@ const Orders = () => {
   const nnumbers = [...Array(npage + 1).keys()].slice(1);
   const [value, setValue] = useState("");
   const [tableFilter, setTableFilter] = useState([]);
+  const [orderId, setOrderId] = useState(0);
   const filterData = (e) => {
     if (e.target.value != "") {
       setValue(e.target.value);
@@ -64,7 +61,12 @@ const Orders = () => {
       .catch(err => {
         console.log(err);
       })
-  }, [])
+  }, []);
+
+  const getInvoice = (id) => {
+    setOpenPopup(true);
+    setOrderId(id)
+  }
   return (
     <>
       <Sidebar />
@@ -193,12 +195,13 @@ const Orders = () => {
                                 </TableCell>order_date
                                 <TableCell className="tableCell">
                                   <button
-                                  aria-label="button"
+                                    aria-label="button"
                                     style={{
                                       outline: "none",
                                       border: "none",
                                       backgroundColor: "white",
                                     }}
+                                    onClick={() => getInvoice(id)}
                                   >
                                     <img
                                       src={"./icons/invoice (1).png"}
@@ -214,12 +217,7 @@ const Orders = () => {
                                 <TableCell className="tableCell">
                                   <i>
                                     {" "}
-                                    <FaPen />{" "}
-                                  </i>
-
-                                  <i>
-                                    {" "}
-                                    <FaTrash onClick={() => {
+                                    <FaTrash style={{ color: 'red' }} onClick={() => {
                                       handleDelete(id)
                                     }} />{" "}
                                   </i>
@@ -253,13 +251,13 @@ const Orders = () => {
                                 </TableCell>
                                 <TableCell className="tableCell">
                                   <button
-                                  aria-label="button"
+                                    aria-label="button"
                                     style={{
                                       outline: "none",
                                       border: "none",
                                       backgroundColor: "white",
                                     }}
-                                    onClick={() => setOpenPopup(true)}
+                                    onClick={() => getInvoice(id)}
                                   >
                                     <img
                                       src={"./icons/invoice (1).png"}
@@ -275,12 +273,7 @@ const Orders = () => {
                                 <TableCell className="tableCell">
                                   <i>
                                     {" "}
-                                    <FaPen />{" "}
-                                  </i>
-
-                                  <i>
-                                    {" "}
-                                    <FaTrash onClick={() => {
+                                    <FaTrash style={{ color: 'red' }} onClick={() => {
                                       handleDelete(id)
                                     }} />{" "}
                                   </i>
@@ -331,7 +324,7 @@ const Orders = () => {
           </div>
         </div>
       </div>
-      <PopupOrder openPopup={openPopup} dataItems={dataSource} setOpenPopup={setOpenPopup}></PopupOrder>
+      <PopupOrder openPopup={openPopup} dataItems={dataSource} orderId={orderId} setOpenPopup={setOpenPopup}></PopupOrder>
     </>
   );
   function prePage() {
