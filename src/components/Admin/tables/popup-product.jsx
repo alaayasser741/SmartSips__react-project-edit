@@ -195,16 +195,21 @@ export default function Popup(props) {
                         </div>
                         <div className="form-group">
                           <label for="product-category">Category</label>
-                          <input
-                            type="number"
-                            id="product-category"
-                            name="product-category"
-                            onChange={(e) => {
-                              const value = parseInt(e.target.value);
-                              setCat(value);
-                            }}
-                            value={cat}
-                          />
+                          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                            <input
+                              type="range"
+                              id="product-category"
+                              name="product-category"
+                              min="1"
+                              max="3"
+                              onChange={(e) => {
+                                const value = parseInt(e.target.value);
+                                setCat(value);
+                              }}
+                              value={cat}
+                            />
+                            <label for="product-category">{cat === 1 ? 'Accessories' : cat === 2 ? 'Device' : cat === 3 ? 'Gadgets' : null}</label>
+                          </div>
                         </div>
                         <div className="row">
                           <div className="form-group col-md-6 col-sm-12">
@@ -309,16 +314,22 @@ export default function Popup(props) {
                       </div>
                       <div className="form-group">
                         <label for="product-category">Category</label>
-                        <input
-                          type="number"
-                          id="product-category"
-                          name="product-category"
-                          onChange={(e) => {
-                            const value = parseInt(e.target.value);
-                            setCat(value);
-                          }}
-                          value={cat}
-                        />
+                        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                          <input
+                            type="range"
+                            id="product-category"
+                            name="product-category"
+                            min="1"
+                            max="3"
+                            onChange={(e) => {
+                              const value = parseInt(e.target.value);
+                              setCat(value);
+                            }}
+                            value={cat}
+                          />
+                          <label for="product-category">{cat === 1 ? 'Accessories' : cat === 2 ? 'Device' : cat === 3 ? 'Gadgets' : null}</label>
+                        </div>
+
                       </div>
                       <div className="row">
 
