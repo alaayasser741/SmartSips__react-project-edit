@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Sign.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 
 const NewPass = () => {
+
   return (
     <>
     
@@ -43,6 +44,7 @@ const NewPass = () => {
                 type="password"
                 placeholder="&#xf023; &nbsp;&nbsp; Password"
                 style={{fontFamily:"FontAwesome"}}
+                
               />
             </div>
            

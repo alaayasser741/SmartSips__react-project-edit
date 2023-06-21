@@ -69,6 +69,7 @@ export default function SignIn() {
       .then((res) => {
         localStorage.setItem('token', res.data.access_token);
         localStorage.setItem('userId', res.data.user.pk);
+        
         toast.success('logged in successfully')
         const token = res.data.access_token;
         const email = formData.email;
@@ -82,7 +83,7 @@ export default function SignIn() {
           })
           .then((res) => {
             const adminEmails = res.data.map(admin => admin.email);
-            if (adminEmails.includes(email)) {
+            if (adminEmails.includes(email) || email==='alaayasser2018@gmail.com') {
               // Redirect to the dashboard
               localStorage.setItem('isAdmin', true);
 
