@@ -61,6 +61,7 @@ const Customer = () => {
           return { ...user, image };
         });
         const productsWithImages = await Promise.all(productsData);
+        console.log()
         setIsLoad(isLoad => !isLoad);
         setDataSource(productsWithImages);
       } catch (error) {
@@ -196,7 +197,11 @@ const Customer = () => {
                                 {d.address}
                               </TableCell>
                               <TableCell className="tableCell">
-                                22 Ali Street
+                                {new Date(d.created_at).toLocaleDateString('en-US', {
+                                  year: 'numeric',
+                                  month: 'long',
+                                  day: 'numeric'
+                                })}
                               </TableCell>
                               <TableCell className={`status ${d.Status}`}>
                                 Pending
@@ -232,7 +237,11 @@ const Customer = () => {
                                 {d.address}
                               </TableCell>
                               <TableCell className="tableCell">
-                                22 Ali Street
+                                {new Date(d.created_at).toLocaleDateString('en-US', {
+                                  year: 'numeric',
+                                  month: 'long',
+                                  day: 'numeric'
+                                })}
                               </TableCell>
                               <TableCell className={`status ${d.Status}`}>
                                 Pending

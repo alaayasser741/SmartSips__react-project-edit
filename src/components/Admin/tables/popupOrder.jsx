@@ -127,23 +127,23 @@ export default function PopupOrder(props) {
 
                 </TableHead>
                 <TableBody className="tableBody">
-                  {items.length > 0 ? items.map(({ category, id, image, price, title, qnt }) => (
+                  {items.length > 0 ? items.map(({ category, id, product, qnt }) => (
                     <TableRow key={id} className="tableContent">
                       <TableCell className="tableCell" align="center">
                         <p>Accessories</p>
                         {category}
                       </TableCell>
                       <TableCell className="tableCell" align="center">
-                        {image && <img src={image} alt="product-img" />}
+                        {product.image && <img src={product.image} alt="product-img" />}
                       </TableCell>
                       <TableCell className="tableCell" align="center">
-                        {price}$
+                        {product.price}$
                       </TableCell>
                       <TableCell className="tableCell" align="center">
                         {qnt ? qnt : 1}
                       </TableCell>
                       <TableCell className="tableCell" align="center">
-                        {title}
+                        {product.title}
                       </TableCell>
                     </TableRow>
                   )) : <p>there is no product</p>}
