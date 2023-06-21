@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FaBars, FaChartSimple, FaBell, FaSearch } from "react-icons/fa";
 const Sidebar = () => {
   const [show, setShow] = useState(false);
+  const [toggle, setToggle] = useState();
 
   return (
     <main className={show ? "space-toggle" : null}>
@@ -106,9 +107,10 @@ const Sidebar = () => {
                     src={"./icons/Ellipse 13.png"}
                     alt="img"
                     className="imgnav"
+                    onClick={() => { setToggle(!toggle) }}
                   />
 
-                  <ul>
+                  <ul className={toggle ? 'showMenu' : ''}>
                     <Link to="/myaccount">
                       <li>
                         <a href="#">Account</a>
@@ -121,7 +123,10 @@ const Sidebar = () => {
                       </li>
                     </Link>
                     <li>
-                      <a href="#">LogOut</a>
+                    <Link to={'/logout'} >
+                        
+                        <span>Logout</span>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -180,7 +185,7 @@ const Sidebar = () => {
           </Link> */}
         </nav>
       </aside>
-    </main>
+    </main >
   );
 };
 

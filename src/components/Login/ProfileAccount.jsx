@@ -147,8 +147,8 @@ const Profile = () => {
               style={{ display: 'none' }}
               id="imageInput"
             />
-            <label htmlFor="imageInput" style={{ border: '2px solid #ccc', borderRadius: '50%', cursor: 'pointer', padding: '.5rem' }}>
-              <img src={image} alt="Download" className="imgaccount" />
+            <label htmlFor="imageInput" style={{ borderRadius: '50%', cursor: 'pointer', padding: '.5rem' }}>
+              <img src={image == 'http://smartsips-production.up.railway.app/images/upload_to/default.png' ? './icons/Ellipse 13.png' : image} alt="Download" className="imgaccount" />
               <div className="borderpen">
                 <i className="penicon "><FaPen /></i>
               </div>
