@@ -168,12 +168,12 @@ const Cart = () => {
               <table>
                 <tbody>
                   <tr>
-                    <th>3 ITEMS</th>
-                    <td>{itemsLength}$</td>
+                    <th>ITEMS</th>
+                    <td style={{padding:'0'}}>{itemsLength}</td>
                   </tr>
                   <tr>
                     <th>SHIPPING</th>
-                    <td>{shipping}$</td>
+                    <td style={{padding:'0'}}>{shipping}$</td>
                   </tr>
                   <tr>
                     <th>

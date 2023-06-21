@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Sign.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import {
-
-
-  FaRegEnvelope,
-
-} from "react-icons/fa";
+import axiosInstance from "../../axios";
 
 const RestPass = () => {
+  const [email, setEmail] = useState('');
+  const [isSet, setIsSet] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email !== '') {
+
+      axiosInstance
+        .post(`/password/reset/`, {
+          email: email,
+        })
+        .then((res) => {
+          setIsSet(true)
+        })
+        .catch(err => {
+          setIsSet(false)
+        })
+    }
+  };
   return (
     <>
 
@@ -34,16 +48,13 @@ const RestPass = () => {
 
             <p className="haveacc text-secondary">Enter Your Email Address And Will Send You A Link To Reset Your Password</p>
             <div className="input-container email">
-              {/* <i>
-                <FaRegEnvelope />{" "}
-              </i> */}
-              <input id="email" name="email" type="email" placeholder="&#xf0e0; &nbsp;&nbsp; Your Email" style={{ fontFamily: "FontAwesome" }} />
+              <input onChange={(e) => { setEmail(e.target.value) }} id="email" name="email" type="email" placeholder="&#xf0e0; &nbsp;&nbsp; Your Email" style={{ fontFamily: "FontAwesome" }} />
             </div>
+            <button onClick={handleSubmit} aria-label="submit the form" className="sinbttn" type="submit">
+              Reset Password
+            </button>
+            {isSet ? <span>Please Check your Email</span>:null}
             <Link to='/setpass'>
-              <button aria-label="submit the form" className="sinbttn" type="submit">
-
-                Reset Password
-              </button>
             </Link>
             <div className="login">
               <p className="haveacc">

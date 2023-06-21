@@ -241,6 +241,7 @@ main {
 
 .imgnav {
   width: 38px;
+  cursor: pointer;
 }
 
 .RegEyeSlash {
@@ -332,8 +333,8 @@ main {
   z-index: 1;
 }
 
-.headerr .links:hover ul {
-  display: block;
+.showMenu {
+  display: block !important;
 }
 
 .headerr .links ul ::before {

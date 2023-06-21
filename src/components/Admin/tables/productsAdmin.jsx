@@ -225,7 +225,7 @@ const ProductsAdmin = () => {
                             <TableRow key={i}>
 
                               <TableCell className="tableCell">
-                                {d.ID}
+                                {d.id}
                               </TableCell>
                               <TableCell className="tableCell">
                                 {d.image && (
