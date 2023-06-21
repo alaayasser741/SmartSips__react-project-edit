@@ -5,7 +5,8 @@ import { FaBars, FaChartSimple, FaBell, FaSearch } from "react-icons/fa";
 const Sidebar = () => {
   const [show, setShow] = useState(false);
   const [toggle, setToggle] = useState();
-
+  const adminImage = localStorage.getItem('adminImage');
+console.log(adminImage)
   return (
     <main className={show ? "space-toggle" : null}>
       <header className="header">
@@ -104,9 +105,10 @@ const Sidebar = () => {
               <div className="container">
                 <div className="links">
                   <img
-                    src={"./icons/Ellipse 13.png"}
+                    src={adminImage == 'http://smartsips-production.up.railway.app/images/upload_to/default.png' ? './icons/Ellipse 13.png' : adminImage ? adminImage :'./icons/Ellipse 13.png'}
                     alt="img"
                     className="imgnav"
+                    style={{  borderRadius: '50%' }}
                     onClick={() => { setToggle(!toggle) }}
                   />
 
@@ -123,8 +125,8 @@ const Sidebar = () => {
                       </li>
                     </Link>
                     <li>
-                    <Link to={'/logout'} >
-                        
+                      <Link to={'/logout'} >
+
                         <span>Logout</span>
                       </Link>
                     </li>

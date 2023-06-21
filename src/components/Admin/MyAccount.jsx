@@ -17,6 +17,7 @@ const MyAccount = () => {
   const [city, setCity] = useState('');
   const [company, setCompany] = useState('');
 
+  localStorage.setItem('adminImage',image)
   const validatePhone = (value) => {
     const prefixRegex = /^(011|010|012|015)/;
     if (value == '') {
